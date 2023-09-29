@@ -21,7 +21,7 @@ function Menubar() {
                 </ul>
             </div>
             {dw && (
-                <div className="dropdown flex text-gray-600 bg-white p-2 absolute top-48 left-24">
+                <div className="dropdown border rounded flex text-gray-600 bg-white p-2 absolute top-48 left-24">
                     <ul>
                         {
                             menu.map((item)=>
