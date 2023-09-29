@@ -9,8 +9,8 @@ function Navbar() {
                     <h1>LOGO</h1>
                 </div>
                 <div className='flex w-full justify-end'>
-                    <div className="serchBar bg-red-500 border border-gray-400">
-                        <input type="text" />
+                    <div className="serchBar border border-gray-400">
+                        <input type="text" placeholder='Search' className='pl-2 border rounded mr-3'/>
                     </div>
                     <div className="navationtion navItem w-3/5 bg-yellow-400 ">
                         <ul className='flex justify-around w-full'>
