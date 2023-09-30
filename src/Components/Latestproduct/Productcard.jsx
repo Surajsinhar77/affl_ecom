@@ -12,7 +12,7 @@ function Productcard({project}) {
                 
 
                 <div className="productImage w-full hover:bg-gray-200 hover:liner">
-                    <Link >
+                    <Link to='/product'>
                     <img src={ProdcutImage} className="h-72 w-full"  alt="project image" />
                     </Link>
                 </div>
@@ -21,7 +21,7 @@ function Productcard({project}) {
                 
                 <div className="useTech p-3 border-t-2 text-black text-lg flex justify-between">
                     <div>
-                        <h2>{project.name}</h2>
+                        <Link to="/product"><h2>{project.name}</h2></Link>
                         <h2 className='text-red-400'>Rs: <span>200</span></h2>
                     </div>
                     <div>

@@ -7,6 +7,7 @@ import Contact from '../../Components/Contact/Contact';
 
 import SignIn from '../../Components/Auth/SignIn';
 import SignUp from '../../Components/Auth/SignUp';
+import Productdisp from '../../Components/Product/Productdisp';
 
 // **Routiing file extension can not be js it have to be jsx
 function Routing() {
@@ -18,6 +19,7 @@ function Routing() {
         <Route  path='/contact' element={<Contact/>} />
         <Route  path='/signin' element={<SignIn/>} />
         <Route  path='/signup' element={<SignUp/>} />
+        <Route  path='/product' element={<Productdisp/>} />
     </Routes>
   )
 }
