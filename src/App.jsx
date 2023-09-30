@@ -3,7 +3,8 @@ import './App.css'
 import { BrowserRouter} from 'react-router-dom'
 import Navbar from './Components/Navbar/Navbar'
 import Routing from './common/Router/Routing';
-import Crousal from './Components/Crousal/Crousal';
+// import Crousal from './Components/Crousal/Crousal';
+import Footer from './Components/Footer/Footer';
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
         <BrowserRouter>
           <Navbar/>
           <Routing/>
+          <Footer/>
         </BrowserRouter>
       </div>
     </>
