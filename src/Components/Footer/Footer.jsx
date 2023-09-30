@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 
 function Footer() {
     return (
@@ -17,22 +18,22 @@ function Footer() {
                 </div>
 
                 <div className="container mx-auto flex justify-center mt-4">
-                    <a href="#" className="mx-4">About Us</a>
-                    <a href="#" className="mx-4">Contact Us</a>
-                    <a href="#" className="mx-4">FAQs</a>
-                    <a href="#" className="mx-4">Terms and Conditions</a>
-                    <a href="#" className="mx-4">Privacy Policy</a>
-                    <a href="#" className="mx-4">Shipping Information</a>
-                    <a href="#" className="mx-4">Returns and Exchanges</a>
-                    <a href="#" className="mx-4">Payment Methods</a>
-                    <a href="#" className="mx-4">Size Guide</a>
-                    <a href="#" className="mx-4">Blog</a>
+                    <Link className="mx-4">About Us</Link>
+                    <Link className="mx-4">Contact Us</Link>
+                    <Link className="mx-4">FAQs</Link>
+                    <Link className="mx-4">Terms and Conditions</Link>
+                    <Link className="mx-4">Privacy Policy</Link>
+                    <Link className="mx-4">Shipping Information</Link>
+                    <Link className="mx-4">Returns and Exchanges</Link>
+                    <Link className="mx-4">Payment Methods</Link>
+                    <Link className="mx-4">Size Guide</Link>
+                    <Link className="mx-4">Blog</Link>
                 </div>
 
                 <div className="container mx-auto flex justify-center mt-4">
-                    <a href="#" className="mx-4">Facebook</a>
-                    <a href="#" className="mx-4">Twitter</a>
-                    <a href="#" className="mx-4">Instagram</a>
+                    <Link className="mx-4">Facebook</Link>
+                    <Link className="mx-4">Twitter</Link>
+                    <Link className="mx-4">Instagram</Link>
                 </div>
 
                 {/* <div className="container mx-auto flex justify-center mt-4">
