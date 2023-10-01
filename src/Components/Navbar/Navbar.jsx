@@ -8,7 +8,7 @@ function Navbar() {
         <div className='flex flex-col justify-center items-center'>
             <div className="navContainer bg-white flex p-6 m-5 w-4/5 items-center">
                 <div className="logoContainer">
-                    <h1> <BiLogoMediumOld className='text-4xl'/> </h1>
+                    <h1> <BiLogoMediumOld className='text-4xl text-red-500'/> </h1>
                 </div>
                 <div className='flex w-full '>
                     <div className="navationtion navItem w-3/5 mr-5 flex items-center text-gray-700">
