@@ -1,0 +1,7 @@
+#crawler::-webkit-scrollbar{
+    display: none;
+}
+
+#crawler-img{
+    transition: opacity 3s;
+}
