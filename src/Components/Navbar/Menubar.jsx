@@ -12,7 +12,7 @@ function Menubar() {
         <>
             <div className="menubar bg-white w-full h-16 flex text-gray-500">
                 <ul className="menuIteams flex w-full justify-around items-center">
-                    <li> <Link onClick={()=>setDW(!dw)}>Home Accessory</Link> </li> 
+                    <li> <Link onMouseEnter={()=>setDW(true)} onMouseLeave={()=>setDW(false)}>Home Accessory</Link> </li> 
                     <li> <Link>Mobile</Link> </li> 
                     <li> <Link>Laptop</Link> </li> 
                     <li> <Link>Fashion</Link> </li> 
@@ -21,7 +21,7 @@ function Menubar() {
                 </ul>
             </div>
             {dw && (
-                <div className="dropdown border rounded flex text-gray-600 bg-white p-2 absolute top-48 left-24">
+                <div onMouseEnter={()=>setDW(true)} onMouseLeave={()=>setDW(false)} className="dropdown border rounded flex text-gray-600 bg-white p-2 absolute top-48 left-24">
                     <ul>
                         {
                             menu.map((item)=>
