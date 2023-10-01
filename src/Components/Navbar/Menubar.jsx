@@ -21,7 +21,7 @@ function Menubar() {
                 </ul>
             </div>
             {dw && (
-                <div onMouseEnter={()=>setDW(true)} onMouseLeave={()=>setDW(false)} className="dropdown border rounded flex text-gray-600 bg-white p-2 absolute top-48 left-24">
+                <div onMouseEnter={()=>setDW(true)} onMouseLeave={()=>setDW(false)} className="dropdown z-50 border rounded flex text-gray-600 bg-white p-2 absolute top-48 left-24">
                     <ul>
                         {
                             menu.map((item)=>
