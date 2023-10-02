@@ -277,7 +277,6 @@ function Productdisp() {
                             </div>
                         </div>
                         {/* Production Detail End from here  */}
-
                     </div>
                 </div>
             </div>
