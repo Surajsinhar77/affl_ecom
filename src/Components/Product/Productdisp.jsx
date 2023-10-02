@@ -172,20 +172,43 @@ function Productdisp() {
     return (
         <>
             <div className='mt-7 '>
-                <div className="productDetail w-4/5 bg-white m-auto p-5 flex ">
-                    <div className="productImageSection flex w-2/5">
-                        {/* image Section section */}
-                        <div className="imageSelection flex flex-col w-fit">
-                            <div className="images p-2 border mb-2">
-                                <img className='w-15 h-20' src={imag1} alt="image of product 1" />
+                <div className="productDetail w-4/5 bg-white m-auto p-5 flex flex-row">
+                    <div className='flex w-2/5 flex-col'>
+                        <div className="productImageSection flex">
+                            {/* image Section section */}
+                            <div className="imageSelection flex flex-col w-fit">
+                                <div className="images p-2 border mb-2">
+                                    <img className='w-15 h-20' src={imag1} alt="image of product 1" />
+                                </div>
+                                <div className="images p-2 border mb-2">
+                                    <img className='w-15 h-20' src={imag1} alt="image of product 2" />
+                                </div>
                             </div>
-                            <div className="images p-2 border mb-2">
-                                <img className='w-15 h-20' src={imag1} alt="image of product 2" />
+
+                            <div className="mainProductImage ml-4">
+                                <img className='h-96 rounded' src={imag1} alt="" />
                             </div>
                         </div>
-
-                        <div className="mainProductImage ml-4">
-                            <img className='h-96 rounded' src={imag1} alt="" />
+                        <div className='text-black mt-10'>
+                            <div className='text-xl p-4'>Samsung S21 Price</div>
+                            <div className='p-2 border rounded-lg bg-slate-100'>
+                                <ProductPrice/>
+                                <ProductPrice/>
+                                <ProductPrice/>
+                                <ProductPrice/>
+                                <div className='py-8'>
+                                    Samsung S21 price in India starts from ₹ 90,000. The lowest price of Samsung S21 is ₹ 90,000 at Amazon on 30st October 2023.
+                                </div>
+                                <hr />
+                                <div className='flex justify-center pt-8'>
+                                    <div className='flex-col text-center'>
+                                        <div>Price too high? Wait for upcoming Sale.</div>
+                                        <button className='bg-slate-400 w-fit p-1 mb-8 border rounded-lg text-white'>
+                                        Get Notification for Sale
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -199,8 +222,8 @@ function Productdisp() {
 
                                 {/* Dynamic Spes using Array of map Start */}
                                     {
-                                        specs.map((item) =>
-                                            <div className='Specs flex'>
+                                        specs.map((item, index) =>
+                                            <div className='Specs flex' key={index}>
                                                 <div className='specsLogo '>
                                                     {item.iconname}
                                                 </div>
@@ -253,27 +276,6 @@ function Productdisp() {
                             </div>
                             <div className={`bg-gradient-to-t from-white flex justify-center w-full align-text-bottom h-40 text-sm absolute bottom-0 font-normal text-blue-600 ${ c2 ? "visible":"hidden"}`}>
                                 <button className='h-fit absolute bottom-0 cursor-pointer  px-3 rounded-full  bg-gray-700 text-white py-2 border border-gray-700 hover:bg-white hover:text-gray-700' onClick={()=>{setC1(false); setC2(false)}}>Show more</button>
-                            </div>
-                        </div>
-                        <div className='text-black mt-10'>
-                            <div className='text-3xl p-4'>Samgung S21 Price</div>
-                            <div className='p-5 border rounded-lg bg-slate-100'>
-                                <ProductPrice/>
-                                <ProductPrice/>
-                                <ProductPrice/>
-                                <ProductPrice/>
-                                <div className='py-8'>
-                                    Samsung S21 price in India starts from ₹ 90,000. The lowest price of Samsung S21 is ₹ 90,000 at Amazon on 30st October 2023.
-                                </div>
-                                <hr />
-                                <div className='flex justify-center pt-8'>
-                                    <div className='flex-col text-center'>
-                                        <div>Price too high? Wait for upcoming Sale.</div>
-                                        <button className='bg-slate-400 w-fit p-1 border rounded-lg text-white'>
-                                        Get Notification for Sale
-                                        </button>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         {/* Production Detail End from here  */}
