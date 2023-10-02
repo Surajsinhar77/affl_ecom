@@ -249,10 +249,10 @@ function Productdisp() {
                                 <ProductDesc aprops={arr=hwSpec}/>
                                 <p className='bg-slate-100 text-3xl text-black p-5 pb-0 rounded-t-lg mt-2'>Camera</p>
                                 <ProductDesc aprops={arr=cameraSpec}/>
-                                <button className='flex justify-center text-sm cursor-pointer m-auto px-3 border rounded-full  bg-gray-500 text-white py-2 hover:border hover:border-gray-700' onClick={()=>{setC1(true); setC2(true)}}>show less</button>
+                                <button className='flex justify-center text-sm cursor-pointer m-auto px-3  rounded-full  bg-gray-700 text-white py-2 border border-gray-700 hover:bg-white hover:text-gray-700 ' onClick={()=>{setC1(true); setC2(true)}}>show less</button>
                             </div>
                             <div className={`bg-gradient-to-t from-white flex justify-center w-full align-text-bottom h-40 text-sm absolute bottom-0 font-normal text-blue-600 ${ c2 ? "visible":"hidden"}`}>
-                                <button className='h-fit absolute bottom-0 cursor-pointer  px-3 rounded-full  bg-gray-500 text-white py-2 hover:border hover:border-gray-700 border' onClick={()=>{setC1(false); setC2(false)}}>Show more</button>
+                                <button className='h-fit absolute bottom-0 cursor-pointer  px-3 rounded-full  bg-gray-700 text-white py-2 border border-gray-700 hover:bg-white hover:text-gray-700' onClick={()=>{setC1(false); setC2(false)}}>Show more</button>
                             </div>
                         </div>
                         <div className='text-black mt-10'>
