@@ -10,6 +10,7 @@ import { PiAndroidLogoLight } from "react-icons/pi";
 
 import Productiondetail from './Productiondetail';
 import ProductDesc from './ProductDesc';
+import ProductPrice from './ProductPrice';
 
 function Productdisp() {
 
@@ -252,6 +253,27 @@ function Productdisp() {
                             </div>
                             <div className={`bg-gradient-to-t from-white flex justify-center w-full align-text-bottom h-40 text-3xl absolute bottom-0 font-normal text-blue-600 ${ c2 ? "visible":"hidden"}`}>
                                 <div className='h-fit absolute bottom-0 cursor-pointer' onClick={()=>{setC1(false); setC2(false)}}>show more</div>
+                            </div>
+                        </div>
+                        <div className='text-black mt-10'>
+                            <div className='text-3xl p-4'>Samgung S21 Price</div>
+                            <div className='p-5 border rounded-lg bg-slate-100'>
+                                <ProductPrice/>
+                                <ProductPrice/>
+                                <ProductPrice/>
+                                <ProductPrice/>
+                                <div className='py-8'>
+                                    Samsung S21 price in India starts from ₹ 90,000. The lowest price of Samsung S21 is ₹ 90,000 at Amazon on 30st October 2023.
+                                </div>
+                                <hr />
+                                <div className='flex justify-center pt-8'>
+                                    <div className='flex-col text-center'>
+                                        <div>Price too high? Wait for upcoming Sale.</div>
+                                        <button className='bg-slate-400 w-fit p-1 border rounded-lg text-white'>
+                                        Get Notification for Sale
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         {/* Production Detail End from here  */}
