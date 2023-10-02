@@ -9,6 +9,7 @@ import { BiMemoryCard } from "react-icons/bi";
 import { PiAndroidLogoLight } from "react-icons/pi";
 
 import Productiondetail from './Productiondetail';
+import ProductDesc from './ProductDesc';
 
 function Productdisp() {
 
@@ -53,8 +54,117 @@ function Productdisp() {
             iconname: <PiAndroidLogoLight className='text-4xl' />,
             detail: "Android 13",
         },
-
     ]
+
+    const disSpec=[
+        {
+            1:"Refresh Rate",
+            2:"120 Hz"
+        },
+        {
+            1:"Resolution",
+            2:"Standard	FHD+"
+        },
+        {
+            1:"Screen size (inches)",
+            2:"6.72"
+        },
+        {
+            1:"Touchscreen",
+            2:"Yes"
+        },
+        {
+            1:"Resolution",
+            2:"2400x1080 pixels"
+        }
+    ]
+
+    const x=[
+        {
+            1:"Brand",
+            2:"Realme"
+        },
+        {
+            1:"Model",
+            2:"Narzo 60x 5G"
+        },
+        {
+            1:"Price in India",
+            2:"₹12,999"
+        },
+        {
+            1:"Release date",
+            2:"6th September 2023"
+        },
+        {
+            1:"Launched in India",
+            2:"Yes"
+        },
+        {
+            1:"Form factor",
+            2:"Touchscreen"
+        },
+        {
+            1:"Thickness",
+            2:"7.89"
+        },
+        {
+            1:"Weight (g)",
+            2:"190.00"
+        },
+        {
+            1:"Battery capacity (mAh)",
+            2:"5000"
+        },
+        {
+            1:"Fast charging",
+            2:"33W Fast Charging"
+        },
+        {
+            1:"Colours",
+            2:"Nebula Purple, Stellar Green"
+        }
+    ]
+
+    const hwSpec=[
+        {
+            1:"Processor",
+            2:"octa-core"
+        },
+        {
+            1:"Processor make",
+            2:"MediaTek Dimensity 6100+"
+        },
+        {
+            1:"RAM",
+            2:"4GB, 6GB"
+        },
+        {
+            1:"Internal storage",
+            2:"128GB"
+        }
+    ]
+
+    const cameraSpec=[
+        {
+            1:"Rear camera",
+            2:"64-megapixel (f/1.8) + 2-megapixel"
+        },
+        {
+            1:"No. of Rear Cameras",
+            2:"2"
+        },
+        {
+            1:"Front camera",
+            2:"8-megapixel"
+        },
+        {
+            1:"No. of Front Cameras",
+            2:"1"
+        }
+    ]
+
+    var arr=0;
     return (
         <>
             <div className='mt-7 '>
@@ -124,6 +234,15 @@ function Productdisp() {
 
                         {/* Production Detail Start from here  */}
                         <Productiondetail/>
+                        <p className='text-3xl text-black font-normal mt-10'>Samsung S21 Full Specifications</p>
+                        <p className='bg-slate-100 text-3xl text-black p-5 pb-0 rounded-t-lg mt-2'>General</p>
+                        <ProductDesc aprops={arr=x}/>
+                        <p className='bg-slate-100 text-3xl text-black p-5 pb-0 rounded-t-lg mt-2'>Display</p>
+                        <ProductDesc aprops={arr=disSpec}/>
+                        <p className='bg-slate-100 text-3xl text-black p-5 pb-0 rounded-t-lg mt-2'>Hardware</p>
+                        <ProductDesc aprops={arr=hwSpec}/>
+                        <p className='bg-slate-100 text-3xl text-black p-5 pb-0 rounded-t-lg mt-2'>Camera</p>
+                        <ProductDesc aprops={arr=cameraSpec}/>
                         {/* Production Detail End from here  */}
 
                     </div>
