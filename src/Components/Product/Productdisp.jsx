@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import imag1 from '../../assets/Img/headphone.jpg'
 import { BsDisplay } from "react-icons/bs";
 import { GiProcessor } from "react-icons/gi";
@@ -12,6 +12,9 @@ import Productiondetail from './Productiondetail';
 import ProductDesc from './ProductDesc';
 
 function Productdisp() {
+
+    const [c1, setC1] = useState(true);
+    const [c2, setC2] = useState(true);
 
     const specs = [
         {
@@ -234,15 +237,23 @@ function Productdisp() {
 
                         {/* Production Detail Start from here  */}
                         <Productiondetail/>
-                        <p className='text-3xl text-black font-normal mt-10'>Samsung S21 Full Specifications</p>
-                        <p className='bg-slate-100 text-3xl text-black p-5 pb-0 rounded-t-lg mt-2'>General</p>
-                        <ProductDesc aprops={arr=x}/>
-                        <p className='bg-slate-100 text-3xl text-black p-5 pb-0 rounded-t-lg mt-2'>Display</p>
-                        <ProductDesc aprops={arr=disSpec}/>
-                        <p className='bg-slate-100 text-3xl text-black p-5 pb-0 rounded-t-lg mt-2'>Hardware</p>
-                        <ProductDesc aprops={arr=hwSpec}/>
-                        <p className='bg-slate-100 text-3xl text-black p-5 pb-0 rounded-t-lg mt-2'>Camera</p>
-                        <ProductDesc aprops={arr=cameraSpec}/>
+                        <div className='relative top-0 align-text-bottom'>
+                            <div className={`${ c1 ? "h-[600px] overflow-hidden":"h-full overflow-visible"}`}>
+                                <p className='text-3xl text-black font-normal mt-10'>Samsung S21 Full Specifications</p>
+                                <p className='bg-slate-100 text-3xl text-black p-5 pb-0 rounded-t-lg mt-2'>General</p>
+                                <ProductDesc aprops={arr=x}/>
+                                <p className='bg-slate-100 text-3xl text-black p-5 pb-0 rounded-t-lg mt-2'>Display</p>
+                                <ProductDesc aprops={arr=disSpec}/>
+                                <p className='bg-slate-100 text-3xl text-black p-5 pb-0 rounded-t-lg mt-2'>Hardware</p>
+                                <ProductDesc aprops={arr=hwSpec}/>
+                                <p className='bg-slate-100 text-3xl text-black p-5 pb-0 rounded-t-lg mt-2'>Camera</p>
+                                <ProductDesc aprops={arr=cameraSpec}/>
+                                <div className='flex justify-center text-3xl cursor-pointer text-blue-600' onClick={()=>{setC1(true); setC2(true)}}>show less</div>
+                            </div>
+                            <div className={`bg-gradient-to-t from-white flex justify-center w-full align-text-bottom h-40 text-3xl absolute bottom-0 font-normal text-blue-600 ${ c2 ? "visible":"hidden"}`}>
+                                <div className='h-fit absolute bottom-0 cursor-pointer' onClick={()=>{setC1(false); setC2(false)}}>show more</div>
+                            </div>
+                        </div>
                         {/* Production Detail End from here  */}
 
                     </div>
