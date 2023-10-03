@@ -6,7 +6,7 @@ import img1 from './img1.png'
 function productCard(){
     return(
         <>
-            <div className='flex bg-gray-50 flex-row justify-between m-5'>
+            <div className='flex bg-gray-50 flex-row justify-between m-2'>
                 <div className='flex px-5 pb-10 py-2'>
                 <img src={img} alt="product image" className='w-[240px] h-[240px]'/>
                 <div className='text-gray-400 text-2xl'>♥</div>
