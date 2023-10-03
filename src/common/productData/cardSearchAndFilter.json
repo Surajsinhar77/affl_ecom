@@ -1,0 +1,29 @@
+[
+    {
+        "productName": "",
+        "exchangeOff": "",
+        "productImage":"",
+        "productTag": "",
+        "productPrize":"",
+        "productRating":[
+            {
+                "numRating":"",
+                "numReviews":""
+            }
+        ],
+        "productDiscount":"",
+        "productDetail" :[
+            {
+                "ram":"",
+                "rom":"",
+                "displaySize":"",
+                "displayQulity":"",
+                "RearCamera":"",
+                "frontCamema":"",
+                "batteryCap":"",
+                "processor": "",
+                "productWarranty":""
+            }
+        ]
+    }
+]
