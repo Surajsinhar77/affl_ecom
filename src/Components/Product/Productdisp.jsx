@@ -8,9 +8,13 @@ import { BsMemory } from "react-icons/bs";
 import { BiMemoryCard } from "react-icons/bi";
 import { PiAndroidLogoLight } from "react-icons/pi";
 
+import fs from "fs";
+import path from 'path';
 import Productiondetail from './Productiondetail';
 import ProductDesc from './ProductDesc';
 import ProductPrice from './ProductPrice';
+
+import productDataFile from './ProductData.json';
 
 function Productdisp() {
 
@@ -60,119 +64,23 @@ function Productdisp() {
         },
     ]
 
-    const disSpec=[
-        {
-            1:"Refresh Rate",
-            2:"120 Hz"
-        },
-        {
-            1:"Resolution",
-            2:"Standard	FHD+"
-        },
-        {
-            1:"Screen size (inches)",
-            2:"6.72"
-        },
-        {
-            1:"Touchscreen",
-            2:"Yes"
-        },
-        {
-            1:"Resolution",
-            2:"2400x1080 pixels"
-        }
-    ]
+    // const specs = productDataFile.specs
 
-    const x=[
-        {
-            1:"Brand",
-            2:"Realme"
-        },
-        {
-            1:"Model",
-            2:"Narzo 60x 5G"
-        },
-        {
-            1:"Price in India",
-            2:"₹12,999"
-        },
-        {
-            1:"Release date",
-            2:"6th September 2023"
-        },
-        {
-            1:"Launched in India",
-            2:"Yes"
-        },
-        {
-            1:"Form factor",
-            2:"Touchscreen"
-        },
-        {
-            1:"Thickness",
-            2:"7.89"
-        },
-        {
-            1:"Weight (g)",
-            2:"190.00"
-        },
-        {
-            1:"Battery capacity (mAh)",
-            2:"5000"
-        },
-        {
-            1:"Fast charging",
-            2:"33W Fast Charging"
-        },
-        {
-            1:"Colours",
-            2:"Nebula Purple, Stellar Green"
-        }
-    ]
+    const disSpec = productDataFile.disSpec;
 
-    const hwSpec=[
-        {
-            1:"Processor",
-            2:"octa-core"
-        },
-        {
-            1:"Processor make",
-            2:"MediaTek Dimensity 6100+"
-        },
-        {
-            1:"RAM",
-            2:"4GB, 6GB"
-        },
-        {
-            1:"Internal storage",
-            2:"128GB"
-        }
-    ]
+    const x = productDataFile.x;
 
-    const cameraSpec=[
-        {
-            1:"Rear camera",
-            2:"64-megapixel (f/1.8) + 2-megapixel"
-        },
-        {
-            1:"No. of Rear Cameras",
-            2:"2"
-        },
-        {
-            1:"Front camera",
-            2:"8-megapixel"
-        },
-        {
-            1:"No. of Front Cameras",
-            2:"1"
-        }
-    ]
+    const hwSpec = productDataFile.hwSpec;
+
+    const cameraSpec = productDataFile.cameraSpec;
 
     var arr=0;
     return (
         <>
             <div className='mt-7 '>
                 <div className="productDetail w-4/5 bg-white m-auto p-5 flex flex-row">
+
+                    {/* Left Side Bar  with product picture and prizing Start */}
                     <div className='flex w-2/5 flex-col'>
                         <div className="productImageSection flex">
                             {/* image Section section */}
@@ -189,6 +97,7 @@ function Productdisp() {
                                 <img className='h-96 rounded' src={imag1} alt="" />
                             </div>
                         </div>
+
                         <div className='text-black mt-10'>
                             <div className='text-xl p-4'>Samsung S21 Price</div>
                             <div className='p-2 border rounded-lg bg-slate-100'>
@@ -196,9 +105,9 @@ function Productdisp() {
                                 <ProductPrice/>
                                 <ProductPrice/>
                                 <ProductPrice/>
-                                <div className='py-8'>
+                                {/* <div className='py-8'>
                                     Samsung S21 price in India starts from ₹ 90,000. The lowest price of Samsung S21 is ₹ 90,000 at Amazon on 30st October 2023.
-                                </div>
+                                </div> */}
                                 <hr />
                                 <div className='flex justify-center pt-8'>
                                     <div className='flex-col text-center'>
@@ -211,10 +120,11 @@ function Productdisp() {
                             </div>
                         </div>
                     </div>
+                    {/* Left Side Bar  with product picture and prizing End */}
 
 
+                    {/* FROM HERE RIGHT SIDE CONTENT START */}
                     <div className="productInformation ml-10 w-3/5">
-
                         <div className="headingPart">
                             <h1 className='text-gray-700 m-3 text-xl'>Key Specs</h1>
                             <div className='px-2 pt-2  border bg-gray-200 rounded-3xl'>
@@ -280,6 +190,8 @@ function Productdisp() {
                         </div>
                         {/* Production Detail End from here  */}
                     </div>
+                    {/* FROM HERE RIGHT SIDE CONTENT START */}
+
                 </div>
             </div>
         </>

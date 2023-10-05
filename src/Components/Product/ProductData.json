@@ -1,0 +1,150 @@
+
+{
+    "specs": [
+        {
+            "specsName": "Display",
+            "iconname": "import { BsDisplay } from 'react-icons/bs';",
+            "detail": "6.72-inch <br/> (2400x1080)"
+        },
+        {
+            "specsName": "Processor",
+            "iconname": "<GiProcessor className='text-4xl'/>",
+            "detail": "MediaTex Dimensity 6100+"
+        },
+        {
+            "specsName": "Front Camera",
+            "iconname": "<AiOutlineCamera className='text-4xl' />",
+            "detail": "8mp"
+        },
+        {
+            "specsName": "Rear Camera",
+            "iconname": "<AiOutlineCamera className='text-4xl' />",
+            "detail": "64mp + 2mp"
+        },
+        {
+            "specsName": "Battery Capacity",
+            "iconname": "<BsBatteryCharging className='text-4xl' />",
+            "detail": "5000mAh"
+        },
+        {
+            "specsName": "Ram",
+            "iconname": "<BsMemory className='text-4xl' />",
+            "detail": "4GB, 6GB"
+        },
+        {
+            "specsName": "Storage",
+            "iconname": "<BiMemoryCard className='text-4xl' />",
+            "detail": "128GB"
+        },
+        {
+            "specsName": "Os",
+            "iconname": "<PiAndroidLogoLight className='text-4xl' />",
+            "detail": "Android 13"
+        }
+    ],
+    "disSpec" : [
+        {
+            "1":"Refresh Rate",
+            "2":"120 Hz"
+        },
+        {
+            "1":"Resolution",
+            "2":"Standard FHD+"
+        },
+        {
+            "1":"Screen size (inches)",
+            "2":"6.72"
+        },
+        {
+            "1":"Touchscreen",
+            "2":"Yes"
+        },
+        {
+            "1":"Resolution",
+            "2":"2400x1080 pixels"
+        }
+    ],
+    
+    "x":[
+        {
+            "1":"Brand",
+            "2":"Realme"
+        },
+        {
+            "1":"Model",
+            "2":"Narzo 60x 5G"
+        },
+        {
+            "1":"Price in India",
+            "2":"₹12,999"
+        },
+        {
+            "1":"Release date",
+            "2":"6th September 2023"
+        },
+        {
+            "1":"Launched in India",
+            "2":"Yes"
+        },
+        {
+            "1":"Form factor",
+            "2":"Touchscreen"
+        },
+        {
+            "1":"Thickness",
+            "2":"7.89"
+        },
+        {
+            "1":"Weight (g)",
+            "2":"190.00"
+        },
+        {
+            "1":"Battery capacity (mAh)",
+            "2":"5000"
+        },
+        {
+            "1":"Fast charging",
+            "2":"33W Fast Charging"
+        },
+        {
+            "1":"Colours",
+            "2":"Nebula Purple, Stellar Green"
+        }
+    ],
+    "hwSpec" : [
+        {
+            "1":"Processor",
+            "2":"octa-core"
+        },
+        {
+            "1":"Processor make",
+            "2":"MediaTek Dimensity 6100+"
+        },
+        {
+            "1":"RAM",
+            "2":"4GB, 6GB"
+        },
+        {
+            "1":"Internal storage",
+            "2":"128GB"
+        }
+    ],
+    "cameraSpec": [
+        {
+            "1":"Rear camera",
+            "2":"64-megapixel (f/1.8) + 2-megapixel"
+        },
+        {
+            "1":"No. of Rear Cameras",
+            "2":"2"
+        },
+        {
+            "1":"Front camera",
+            "2":"8-megapixel"
+        },
+        {
+            "1":"No. of Front Cameras",
+            "2":"1"
+        }
+    ]
+}
