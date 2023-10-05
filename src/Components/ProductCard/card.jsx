@@ -6,13 +6,15 @@ import img1 from './img1.png'
 function productCard(){
     return(
         <>
-            <div className='flex bg-gray-50 flex-row justify-between m-2'>
+            <div className='flex bg-gray-50 flex-row justify-between mb-4'>
                 <div className='flex px-5 pb-10 py-2'>
-                <img src={img} alt="product image" className='w-[240px] h-[240px]'/>
+                <img src={img} alt="product image" className='w-[240px] h-[240px] object-contain'/>
                 <div className='text-gray-400 text-2xl'>♥</div>
                 </div>
                 <div className='p-5 w-fit'>
-                <div className='mt-2 px-1 font-semibold border text-sm rounded-md text-white bg-blue-700 w-fit'># Gaming</div>
+                <div className=''>
+                    <h1 className="mt-2 px-2 py-1 font-semibold  text-sm rounded-md text-white bg-blue-700 w-fit"># Gaming</h1>
+                    </div>
                 <div className='text-2xl font-normal'>Samsung S21</div>
                 <div className='flex'>
                     <div className='mr-3 text-sm bg-green-700 text-white border rounded-md py-0 px-1'>★4.3</div>

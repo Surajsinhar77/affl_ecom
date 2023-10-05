@@ -18,7 +18,7 @@ function Crousal() {
     
       const [count, setCount] = useState(0);
     
-      var s = 'w-full h-40 border-solid inline-block absolute top-0 left-0';
+      var s = 'w-full h-full border-solid inline-block absolute top-0 left-0 object-cover';
     
       function q(){
         setCount(count==0 ? 1 : count-1);
@@ -30,10 +30,10 @@ function Crousal() {
     
       return (
         <div>
-          <div id="crawler" className='h-[160px] m-10 overflow-x-auto whitespace-nowrap relative top-0 left-0 text-right bg-white'>
+          <div id="crawler" className='h-[18rem] m-10 overflow-x-auto whitespace-nowrap relative top-0 left-0 text-right bg-white'>
             <img id="crawler-img" className={s} key={l[count].id} src={l[count].src} alt='image'></img>
             <div className="absolute top-16 w-5 h-10 bg-gray-400 opacity-50 cursor-pointer" onClick={f}></div>
-            <button className="relative top-16  w-5 h-10 bg-gray-400 opacity-50" onClick={q}></button>
+              <button className="relative top-16  w-5 h-10 bg-gray-400 opacity-50" onClick={q}></button>
           </div>
         </div>
       );

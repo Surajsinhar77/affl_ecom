@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom';
 function Dropdown({setDW}) {
     const menu = ['Profile', 'Service', 'Blog', 'About', 'Contact']
     const menu2 = ['Profile', 'Service', 'Blog', 'About', 'Contact', "Something ", "More item"]
-
     // console.log(leftP)
     
     return (
