@@ -15,6 +15,7 @@ import ProductDesc from './ProductDesc';
 import ProductPrice from './ProductPrice';
 
 import productDataFile from './ProductData.json';
+import Review from '../UserReview/Review';
 
 function Productdisp() {
 
@@ -67,11 +68,8 @@ function Productdisp() {
     // const specs = productDataFile.specs
 
     const disSpec = productDataFile.disSpec;
-
     const x = productDataFile.x;
-
     const hwSpec = productDataFile.hwSpec;
-
     const cameraSpec = productDataFile.cameraSpec;
 
     var arr=0;
@@ -191,8 +189,11 @@ function Productdisp() {
                         {/* Production Detail End from here  */}
                     </div>
                     {/* FROM HERE RIGHT SIDE CONTENT START */}
-
                 </div>
+
+                {/* Start new Components Reviews From here  */}
+                        <Review/>
+                {/* End new Components Reviews From here  */}
             </div>
         </>
     )
