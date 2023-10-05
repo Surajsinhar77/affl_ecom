@@ -1,4 +1,3 @@
-import exp from "constants";
 import React from "react";
 import img from './img.png'
 import img1 from './img1.png'
