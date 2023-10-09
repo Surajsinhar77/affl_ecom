@@ -186,14 +186,15 @@ function Productdisp() {
                                 <button className='h-fit absolute bottom-0 cursor-pointer  px-3 rounded-full  bg-gray-700 text-white py-2 border border-gray-700 hover:bg-white hover:text-gray-700' onClick={()=>{setC1(false); setC2(false)}}>Show more</button>
                             </div>
                         </div>
+                        {/* Start new Components Reviews From here  */}
+                        <Review/>
+                        {/* End new Components Reviews From here  */}
+
                         {/* Production Detail End from here  */}
                     </div>
                     {/* FROM HERE RIGHT SIDE CONTENT START */}
                 </div>
 
-                {/* Start new Components Reviews From here  */}
-                        <Review/>
-                {/* End new Components Reviews From here  */}
             </div>
         </>
     )
