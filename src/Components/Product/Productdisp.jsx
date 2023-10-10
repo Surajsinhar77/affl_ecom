@@ -273,13 +273,10 @@ function Productdisp() {
                     {/* FROM HERE RIGHT SIDE CONTENT START */}
                 </div>
 
-<<<<<<< HEAD
                 {/* Start new Components Reviews From here  */}
                         <Review/>
                 {/* End new Components Reviews From here  */}
                 
-=======
->>>>>>> 35bd03fe3ec3796ec9040cd2a3e29439ae5e407b
             </div>
         </>
     )
