@@ -33,11 +33,11 @@ function UserReviews() {
             <div className="helpFullreview text-gray-500 flex flex-row items-center mt-2">
                 <p className=''>Is this review helpfull?
                 </p>
-                <span className=' pl-2 text-lg text-blue-600 flex'>
-                    <button className='mx-2 flex'><BiSolidLike className='text-xl' /> &nbsp; {1} </button>
-                    <button className='mx-2 flex'><BiSolidDislike className='text-xl' /> &nbsp; {2} </button>
+                <span className=' pl-2 text-lg flex'>
+                    <button className='mx-2 flex'><BiSolidLike className='text-xl hover:text-blue-500' /> &nbsp; {1} </button>
+                    <button className='mx-2 flex'><BiSolidDislike className='text-xl hover:text-red-500' /> &nbsp; {2} </button>
                 </span>
-                <div className="replySection flex items-center text-blue-600 ml-10 hover:underline cursor-pointer">
+                <div className="replySection flex items-center text-blue-600 ml-10 hover:underline cursor-pointer hover:text-gray-400">
                     <BsFillReplyFill className='text-2xl'/>
                     <button>Reply</button>
                 </div>
