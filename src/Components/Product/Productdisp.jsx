@@ -196,11 +196,12 @@ function Productdisp() {
 
 
                         {/* Start new Components Reviews From here  */}
-                        <Review/>
+                        {/* <Review/> */}
                         {/* End new Components Reviews From here  */}
 
                         {/* Production Detail End from here  */}
                     </div>
+                    
                     {/* FROM HERE RIGHT SIDE CONTENT START */}
                 </div>
 
