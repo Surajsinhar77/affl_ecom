@@ -1,6 +1,7 @@
 import React from 'react'
 import { BiSolidLike, BiSolidDislike, BiSolidStar } from 'react-icons/bi';
-import {BsFillReplyFill} from 'react-icons/bs'
+import {BsFillReplyFill} from 'react-icons/bs';
+
 function UserReviews() {
     const rating = [1, 1, 1, 1, 1];
     return (
