@@ -7,3 +7,4 @@ function Review() {
         </div>
     )
 }
+export default Review
