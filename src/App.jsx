@@ -5,12 +5,13 @@ import Navbar from './Components/Navbar/Navbar'
 import Routing from './common/Router/Routing';
 // import Crousal from './Components/Crousal/Crousal';
 import Footer from './Components/Footer/Footer';
+import SignIn from './Components/Auth/SignIn';
 
 function App() {
 
   return (
     <>
-      <div className='text-blue-400'>
+      <div className='text-blue-400 h-[100vh]'>
         <BrowserRouter>
           <Navbar/>
           <Routing/>
