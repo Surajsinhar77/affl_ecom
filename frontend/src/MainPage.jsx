@@ -12,15 +12,6 @@ function MainPage() {
 
   return (
     <>
-        <Navbar/>
-        <Routes>
-            <Route  path='/' element={<Home/>} />
-            <Route  path='/about' element={<About/>} />
-            <Route  path='/service' element={<Service/>} />
-            <Route  path='/contact' element={<Contact/>} />
-            <Route  path='/product' element={<Productdisp/>} />
-        </Routes>
-        <Footer/>
     </>
   )
 }
