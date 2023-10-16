@@ -1,8 +1,10 @@
 import React from 'react'
 
+import ProfilePage from '../Profile/ProfilePage'
+
 function Contact() {
   return (
-    <div>Contact</div>
+    <ProfilePage/>
   )
 }
 
