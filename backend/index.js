@@ -21,7 +21,6 @@ server.use(cors());
 
 server.use(body)
 
-
 server.listen(8000, ()=>{
     console.log("server started");
 })

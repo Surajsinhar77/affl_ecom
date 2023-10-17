@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router-dom';
+import {Link, Outlet} from 'react-router-dom';
 import { BiLogoMediumOld } from "react-icons/bi";
 import Menubar from './Menubar';
 
@@ -14,7 +14,7 @@ function Navbar() {
                 <div className='flex w-full '>
                     <div className="navationtion navItem w-3/5 mr-5 flex items-center text-gray-700">
                         <ul className='flex justify-around w-full items-center'>
-                            <li><Link to="/home"> Home </Link></li>
+                            <li><Link to="/"> Home </Link></li>
                             <li><Link to="/service"> Service </Link></li>
                             <li><Link to="/about"> About </Link></li>
                             <li><Link to="/contact"> Contact </Link></li>

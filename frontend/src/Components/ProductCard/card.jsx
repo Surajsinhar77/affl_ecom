@@ -2,7 +2,7 @@ import React from "react";
 import img from './img.png'
 import img1 from './img1.png'
 
-function productCard() {
+function ProductCard() {
     return (
         <>
             <div className='flex bg-gray-50 flex-row justify-between'>
@@ -46,4 +46,4 @@ function productCard() {
     )
 }
 
-export default productCard
+export default ProductCard
