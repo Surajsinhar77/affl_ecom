@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 
 const mongoose = require('mongoose');
 
@@ -18,6 +19,10 @@ const User = mongoose.model('UserData', UserSchema);
 
 const server = express();
 server.use(cors());
+
+// Routes Start from here 
+require(path.join(__dirname,'/routes/user.routes'))(server);
+
 
 server.use(body)
 
