@@ -9,7 +9,6 @@ function AuthRoute() {
       <Routes>
           <Route  path='/auth/signup' element={<SignUp/>} />
           <Route  path='/auth/signin' element={<SignIn/>} />
-          
       </Routes>
     </>
   )

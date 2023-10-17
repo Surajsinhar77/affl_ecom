@@ -13,11 +13,13 @@ import Footer from '../../Components/Footer/Footer';
 function Routing() {
   return (
     <>
-          <Route exact path='/' element={<Home/>} />
-          <Route  path='/about' element={<About/>} />
-          <Route  path='/service' element={<Service/>} />
-          <Route  path='/contact' element={<Contact/>} />
-          <Route  path='/product' element={<Productdisp/>} />
+      <Routes>
+        <Route exact path='/home' element={<Home/>} />
+        <Route  path='/about' element={<About/>} />
+        <Route  path='/service' element={<Service/>} />
+        <Route  path='/contact' element={<Contact/>} />
+        <Route  path='/product' element={<Productdisp/>} />
+      </Routes>
     </>
   )
 }
