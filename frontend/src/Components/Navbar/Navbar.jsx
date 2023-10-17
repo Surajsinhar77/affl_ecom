@@ -13,12 +13,12 @@ function Navbar() {
                 </div>
                 <div className='flex w-full '>
                     <div className="navationtion navItem w-3/5 mr-5 flex items-center text-gray-700">
-                        <ul className='flex justify-around w-full items-center'>
-                            <li><Link to="/"> Home </Link></li>
-                            <li><Link to="/service"> Service </Link></li>
-                            <li><Link to="/about"> About </Link></li>
-                            <li><Link to="/contact"> Contact </Link></li>
-                        </ul>
+                        <div className='flex justify-around w-full items-center'>
+                            <Link to=""> Home </Link>
+                            <Link to="service"> Service </Link>
+                            <Link to="about"> About </Link>
+                            <Link to="contact"> Contact </Link>
+                        </div>
                     </div>
                     <div className="serchBar w-4/5">
                         <input type="text" placeholder='Search' className='focus:border border rounded p-2 w-4/5'/>
