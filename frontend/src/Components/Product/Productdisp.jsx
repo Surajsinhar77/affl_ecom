@@ -8,8 +8,6 @@ import { BsMemory } from "react-icons/bs";
 import { BiMemoryCard } from "react-icons/bi";
 import { PiAndroidLogoLight } from "react-icons/pi";
 
-import fs from "fs";
-import path from 'path';
 import Productiondetail from './Productiondetail';
 import ProductDesc from './ProductDesc';
 import ProductPrice from './ProductPrice';

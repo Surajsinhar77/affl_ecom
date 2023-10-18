@@ -4,13 +4,12 @@ import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom'
 import SignIn from './Components/Auth/SignIn';
 import SignUp from './Components/Auth/SignUp';
 import Home from './Components/Home/Home';
-import MainPage from './mainPage';
+import MainPage from './MainPage';
 import About from './Components/About/About';
 import Service from './Components/Service/Service';
 import Contact from './Components/Contact/Contact';
 import Productdisp from './Components/Product/Productdisp';
-import ProfilePage from './Components/Profile/ProfilePage';
-import AuthRoute from './common/Router/AuthRoute';
+
 
 function App() {
 
