@@ -10,12 +10,20 @@ export default function LoginCard() {
       ...form,
       [e.target.name] : e.target.value
     })
-    console.log(e.target.name,e.target.value)
-    console.log(form);
   }
 
-  function transferdata(){
-    
+  async function transferdata(e){
+    e.preventDefault();
+    const response = await fetch('http://localhost:8000/signin', {
+      method:'POST',
+      body: JSON.stringify(form),
+      headers:{
+        'Content-type': 'application/json'
+      }
+    })
+    // console.log(form);
+    const data = await response.text();
+    console.log(data);
   }
 
   return (
