@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
-
 const mongoose = require('mongoose');
 
 main().catch(err => console.log(err));
@@ -17,7 +16,8 @@ const UserSchema = new mongoose.Schema({
 
 const User = mongoose.model('UserData', UserSchema);
 
-const server = express();
+
+const server = express(express.json());
 server.use(cors());
 
 // Routes Start from here 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
- 
+
 export default function LoginCard() {
 
   const [form, setForm] = useState({});
@@ -20,7 +20,7 @@ export default function LoginCard() {
 
   return (
     <div className=" flex items-center justify-center w-full bg-gray-100 backdrop-blur-sm h-[100vh] p-10 text-black">
-      <div className=" w-[400px] p-10 flex flex-col rounded-lg shadow-md bg-whiten relative bg-white">
+      <div className=" w-[420px] p-10 flex flex-col rounded-lg shadow-md bg-whiten relative bg-white">
         <div className=" w-full bg-black text-white font-bold text-center p-5 text-3xl rounded-xl relative -top-16 shadow-lg">Sign In</div>
         <div className=" flex flex-col gap-2">
           <label htmlFor="name" className=" cursor-pointer font-semibold">Name:</label>
