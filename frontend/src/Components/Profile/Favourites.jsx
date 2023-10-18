@@ -1,5 +1,6 @@
 import React from "react";
 import ProductCard from "../ProductCard/card";
+import { Link } from "react-router-dom";
 
 function Favourites(){
 
@@ -9,7 +10,7 @@ function Favourites(){
         <div>
             {
                 arr.map((item, index)=>{
-                    return <ProductCard key={index}/>
+                    return <Link to='/product' key={index}><ProductCard/></Link>
                 })
             }
         </div>
