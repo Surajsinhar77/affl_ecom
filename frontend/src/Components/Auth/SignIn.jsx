@@ -13,17 +13,9 @@ export default function LoginCard() {
   }
 
   async function transferdata(e){
-    e.preventDefault();
-    const response = await fetch('http://localhost:8000/signin', {
-      method:'POST',
-      body: JSON.stringify(form),
-      headers:{
-        'Content-type': 'application/json'
-      }
-    })
-    // console.log(form);
-    const data = await response.text();
-    console.log(data);
+    
+    console.log(form);
+    
   }
 
   return (
@@ -36,8 +28,8 @@ export default function LoginCard() {
           <label htmlFor="password" className=" cursor-pointer font-semibold">Password:</label>
           <input type="password" name="password" className=" border text-black w-full p-2" onChange={handledata} />
           <div className=" my-2">
-            <input type="checkBox" id="Username" className=" p-2 mr-2" />
-            <label htmlFor="Username" className=" font-semibold">Remember Me</label>
+            <input type="checkBox" id="Username" className=" p-2 mr-2" name='rembemberme' onChange={handledata}/>
+            <label htmlFor="Username" className="font-semibold" >Remember Me</label>
           </div>
         </div>
         <button className=" w-full shadow-lg bg-black font-semibold text-white rounded-md p-2 my-4" onClick={transferdata}>SIGN IN</button>
