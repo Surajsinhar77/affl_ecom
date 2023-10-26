@@ -14,9 +14,9 @@ async function main() {
 
 main().catch(err => console.log(err));
 
-server.get('/', (req,res)=>{
-  res.json({msg:"hello world"})
-})
+// server.get('/', (req,res)=>{
+//   res.json({msg:"hello world"})
+// })
 
 
 server.listen(8000, ()=>{
