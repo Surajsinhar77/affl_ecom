@@ -5,7 +5,7 @@ function Review() {
         <div className='border mt-10 w-4/5 bg-white m-auto'>
             <div className="headingAndSort flex items-center justify-between p-4 bg-slate-100 m-3">
                 <h1 className="headingTag4Review text-black text-xl">
-                    Displaying review no this
+                    Displaying review no this 
                 </h1>
                 <span className='flex flex-row items-center'>
                     <label className='mr-2 text-black' htmlFor="SortBy">Sort By :
