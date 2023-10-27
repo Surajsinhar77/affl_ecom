@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 function SignUp() {
   
-  const [loginData, setloginData] = useState();
+  const [loginData, setloginData] = useState({});
 
   const handelData = (e)=>{
     setloginData(
@@ -11,8 +11,16 @@ function SignUp() {
     )
   }
 
-  function loginSubmit(){
-    
+  function loginSubmit(e){
+    e.preventDefault();
+    const {name,email,password,tandc} =  loginData;
+    console.log(tandc, email);
+    // console.log(name, email, password);
+
+    if(!name || !email || !password || !tandc){
+      console.log(!name?"Enter the Name":"" , !email?"Enter the Email":"", !password? "Enter he password":"" , !tandc? "Agree on Term and Condition":"");
+    }
+    return;
   }
 
   return (
@@ -23,31 +31,33 @@ function SignUp() {
         <div className=" text-lg mb-8 text-gray-500 mt-5">Enter your details:</div>
         <div className=" flex flex-col gap-2">
           <label htmlFor="name" className=" cursor-pointer font-semibold">Name:</label>
-          <input type="text" id="name" className=" border bg-transparent text-black w-full p-2" 
+          <input type="text" id="name" name='name' className=" border bg-transparent text-black w-full p-2" 
             onChange={handelData} required
           />
           <label htmlFor="email" className=" cursor-pointer font-semibold">Email:</label>
-          <input type="email" id="email" className=" border bg-transparent text-black w-full p-2" 
+          <input type="email" id="email" name="email" className=" border bg-transparent text-black w-full p-2" 
             onChange={handelData} required
           />
           <label htmlFor="password" className=" cursor-pointer font-semibold">Password:</label>
-          <input type="password" id="password" className=" border bg-transparent text-black w-full p-2" 
+          <input type="password" id="password" name="password" className=" border bg-transparent text-black w-full p-2" 
             onChange={handelData} required
           />
           <div className=" my-2">
             <input type="checkBox" id="rememberme" className=" p-2 mr-2 bg-transparent" 
-              onChange={handelData} 
+              onChange={handelData} name='rememberme'
             />
             <label htmlFor="rememberme" className=" font-semibold">Remember Me</label>
           </div>
           <div className=" my-2">
             <input type="checkBox" id="tandc" className=" p-2 mr-2 bg-transparent" 
-              onChange={handelData} required
+              onChange={handelData} required name='tandc'
             />
             <label htmlFor="tandc" className=" font-semibold">Agree to Terms & Conditions</label>
           </div>
         </div>
-        <button className=" w-full shadow-lg bg-black font-semibold text-white rounded-md p-2 my-4">SIGN UP</button>
+        <button className=" w-full shadow-lg bg-black font-semibold text-white rounded-md p-2 my-4"
+          onClick={loginSubmit}
+        >SIGN UP</button>
         <div className=" flex gap-1 justify-center text-lg">
           <div className=" text-gray-500">Already have an account?</div>
           <Link to="/signin" className=" font-semibold">Sign In</Link>
