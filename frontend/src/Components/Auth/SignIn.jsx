@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import api from "../../api/api";
 
 export default function LoginCard() {
 
@@ -13,9 +14,10 @@ export default function LoginCard() {
   }
 
   async function transferdata(e){
-    
+    e.preventDefault();
     console.log(form);
     
+    api.post('/')
   }
 
   return (
