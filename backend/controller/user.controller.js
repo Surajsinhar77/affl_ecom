@@ -1,7 +1,9 @@
 const userModel = require('../model/user.model');
 
 const userRegister = (req, res)=>{
-    return res.json({"message ": "Test api "})
+    const {name, email, password, } = req.body;
+
+    
 }
 
 module.exports = {
