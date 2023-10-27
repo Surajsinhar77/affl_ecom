@@ -24,27 +24,27 @@ function SignUp() {
         <div className=" flex flex-col gap-2">
           <label htmlFor="name" className=" cursor-pointer font-semibold">Name:</label>
           <input type="text" id="name" className=" border bg-transparent text-black w-full p-2" 
-            onChange={handelData}
+            onChange={handelData} required
           />
           <label htmlFor="email" className=" cursor-pointer font-semibold">Email:</label>
           <input type="email" id="email" className=" border bg-transparent text-black w-full p-2" 
-            onChange={handelData}
+            onChange={handelData} required
           />
           <label htmlFor="password" className=" cursor-pointer font-semibold">Password:</label>
           <input type="password" id="password" className=" border bg-transparent text-black w-full p-2" 
-            onChange={handelData}
+            onChange={handelData} required
           />
           <div className=" my-2">
-            <input type="checkBox" id="Username" className=" p-2 mr-2 bg-transparent" 
-              onChange={handelData}
+            <input type="checkBox" id="rememberme" className=" p-2 mr-2 bg-transparent" 
+              onChange={handelData} 
             />
-            <label htmlFor="Username" className=" font-semibold">Remember Me</label>
+            <label htmlFor="rememberme" className=" font-semibold">Remember Me</label>
           </div>
           <div className=" my-2">
-            <input type="checkBox" id="Username" className=" p-2 mr-2 bg-transparent" 
-              onChange={handelData}
+            <input type="checkBox" id="tandc" className=" p-2 mr-2 bg-transparent" 
+              onChange={handelData} required
             />
-            <label htmlFor="Username" className=" font-semibold">Agree to Terms & Conditions</label>
+            <label htmlFor="tandc" className=" font-semibold">Agree to Terms & Conditions</label>
           </div>
         </div>
         <button className=" w-full shadow-lg bg-black font-semibold text-white rounded-md p-2 my-4">SIGN UP</button>
