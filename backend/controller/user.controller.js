@@ -17,7 +17,7 @@ const userRegister = async (req, res)=>{
             fullname : name,
             email, email,
             password, hashPassword,
-            token : 
+            // token : 
         })
     }catch(err){
         return res.json(err);
