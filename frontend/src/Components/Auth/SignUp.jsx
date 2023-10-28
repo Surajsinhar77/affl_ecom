@@ -14,13 +14,14 @@ function SignUp() {
   function loginSubmit(e){
     e.preventDefault();
     const {name,email,password,tandc} =  loginData;
-    console.log(tandc, email);
-    // console.log(name, email, password);
+
 
     if(!name || !email || !password || !tandc){
-      console.log(!name?"Enter the Name":"" , !email?"Enter the Email":"", !password? "Enter he password":"" , !tandc? "Agree on Term and Condition":"");
+      console.log(!name?"Enter the Name":"" , !email? "Enter the Email":"", !password? "Enter he password":"" , !tandc? "Agree on Term and Condition":"");
     }
     return;
+
+    
   }
 
   return (
