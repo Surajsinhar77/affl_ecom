@@ -2,10 +2,11 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const path = require('path');
+const cookieParser   = require('cookie-parser');
 
 const server = express(express.json());
 server.use(cors());
-
+server.use(cookieParser());
 
 async function main() {
   await mongoose.connect('mongodb://127.0.0.1:27017/demodb');
