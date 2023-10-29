@@ -12,6 +12,7 @@ function userSchemaGet(){
             type:String,
             required : true,
             lowwercase : true,
+            unique:true
         },
     
         password :{
@@ -29,8 +30,8 @@ function userSchemaGet(){
 }
 
 const userModel = ()=>{
-    const userModel = new mongoose.model('users', userSchemaGet);
+    const userModel = new mongoose.model('users', userSchemaGet());
     return userModel;
 }
 
-module.exports = userModel;
+module.exports = userModel();
