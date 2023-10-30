@@ -11,8 +11,11 @@ const setUserToken = (userData)=>{
     );
 }
 
-const getuserToken = (userData)=>{
-    
+const getuserToken = (token)=>{
+    if(!token){
+        return null;
+    }
+    return jwt.verify(token, secretkey);
 }
 
 module.exports={
