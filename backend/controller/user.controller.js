@@ -5,6 +5,8 @@ const serviceAuth = require("../service/auth");
 
 const userRegister = async (req, res) => {
     const { name, email, password } = req.body;
+    console.log("This is the header", req.headers);
+
     try {
         const isUserExist = await userModel.findOne({ email: email });
 
@@ -19,15 +21,13 @@ const userRegister = async (req, res) => {
             fullName: name,
             email,
             email,
-            password,
-            hashPassword,
+            password:hashPassword,
             token: token,
         });
 
         const result = await user.save();
-        console.log("this is the data save result :", result);
-
-        res.setHeader('Authorization', `Bearer ${token}`);
+        res.cookie('uid', token);
+        // res.setHeader(`Authorization : Bearer ${token}`);
         return res.json({ message: "User is sucessfull login", result });
     } catch (err) {
         console.log("here is the errror ", err);
@@ -37,13 +37,14 @@ const userRegister = async (req, res) => {
 
 const userLogin = async(req, res)=>{
     const {email, password} = req.body;
+    console.log(req.cookies);
 
     try{
         const userExist = await userModel.findOne({email: email});
         if(!userExist){
             return res.json({message: "user doesn't Exist"});
         }
-        const authToken = req.headers.Authorization.split(' ')[1];
+        const authToken = req.cookies?.uid;
 
         const UserVerification = serviceAuth.getuserToken(authToken);
 
@@ -56,7 +57,7 @@ const userLogin = async(req, res)=>{
             const userExistInfo = await bcrypt.compare(password, userExist.email);
             if(userExistInfo){
                 const token = serviceAuth.setUserToken({name:userExist.name,email});
-                res.setHeader('Authorization', `Bearer ${token}`);
+                // res.setHeader('Authorization', `Bearer ${token}`);
                 return res.json({message:"You are SuccessFull logged in", userExistInfo})
             }
             return res.json({message:"Invalid Credintial"});

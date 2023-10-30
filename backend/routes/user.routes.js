@@ -3,5 +3,5 @@ const verifyToken = require('../middleware/auth');
 
 module.exports = (server) =>{
     server.post('/auth/signin',controller.userRegister);
-    server.get('/auth/sigup',verifyToken, controller.userRegister)
+    server.post('/auth/signup',verifyToken, controller.userLogin)
 }

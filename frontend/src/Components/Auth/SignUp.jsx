@@ -11,20 +11,25 @@ function SignUp() {
       { ...loginData,[ e.target.name]: e.target.value}
     )
   }
-
+  const [cookies, setcookies] = useState();
   const [resultData , setResultData]= useState({});
 
   function loginSubmit(e){
     e.preventDefault();
     const {name,email,password,tandc} =  loginData;
-
-
+    
+    setcookies(document.cookie);
+    console.log("the cookies ", cookies);
+    
     if(!name || !email || !password || !tandc){
       console.log(!name?"Enter the Name":"" , !email? "Enter the Email":"", !password? "Enter he password":"" , !tandc? "Agree on Term and Condition":"");
     }
 
     api.post('/auth/signin', {name, email, password}).then((response)=>{
-      console.log("response q nahi aarha hai ")
+      console.log(response.data?.result?.token);
+      if(response.data?.result){
+        api.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`;
+      }
       console.log(response);
     }).catch((err)=>{
       console.log(err);

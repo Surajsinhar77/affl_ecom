@@ -13,11 +13,14 @@ export default function LoginCard() {
     })
   }
 
-  async function transferdata(e){
+  function transferdata(e){
+    const {email, password} = form;
     e.preventDefault();
-    console.log(form);
-    
-    api.post('/')
+    api.post('/auth/signup', {email,password}).then((response)=>{
+      console.log(response);
+    }).catch((err)=>{
+      console.log(err);
+    });
   }
 
   return (
@@ -25,8 +28,8 @@ export default function LoginCard() {
       <div className=" w-[420px] p-10 flex flex-col rounded-lg shadow-md bg-whiten relative bg-white">
         <div className=" w-full bg-black text-white font-bold text-center p-5 text-3xl rounded-xl relative -top-16 shadow-lg">Sign In</div>
         <div className=" flex flex-col gap-2">
-          <label htmlFor="name" className=" cursor-pointer font-semibold">Name:</label>
-          <input type="text" name="name" className=" border text-black w-full p-2" onChange={handledata} />
+          <label htmlFor="name" className=" cursor-pointer font-semibold">Email:</label>
+          <input type="email" name="email" className=" border text-black w-full p-2" onChange={handledata} />
           <label htmlFor="password" className=" cursor-pointer font-semibold">Password:</label>
           <input type="password" name="password" className=" border text-black w-full p-2" onChange={handledata} />
           <div className=" my-2">
