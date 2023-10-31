@@ -23,12 +23,13 @@ function SignUp() {
       console.log(!name?"Enter the Name":"" , !email? "Enter the Email":"", !password? "Enter he password":"" , !tandc? "Agree on Term and Condition":"");
     }
 
-    api.post('/auth/signin', {name, email, password}).then((response)=>{
+    api.post('/auth/signup', {name, email, password}).then((response)=>{
       console.log(response.data?.result?.token);
       if(response.data?.result){
         api.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`;
       }
       console.log(response);
+      alert(response.data?.message)
     }).catch((err)=>{
       console.log(err);
     })

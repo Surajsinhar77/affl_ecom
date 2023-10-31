@@ -5,7 +5,6 @@ const serviceAuth = require("../service/auth");
 
 const userRegister = async (req, res) => {
     const { name, email, password } = req.body;
-    console.log("This is the header", req.headers);
 
     try {
         const isUserExist = await userModel.findOne({ email: email });
@@ -31,14 +30,12 @@ const userRegister = async (req, res) => {
         return res.json({ message: "User is sucessfull SignIn", result });
     } catch (err) {
         console.log("here is the errror ", err);
-        return res.json(err);
+        return res.json({message: err.message, err});
     }
 };
 
 const userLogin = async(req, res)=>{
     const {email, password} = req.body;
-
-    console.log('This is from middleware ',req);
 
     try{
         const userExist = await userModel.findOne({email: email});
@@ -47,10 +44,7 @@ const userLogin = async(req, res)=>{
         }
         const authToken = req.cookies?.uid;
 
-        // const UserVerification = serviceAuth.getuserToken(authToken);
-
         if(!authToken){
-            
             const userExistInfo = await bcrypt.compare(password, userExist.password);
             if(userExistInfo){
                 const token = serviceAuth.setUserToken({name:userExist.name,email});

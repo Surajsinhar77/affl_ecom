@@ -17,12 +17,26 @@ export default function LoginCard() {
     e.preventDefault();
     const {email, password} = form;
 
-    console.log(email, password)
-    api.post('/auth/signup', {email,password}).then((response)=>{
-      console.log(response);
+    api.post('/auth/signin', {email,password} )
+    .then((response)=>{
+        if(response?.data?.token){
+          localStorage.setItem(response.data.email, response.data.token);
+        }
+        console.log(response);
+        alert(response.data.message);
     }).catch((err)=>{
-      console.log(err);
+        console.log(err);
     });
+
+    // fetch('http://localhost:8000/auth/signup', {
+    //   method:'POST',
+    //   body:{email,password}
+    // }).then((response)=>{
+    //   console.log(response);
+    //   alert("Logged in ")
+    // }).catch((err)=>{
+    //   console.error(err);
+    // })
   }
 
   return (
