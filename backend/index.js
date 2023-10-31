@@ -19,7 +19,7 @@ main().catch(err => console.log(err));
 
 
 server.listen(8000, ()=>{
-    console.log("server started");
+    console.log("server started :8000");
 })
 
 require(path.join(__dirname, 'routes/user.routes'))(server);
