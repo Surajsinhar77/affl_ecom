@@ -21,7 +21,7 @@ const userRegister = async (req, res) => {
             fullName: name,
             email,
             email,
-            password:hashPassword,
+            password: hashPassword,
             token: token,
         });
 
@@ -37,7 +37,8 @@ const userRegister = async (req, res) => {
 
 const userLogin = async(req, res)=>{
     const {email, password} = req.body;
-    console.log(req.cookies);
+
+    console.log('This is from middleware ',req.user);
 
     try{
         const userExist = await userModel.findOne({email: email});
@@ -58,14 +59,16 @@ const userLogin = async(req, res)=>{
             if(userExistInfo){
                 const token = serviceAuth.setUserToken({name:userExist.name,email});
                 // res.setHeader('Authorization', `Bearer ${token}`);
+                res.cookie('uid', token);
                 return res.json({message:"You are SuccessFull logged in", userExistInfo})
             }
             return res.json({message:"Invalid Credintial"});
         }
         
-        return res.json({message: "you are allow to login ",UserVerification});
+        return res.json({message: "You are allow to login ",UserVerification});
     }catch(err){
         console.log(err);
+        res.json({message:"You are getting Error",errorMsg:err});
     }
 }
 
