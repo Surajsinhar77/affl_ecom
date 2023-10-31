@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, redirect } from "react-router-dom";
 import api from "../../api/api";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginCard() {
 
   const [form, setForm] = useState({});
-
+  const navigate = useNavigate();
   function handledata (e){
     setForm({
       ...form,
@@ -22,8 +23,15 @@ export default function LoginCard() {
         if(response?.data?.token){
           localStorage.setItem(response.data.email, response.data.token);
         }
-        console.log(response);
+        console.log(response.data);
+        console.log(response.cookies);
         alert(response.data.message);
+        if(response.data.userExistInfo){
+          navigate("/");
+        }else{
+          redirect();
+        }
+        
     }).catch((err)=>{
         console.log(err);
     });
