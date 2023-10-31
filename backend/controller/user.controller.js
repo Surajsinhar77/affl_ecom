@@ -51,7 +51,7 @@ const userLogin = async(req, res)=>{
 
         if(!authToken){
             
-            const userExistInfo = await bcrypt.compare(password, userExist.email);
+            const userExistInfo = await bcrypt.compare(password, userExist.password);
             if(userExistInfo){
                 const token = serviceAuth.setUserToken({name:userExist.name,email});
                 res.cookie('uid', token);
