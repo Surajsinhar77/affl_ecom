@@ -1,25 +1,36 @@
 const express = require('express');
 const cors = require('cors');
-const mongoose = require('mongoose');
-const path = require('path');
 const cookieParser = require('cookie-parser');
+const {main} = require('./db/connection');
 
-const server = express();
-server.use(cookieParser());
-server.use(express.json());
-server.use(cors());
+// Creating The Main App also known as server
+const app = express();
 
-async function main() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/demodb');
-  console.log("db connected");
-}
-
-main().catch(err => console.log(err));
+// BuiltIn Middelware
+app.use(cookieParser());
+app.use(express.json());
+app.use(cors());
 
 
 
-server.listen(8000, ()=>{
-    console.log("server started :8000");
+//import middleware
+const userVerfication = require('./middleware/auth');
+
+// Require Routes here
+const authUserRouter = require('./routes/user.routes');
+
+// Saprate Routes
+app.use('/auth', userVerfication ,authUserRouter);
+
+
+// Database Connection
+main('mongodb://127.0.0.1:27017/demodb').then((resp)=>{
+  console.log("Database is sucessfull connected");
+}).catch((err)=>{
+  console.log(err);
 })
 
-require(path.join(__dirname, 'routes/user.routes'))(server);
+
+app.listen(8000, ()=>{
+    console.log("Server start on http://localhost:8000");
+})

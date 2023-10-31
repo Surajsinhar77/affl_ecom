@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
 function userSchemaGet(){
-    console.log("is this called");
     const userSchema = new mongoose.Schema({
         fullName :{
             type:String,

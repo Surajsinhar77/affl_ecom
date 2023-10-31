@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 
-async function main() {
-    return await mongoose.connect('mongodb://127.0.0.1:27017/demodb');
+function main(url) {
+    return mongoose.connect(url);
 }
 
-module.exports  = main;
+module.exports = {
+    main,
+}
