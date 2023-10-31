@@ -14,8 +14,10 @@ export default function LoginCard() {
   }
 
   function transferdata(e){
-    const {email, password} = form;
     e.preventDefault();
+    const {email, password} = form;
+
+    console.log(email, password)
     api.post('/auth/signup', {email,password}).then((response)=>{
       console.log(response);
     }).catch((err)=>{

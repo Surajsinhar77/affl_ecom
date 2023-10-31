@@ -11,15 +11,13 @@ function SignUp() {
       { ...loginData,[ e.target.name]: e.target.value}
     )
   }
-  const [cookies, setcookies] = useState();
-  const [resultData , setResultData]= useState({});
 
+
+
+  // This is the Function to Request to the Server
   function loginSubmit(e){
     e.preventDefault();
     const {name,email,password,tandc} =  loginData;
-    
-    setcookies(document.cookie);
-    console.log("the cookies ", cookies);
     
     if(!name || !email || !password || !tandc){
       console.log(!name?"Enter the Name":"" , !email? "Enter the Email":"", !password? "Enter he password":"" , !tandc? "Agree on Term and Condition":"");
@@ -36,6 +34,7 @@ function SignUp() {
     })
     return;
   }
+  // // This is the Function to Request to the Server End here
 
   return (
     <div className=" flex items-center justify-center w-full  backdrop-blur-sm h-[100vh] p-10 text-black">
