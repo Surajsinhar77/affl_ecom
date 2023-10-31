@@ -28,7 +28,7 @@ const userRegister = async (req, res) => {
         const result = await user.save();
         res.cookie('uid', token);
         // res.setHeader(`Authorization : Bearer ${token}`);
-        return res.json({ message: "User is sucessfull login", result });
+        return res.json({ message: "User is sucessfull SignIn", result });
     } catch (err) {
         console.log("here is the errror ", err);
         return res.json(err);
@@ -38,7 +38,7 @@ const userRegister = async (req, res) => {
 const userLogin = async(req, res)=>{
     const {email, password} = req.body;
 
-    console.log('This is from middleware ',req.user);
+    console.log('This is from middleware ',req);
 
     try{
         const userExist = await userModel.findOne({email: email});
@@ -47,22 +47,17 @@ const userLogin = async(req, res)=>{
         }
         const authToken = req.cookies?.uid;
 
-        const UserVerification = serviceAuth.getuserToken(authToken);
+        // const UserVerification = serviceAuth.getuserToken(authToken);
 
         if(!authToken){
-            console.log(UserVerification);
-            if(!UserVerification){
-                return res.json(UserVerification);
-            }
             
-            const userExistInfo = await bcrypt.compare(password, userExist.email);
+            const userExistInfo = await bcrypt.compare(password, userExist.password);
             if(userExistInfo){
                 const token = serviceAuth.setUserToken({name:userExist.name,email});
-                // res.setHeader('Authorization', `Bearer ${token}`);
                 res.cookie('uid', token);
                 return res.json({message:"You are SuccessFull logged in", userExistInfo})
             }
-            return res.json({message:"Invalid Credintial"});
+            return res.json({message:"Invalid Credintial", userExistInfo});
         }
         
         return res.json({message: "You are allow to login ",UserVerification});
