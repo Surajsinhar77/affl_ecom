@@ -27,7 +27,7 @@ const userRegister = async (req, res) => {
         const result = await user.save();
         res.cookie('uid', token);
         // res.setHeader(`Authorization : Bearer ${token}`);
-        return res.json({ message: "User is sucessfull SignIn", result});
+        return res.json({ message: "User is sucessfull SignUp", result});
     } catch (err) {
         console.log("here is the errror ", err);
         return res.json({message: err.message, err});
