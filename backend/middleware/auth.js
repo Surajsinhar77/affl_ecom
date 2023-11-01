@@ -11,13 +11,13 @@ const verifyToken = (req, res, next) => {
                     return res.status(401).json({ message: 'Invalid token' });
                 }
         
-                return res.json({message:"you are suceess logedin ", data:decoded.user});
+                return res.status(200).json({message:"you are suceess logedin ", data:decoded.user});
             });
         }else{
             next();
         }
     }catch(err){
-        return res.json({msg:"Error while verifying from middleware",error:err});
+        return res.status(404).json({msg:"Error while verifying from middleware",error:err});
     }
 };
 

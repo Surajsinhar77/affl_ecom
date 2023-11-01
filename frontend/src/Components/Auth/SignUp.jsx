@@ -1,10 +1,12 @@
 import React,{useState} from 'react'
 import { Link } from 'react-router-dom'
-import api from '../../api/api';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; 
+import {useAuth} from '../../common/AuthContext';
+import {signUp} from '../../api/authAPI';
 
 function SignUp() {
   
+  const {login} = useAuth();
   const [loginData, setloginData] = useState({});
   const navigate = useNavigate();
   const handelData = (e)=>{
@@ -14,30 +16,16 @@ function SignUp() {
   }
 
 
-
   // This is the Function to Request to the Server
-  function loginSubmit(e){
+  function signSubmit(e){
     e.preventDefault();
     const {name,email,password,tandc} =  loginData;
     
     if(!name || !email || !password || !tandc){
       console.log(!name?"Enter the Name":"" , !email? "Enter the Email":"", !password? "Enter he password":"" , !tandc? "Agree on Term and Condition":"");
     }
-
-    api.post('/auth/signup', {name, email, password}).then((response)=>{
-      console.log(response.data?.result?.token);
-      if(response.data?.result){
-        api.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`;
-      }
-      navigate('/');
-      console.log(response);
-      alert(response.data?.message)
-    }).catch((err)=>{
-      console.log(err);
-    })
-    return;
+    signUp({name,email,password,tandc});
   }
-  // // This is the Function to Request to the Server End here
 
   return (
     <div className=" flex items-center justify-center w-full  backdrop-blur-sm h-[100vh] p-10 text-black">
@@ -72,7 +60,7 @@ function SignUp() {
           </div>
         </div>
         <button className=" w-full shadow-lg bg-black font-semibold text-white rounded-md p-2 my-4"
-          onClick={loginSubmit}
+          onClick={signSubmit}
         >SIGN UP</button>
         <div className=" flex gap-1 justify-center text-lg">
           <div className=" text-gray-500">Already have an account?</div>
@@ -82,5 +70,4 @@ function SignUp() {
     </div>
   )
 }
-
 export default SignUp

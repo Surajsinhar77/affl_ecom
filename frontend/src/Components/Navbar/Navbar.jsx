@@ -2,9 +2,12 @@ import React from 'react'
 import {Link, Outlet} from 'react-router-dom';
 import { BiLogoMediumOld } from "react-icons/bi";
 import Menubar from './Menubar';
+import {useAuth} from '../../common/AuthContext';
 
 
 function Navbar() {
+    const {isLoggedIn} = useAuth();
+    console.log(isLoggedIn)
     return (
         <div className='flex flex-col justify-center items-center'>
             <div className="navContainer bg-white flex p-6 m-5 w-4/5 items-center">
@@ -27,8 +30,18 @@ function Navbar() {
 
                 <div>
                     <ul className='flex'>
-                        <li><Link to="/signin"> <button className='bg-gray-700 px-6 py-3 mr-2 rounded text-white text-md'>SignIn</button> </Link></li>
-                        <li><Link to="/signup"> <button className='bg-gray-700 px-6 py-3 mr-2 rounded text-white text-md'>SignUp</button> </Link></li>
+                        {
+                            isLoggedIn? 
+                            
+                                <li><Link to="/logout"> <button className='bg-gray-700 px-6 py-3 mr-2 rounded text-white text-md'>Logout</button> </Link></li>
+                            :
+                                <>
+                                    <li><Link to="/signin"> <button className='bg-gray-700 px-6 py-3 mr-2 rounded text-white text-md'>SignIn</button> </Link></li>
+                                    <li><Link to="/signup"> <button className='bg-gray-700 px-6 py-3 mr-2 rounded text-white text-md'>SignUp</button> </Link></li>
+                                </>
+                        }
+
+                        
                     </ul>
                 </div>
             </div>

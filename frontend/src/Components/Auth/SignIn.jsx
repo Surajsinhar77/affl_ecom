@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, redirect } from "react-router-dom";
-import api from "../../api/api";
 import { useNavigate } from "react-router-dom";
+import {login} from '../../api/authAPI';
 
 export default function LoginCard() {
 
@@ -18,33 +18,7 @@ export default function LoginCard() {
     e.preventDefault();
     const {email, password} = form;
 
-    api.post('/auth/signin', {email,password} )
-    .then((response)=>{
-        if(response?.data?.token){
-          localStorage.setItem(response.data.email, response.data.token);
-        }
-        console.log(response.data);
-        console.log(response.cookies);
-        alert(response.data.message);
-        if(response.data.userExistInfo){
-          navigate("/");
-        }else{
-          redirect();
-        }
-        
-    }).catch((err)=>{
-        console.log(err);
-    });
-
-    // fetch('http://localhost:8000/auth/signup', {
-    //   method:'POST',
-    //   body:{email,password}
-    // }).then((response)=>{
-    //   console.log(response);
-    //   alert("Logged in ")
-    // }).catch((err)=>{
-    //   console.error(err);
-    // })
+    login({email, password});
   }
 
   return (

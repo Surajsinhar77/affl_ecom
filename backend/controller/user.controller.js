@@ -27,10 +27,10 @@ const userRegister = async (req, res) => {
         const result = await user.save();
         res.cookie('uid', token);
         // res.setHeader(`Authorization : Bearer ${token}`);
-        return res.json({ message: "User is sucessfull SignUp", result});
+        return res.status(200).json({ message: "User is sucessfull SignUp", result});
     } catch (err) {
         console.log("here is the errror ", err);
-        return res.json({message: err.message, err});
+        return res.status(404).json({message: err.message, err});
     }
 };
 
@@ -51,13 +51,13 @@ const userLogin = async(req, res)=>{
                 res.cookie('uid', token);
                 return res.json({message:"You are SuccessFull logged in", userExistInfo})
             }
-            return res.json({message:"Invalid Credintial", userExistInfo});
+            return res.status(404).json({message:"Invalid Credintial", userExistInfo});
         }
         
         return res.json({message: "You are allow to login ",UserVerification});
     }catch(err){
         console.log(err);
-        res.json({message:"You are getting Error",errorMsg:err});
+        res.status(404).json({message:"You are getting Error",errorMsg:err});
     }
 }
 
