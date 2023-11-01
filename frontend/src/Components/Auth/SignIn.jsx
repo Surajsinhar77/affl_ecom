@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { Link, redirect } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import {login} from '../../api/authAPI';
+import {loginUser} from '../../api/authAPI';
 
 export default function LoginCard() {
 
-  const [form, setForm] = useState({});
   const navigate = useNavigate();
+  const [form, setForm] = useState({});
+  
   function handledata (e){
     setForm({
       ...form,
@@ -15,11 +16,12 @@ export default function LoginCard() {
   }
 
   function transferdata(e){
-    e.preventDefault();
-    const {email, password} = form;
-
-    login({email, password});
+      e.preventDefault();
+      const {email, password} = form;
+      loginUser({email, password});
+      navigate('/');
   }
+
 
   return (
     <div className=" flex items-center justify-center w-full bg-gray-100 backdrop-blur-sm h-[100vh] p-10 text-black">

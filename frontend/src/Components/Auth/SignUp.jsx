@@ -1,30 +1,31 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'; 
-import {useAuth} from '../../common/AuthContext';
-import {signUp} from '../../api/authAPI';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../common/AuthContext';
+import { signUp } from '../../api/authAPI';
 
 function SignUp() {
-  
-  const {login} = useAuth();
+
   const [loginData, setloginData] = useState({});
   const navigate = useNavigate();
-  const handelData = (e)=>{
+
+  const handelData = (e) => {
     setloginData(
-      { ...loginData,[ e.target.name]: e.target.value}
+      { ...loginData, [e.target.name]: e.target.value }
     )
   }
 
 
   // This is the Function to Request to the Server
-  function signSubmit(e){
+  function signSubmit(e) {
     e.preventDefault();
-    const {name,email,password,tandc} =  loginData;
-    
-    if(!name || !email || !password || !tandc){
-      console.log(!name?"Enter the Name":"" , !email? "Enter the Email":"", !password? "Enter he password":"" , !tandc? "Agree on Term and Condition":"");
+    const { name, email, password, tandc } = loginData;
+
+    if (!name || !email || !password || !tandc) {
+      console.log(!name ? "Enter the Name" : "", !email ? "Enter the Email" : "", !password ? "Enter he password" : "", !tandc ? "Agree on Term and Condition" : "");
     }
-    signUp({name,email,password,tandc});
+    signUp({ name, email, password, tandc });
+    navigate('/');
   }
 
   return (
@@ -35,25 +36,25 @@ function SignUp() {
         <div className=" text-lg mb-8 text-gray-500 mt-5">Enter your details:</div>
         <div className=" flex flex-col gap-2">
           <label htmlFor="name" className=" cursor-pointer font-semibold">Name:</label>
-          <input type="text" id="name" name='name' className=" border bg-transparent text-black w-full p-2" 
+          <input type="text" id="name" name='name' className=" border bg-transparent text-black w-full p-2"
             onChange={handelData} required
           />
           <label htmlFor="email" className=" cursor-pointer font-semibold">Email:</label>
-          <input type="email" id="email" name="email" className=" border bg-transparent text-black w-full p-2" 
+          <input type="email" id="email" name="email" className=" border bg-transparent text-black w-full p-2"
             onChange={handelData} required
           />
           <label htmlFor="password" className=" cursor-pointer font-semibold">Password:</label>
-          <input type="password" id="password" name="password" className=" border bg-transparent text-black w-full p-2" 
+          <input type="password" id="password" name="password" className=" border bg-transparent text-black w-full p-2"
             onChange={handelData} required
           />
           <div className=" my-2">
-            <input type="checkBox" id="rememberme" className=" p-2 mr-2 bg-transparent" 
+            <input type="checkBox" id="rememberme" className=" p-2 mr-2 bg-transparent"
               onChange={handelData} name='rememberme'
             />
             <label htmlFor="rememberme" className=" font-semibold">Remember Me</label>
           </div>
           <div className=" my-2">
-            <input type="checkBox" id="tandc" className=" p-2 mr-2 bg-transparent" 
+            <input type="checkBox" id="tandc" className=" p-2 mr-2 bg-transparent"
               onChange={handelData} required name='tandc'
             />
             <label htmlFor="tandc" className=" font-semibold">Agree to Terms & Conditions</label>

@@ -49,7 +49,8 @@ const userLogin = async(req, res)=>{
             if(userExistInfo){
                 const token = serviceAuth.setUserToken({name:userExist.name,email});
                 res.cookie('uid', token);
-                return res.json({message:"You are SuccessFull logged in", userExistInfo})
+                return res.status(200).json({message:"You are SuccessFull logged in",
+                result: userExist, userExistInfo})
             }
             return res.status(404).json({message:"Invalid Credintial", userExistInfo});
         }
