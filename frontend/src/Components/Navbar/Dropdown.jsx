@@ -14,15 +14,15 @@ function Dropdown({setDW}) {
             className='dropdown z-50 border rounded flex text-gray-600 bg-white p-2 absolute top-44'
         >
         <ul>
-            {menu.map((item) => (
-            <li className="m-1 bg-white-300 p-1 hover:bg-blue-400 hover:text-white">
-                <Link>{item}</Link>
-            </li>
-            ))}
+            {menu.map((item, index) => (
+                <li key={index} className="m-1 bg-white-300 p-1 hover:bg-blue-400 hover:text-white">
+                    <Link>{item}</Link>
+                </li>
+                ))}
         </ul>
         <ul>
-            {menu2.map((item) => (
-            <li className="m-1 bg-white-300 p-1 hover:bg-blue-400 hover:text-white">
+            {menu2.map((item, index) => (
+            <li key={index} className="m-1 bg-white-300 p-1 hover:bg-blue-400 hover:text-white">
                 <Link>{item}</Link>
             </li>
             ))}
