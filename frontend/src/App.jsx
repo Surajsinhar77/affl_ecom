@@ -10,11 +10,8 @@ import Service from './Components/Service/Service';
 import Contact from './Components/Contact/Contact';
 import Productdisp from './Components/Product/Productdisp';
 
-import {useAuth} from './common/AuthContext';
-
 
 function App() {
-  const {isLoggedIn} = useAuth();
   return (
     <>
       <div className=' h-[100vh]'>

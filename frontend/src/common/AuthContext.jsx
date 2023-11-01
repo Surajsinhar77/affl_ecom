@@ -33,13 +33,9 @@ export const AuthProvider = ({ children }) => {
         localStorage.removeItem('isLoggedIn');
     };
     
-    const setItem = (data)=>{
-        setCartItem(data);
-        localStorage.setItem('cartItem',data);
-    }
 
     return (
-        <AuthContext.Provider value={{ isLoggedIn, login, logout , cartItem , setItem, userData}}>
+        <AuthContext.Provider value={{ isLoggedIn, login, logout , cartItem, userData}}>
         {children}
         </AuthContext.Provider>
     );
