@@ -1,11 +1,12 @@
 import React,{useState} from 'react'
 import { Link } from 'react-router-dom'
 import api from '../../api/api';
+import { useNavigate } from 'react-router-dom';
 
 function SignUp() {
   
   const [loginData, setloginData] = useState({});
-
+  const navigate = useNavigate();
   const handelData = (e)=>{
     setloginData(
       { ...loginData,[ e.target.name]: e.target.value}
@@ -28,6 +29,7 @@ function SignUp() {
       if(response.data?.result){
         api.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`;
       }
+      navigate('/');
       console.log(response);
       alert(response.data?.message)
     }).catch((err)=>{
