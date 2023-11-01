@@ -11,7 +11,7 @@ export const loginUser =(userData)=>{
     api.post('/auth/signin', userData )
     .then((response) => {
         if(response?.data?.token){
-            localStorage.setItem(response.data.email, response.data.token);
+            
         }
 
         console.log("response Data ", response.data);
