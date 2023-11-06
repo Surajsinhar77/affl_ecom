@@ -26,7 +26,6 @@ function SignUp() {
     }
     
     signUp({ name, email, password, tandc });
-    
     navigate('/');
   }
 

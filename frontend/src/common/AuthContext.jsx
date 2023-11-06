@@ -8,13 +8,12 @@ export const AuthProvider = ({ children }) => {
         return localStorage.getItem('isLoggedIn') === 'true';
     });
 
-    const [userData, setUserData] =useState(() => {
-        const storedUserData = localStorage.getItem('userData');
+    const [accessToken, setAccessToken] =useState(() => {
+        const storedUserData = localStorage.getItem('accessToken');
         return storedUserData ? JSON.parse(storedUserData) : null;
     });
 
     const login = (prop) => {
-        console.log("I am from the auth Context login Function ", prop);
         setUserData(prop);
         setIsLoggedIn(true);
         localStorage.setItem('accessToken',JSON.stringify(prop));
@@ -30,7 +29,7 @@ export const AuthProvider = ({ children }) => {
     
 
     return (
-        <AuthContext.Provider value={{ isLoggedIn, login, logout , userData}}>
+        <AuthContext.Provider value={{ isLoggedIn, login, logout , accessToken}}>
             {children}
         </AuthContext.Provider>
     );
