@@ -26,9 +26,7 @@ export const signUp =(userdata)=>{
         console.log(response.data?.result?.token);
         if(response.data?.result){
             api.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`;
-            // login({Authorization:response.data.token,userData: response.data});
         }
-        // navigate('/');
         console.log(response);
 
         alert(response.data?.message)
