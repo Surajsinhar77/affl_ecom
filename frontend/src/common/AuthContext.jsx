@@ -14,14 +14,12 @@ export const AuthProvider = ({ children }) => {
     });
 
     const login = (prop) => {
-        setUserData(prop);
         setIsLoggedIn(true);
         localStorage.setItem('accessToken',JSON.stringify(prop));
         localStorage.setItem('isLoggedIn',"true");
     };
 
     const logout = () => {
-        setUserData(null);
         setIsLoggedIn(false);
         localStorage.removeItem('accessToken');
         localStorage.removeItem('isLoggedIn');

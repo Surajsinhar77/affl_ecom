@@ -1,20 +1,27 @@
 import React from 'react'
-import {Link, Outlet, useNavigate} from 'react-router-dom';
-import { BiLogoMediumOld } from "react-icons/bi";
+import { Link, Outlet, useNavigate} from 'react-router-dom';
+import { BiLogoMediumOld,BiUser } from "react-icons/bi";
 import Menubar from './Menubar';
-import {useAuth} from '../../common/AuthContext';
-
+import { useAuth } from '../../common/AuthContext';
+import Dropdown from './Dropdown';
+import { useState } from 'react';
 
 function Navbar() {
     const { navigation } = useNavigate;
-    const {isLoggedIn, logout} = useAuth();
+    const { isLoggedIn, logout } = useAuth();
+
+    const [dw, setDW] = useState(false);
 
     const logoutFunction = () =>{
         logout();
         navigation('/login');
     }
 
-    console.log("checking using login in Navbar console : ",  isLoggedIn)
+
+    const menu = ['Suraj Kumar', 'Setting', 'Blog', 'About']
+    const menu2 = ['Profile', 'Service', 'Blog', 'About']
+
+
     return (
         <div className='flex flex-col justify-center items-center'>
             <div className="navContainer bg-white flex p-6 m-5 w-4/5 items-center">
@@ -39,7 +46,36 @@ function Navbar() {
                     <ul className='flex'>
                         {
                             isLoggedIn? 
-                                <li><Link onClick={logoutFunction}> <button className='bg-gray-700 px-6 py-3 mr-2 rounded text-white text-md'>Logout</button> </Link></li>
+                                <>  
+                                    <li className='border-2 rounded-full flex items-center px-2 py-2 mr-3 cursor-pointer hover:border-red-500'
+                                        onMouseEnter={()=>setDW(true)} onMouseLeave={()=>setDW(false)}
+                                    >   
+                                        <BiUser className='text-3xl' />
+                                        {dw && (
+                                            <div
+                                            onMouseEnter={() => setDW(true)}
+                                            onMouseLeave={() => setDW(false)}
+                                            className='dropdown z-50 border rounded flex text-white bg-gray-500 p-2 absolute top-20'
+                                        >
+                                        <ul>
+                                            {menu.map((item, index) => (
+                                                <li key={index} className="m-1 bg-white-300 p-1 hover:bg-blue-400 hover:text-white">
+                                                    <Link>{item}</Link>
+                                                </li>
+                                                ))}
+                                        </ul>
+                                        <ul>
+                                            {menu2.map((item, index) => (
+                                            <li key={index} className="m-1 bg-white-300 p-1 hover:bg-blue-400 hover:text-white">
+                                                <Link>{item}</Link>
+                                            </li>
+                                            ))}
+                                        </ul>
+                                        </div>
+                                        )}
+                                    </li>
+                                    <li><Link onClick={logoutFunction}> <button className='bg-gray-700 px-6 py-3 mr-2 rounded text-white text-md'>Logout</button> </Link></li>
+                                </>
                             :
                                 <>
                                     <li><Link to="/signin"> <button className='bg-gray-700 px-6 py-3 mr-2 rounded text-white text-md'>SignIn</button> </Link></li>
