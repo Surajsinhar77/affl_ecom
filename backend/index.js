@@ -18,9 +18,11 @@ const userVerfication = require('./middleware/auth');
 
 // Require Routes here
 const authUserRouter = require('./routes/user.routes');
+const productIteamRoutes = require('./routes/items.routes');
 
 // Saprate Routes
 app.use('/auth', userVerfication ,authUserRouter);
+app.use('/items', userVerfication ,authUserRouter);
 
 
 // Database Connection
