@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { Link, redirect } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import {loginUser} from '../../api/authAPI';
+import { useAuth } from "../../common/AuthContext";
 
 export default function LoginCard() {
-
+  const {login} = useAuth();
   const navigate = useNavigate();
   const [form, setForm] = useState({});
   
@@ -18,7 +19,9 @@ export default function LoginCard() {
   function transferdata(e){
       e.preventDefault();
       const {email, password} = form;
-      loginUser({email, password});
+      const data = loginUser({email, password});
+      console.log("Data from the login user Function : ", data);
+      // login();
       navigate('/');
   }
 

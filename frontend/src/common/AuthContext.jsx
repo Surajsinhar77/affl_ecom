@@ -13,18 +13,17 @@ export const AuthProvider = ({ children }) => {
     });
 
     const login = (prop) => {
-        console.log(prop);
+        console.log("I am from the auth Context login Function ", prop);
         setUserData(prop);
         setIsLoggedIn(true);
-        // localStorage.setItem(prop.Authorization)
-        localStorage.setItem('userData',JSON.stringify(prop.userData));
+        localStorage.setItem('accessToken',JSON.stringify(prop));
         localStorage.setItem('isLoggedIn',"true");
     };
 
     const logout = () => {
         setUserData(null);
         setIsLoggedIn(false);
-        localStorage.removeItem('userData');
+        localStorage.removeItem('accessToken');
         localStorage.removeItem('isLoggedIn');
     };
     
@@ -37,4 +36,4 @@ export const AuthProvider = ({ children }) => {
 };
 
 export const useAuth = () => useContext(AuthContext);
-export const getItem = () => useContext(AuthContext);
+// export const getItem = () => useContext(AuthContext);

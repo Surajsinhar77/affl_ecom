@@ -7,7 +7,7 @@ import {useAuth} from '../../common/AuthContext';
 
 function Navbar() {
     const {isLoggedIn} = useAuth();
-    console.log(isLoggedIn)
+    console.log("checking using login in Navbar console : ",  isLoggedIn)
     return (
         <div className='flex flex-col justify-center items-center'>
             <div className="navContainer bg-white flex p-6 m-5 w-4/5 items-center">

@@ -25,7 +25,7 @@ const userRegister = async (req, res) => {
         });
 
         const result = await user.save();
-        res.cookie('uid', token);
+        res.cookie('uid', token, {httpOnly: true});
         // res.setHeader(`Authorization : Bearer ${token}`);
         return res.status(200).json({ message: "User is sucessfull SignUp", result});
     } catch (err) {
@@ -48,7 +48,7 @@ const userLogin = async(req, res)=>{
             const userExistInfo = await bcrypt.compare(password, userExist.password);
             if(userExistInfo){
                 const token = serviceAuth.setUserToken({name:userExist.name,email});
-                res.cookie('uid', token);
+                res.cookie('uid', token, {httpOnly: true,});
                 return res.status(200).json({message:"You are SuccessFull logged in",
                 result: userExist, userExistInfo})
             }
