@@ -19,7 +19,7 @@ function Navbar() {
 
 
     const menu = ['Suraj Kumar', 'Setting', 'Blog', 'About']
-    const menu2 = ['Profile', 'Service', 'Blog', 'About']
+    const menu2 = ['Setting', 'Service', 'Blog', 'About']
 
 
     return (
