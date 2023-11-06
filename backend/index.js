@@ -1,35 +1,36 @@
 const express = require('express');
 const cors = require('cors');
-const mongoose = require('mongoose');
-const path = require('path');
-const main = require('./db/connection');
-const body = require('body-parser');
+const cookieParser = require('cookie-parser');
+const {main} = require('./db/connection');
+
+// Creating The Main App also known as server
+const app = express();
+
+// BuiltIn Middelware
+app.use(cookieParser());
+app.use(express.json());
+app.use(cors());
 
 
-main().then(()=>{
-  console.log("Db sucess connected ");
+
+//import middleware
+const userVerfication = require('./middleware/auth');
+
+// Require Routes here
+const authUserRouter = require('./routes/user.routes');
+
+// Saprate Routes
+app.use('/auth', userVerfication ,authUserRouter);
+
+
+// Database Connection
+main('mongodb://127.0.0.1:27017/demodb').then((resp)=>{
+  console.log("Database is sucessfull connected");
 }).catch((err)=>{
-  console.log("This is errot from data base :", err);
+  console.log(err);
 })
 
-const server = express(express.json());
-server.use(cors());
-server.use(body.json());
 
-async function main() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/demodb');
-  console.log("db connected");
-}
-
-main().catch(err => console.log(err));
-
-// server.get('/', (req,res)=>{
-//   res.json({msg:"hello world"})
-// })
-
-
-server.listen(8000, ()=>{
-    console.log("server started");
+app.listen(8000, ()=>{
+    console.log("Server start on http://localhost:8000");
 })
-
-require(path.join(__dirname, 'routes/user.routes'))(server);

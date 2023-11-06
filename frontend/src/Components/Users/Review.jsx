@@ -24,7 +24,6 @@ function Review() {
                 <UserReviews/>
                 <UserReviews/>
                 <UserReviews/>
-
             </div>
         </div>
     )

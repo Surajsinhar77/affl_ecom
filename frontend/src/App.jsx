@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import './App.css'
 import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom'
 import SignIn from './Components/Auth/SignIn';
@@ -12,7 +11,6 @@ import Productdisp from './Components/Product/Productdisp';
 
 
 function App() {
-
   return (
     <>
       <div className=' h-[100vh]'>
