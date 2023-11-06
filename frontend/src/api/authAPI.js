@@ -1,22 +1,12 @@
 import api  from '../api/api';
-// import { useNavigate } from 'react-router-dom';
-// import {useAuth}  from '../common/AuthContext';
 
 export const loginUser =(userData)=>{
-    console.log("here i cam ")
-    // const {login} = useAuth();
-
-    console.log(userData);
 
     api.post('/auth/signin', userData )
     .then((response) => {
         if(response?.data?.token){
             
         }
-
-        console.log("response Data ", response.data);
-        console.log("response cookies ", response.cookies);
-        console.log("response status ", response.status);
 
         alert(response.data.message);
 
