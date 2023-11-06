@@ -3,8 +3,9 @@ import { createContext, useContext, useState } from "react";
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
+
     const [isLoggedIn, setIsLoggedIn] = useState(()=>{
-        return localStorage.getItem('isLoggedIn') === 'false';
+        return localStorage.getItem('isLoggedIn') === 'true';
     });
 
     const [userData, setUserData] =useState(() => {

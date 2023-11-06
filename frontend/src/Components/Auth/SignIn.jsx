@@ -16,12 +16,14 @@ export default function LoginCard() {
     })
   }
 
-  function transferdata(e){
+  async function transferdata(e){
       e.preventDefault();
       const {email, password} = form;
-      const data = loginUser({email, password});
+      const data = await loginUser({email, password});
       console.log("Data from the login user Function : ", data);
-      // login();
+      if(data.user){
+        login(data.accessToken);
+      }
       navigate('/');
   }
 
