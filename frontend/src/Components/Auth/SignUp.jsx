@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../common/AuthContext';
 import { signUp } from '../../api/authAPI';
 
 function SignUp() {
-
+  const { login } = useAuth();
   const [loginData, setloginData] = useState({});
   const navigate = useNavigate();
 
@@ -24,6 +24,7 @@ function SignUp() {
     if (!name || !email || !password || !tandc) {
       console.log(!name ? "Enter the Name" : "", !email ? "Enter the Email" : "", !password ? "Enter he password" : "", !tandc ? "Agree on Term and Condition" : "");
     }
+    
     signUp({ name, email, password, tandc });
     navigate('/');
   }
