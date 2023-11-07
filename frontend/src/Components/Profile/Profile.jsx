@@ -1,7 +1,7 @@
 import React from "react";
 import img from './Profile.jpeg';
 
-function Profile(){
+function Profile({userData}){
     return(
         <div className=" p-10 flex flex-col gap-10 text-lg bg-white m-2 h-full">
             <div className=" flex gap-2 items-end">
@@ -12,10 +12,10 @@ function Profile(){
             </div>
             <div className=" flex flex-col gap-2">
                 <div className=" flex gap-4">
-                    <div>Name</div>
+                    <div>{userData.fullName}</div>
                     <div className=" text-blue-600 font-semibold">Edit</div>
                 </div>
-                <input type="text" value={"Divanshu Gupta"} className="w-80 p-2 border rounded-lg"/>
+                <input type="text" value={userData.fullName} className="w-80 p-2 border rounded-lg"/>
             </div>
             <div className=" flex flex-col gap-2">
                 <div className=" flex gap-2">
@@ -38,10 +38,10 @@ function Profile(){
             </div>
             <div className=" flex flex-col gap-2">
                 <div className=" flex gap-2">
-                    <div>Mobile Number</div>
+                    <div>Email</div>
                     <div className=" text-blue-600 font-semibold">Edit</div>
                 </div>
-                <input type="text" value={"+91 6378137419"} className="w-80 p-2 border rounded-lg" />
+                <input type="text" value={userData.email} className="w-80 p-2 border rounded-lg" />
             </div>
             <div className=" flex flex-col gap-2">
                 <div className=" flex gap-2">

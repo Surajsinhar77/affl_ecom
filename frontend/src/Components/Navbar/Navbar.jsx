@@ -3,23 +3,27 @@ import { Link, Outlet, useNavigate} from 'react-router-dom';
 import { BiLogoMediumOld,BiUser } from "react-icons/bi";
 import Menubar from './Menubar';
 import { useAuth } from '../../common/AuthContext';
-import Dropdown from './Dropdown';
+// import Dropdown from './Dropdown';
 import { useState } from 'react';
 
+
 function Navbar() {
+    const {userData} = useAuth();
     const { navigation } = useNavigate;
     const { isLoggedIn, logout } = useAuth();
 
     const [dw, setDW] = useState(false);
 
+    // console.log("This is the User Data ", userData);
+
     const logoutFunction = () =>{
         logout();
-        navigation('/login');
+        navigation('/signin');
     }
 
 
-    const menu = ['Suraj Kumar', 'Setting', 'Blog', 'About']
-    const menu2 = ['Profile', 'Service', 'Blog', 'About']
+    const menu = ['Setting', 'Blog', 'About']
+    const menu2 = ['profile', 'Service', 'Blog', 'About']
 
 
     return (
@@ -58,16 +62,19 @@ function Navbar() {
                                             className='dropdown z-50 border rounded flex text-white bg-gray-500 p-2 absolute top-20'
                                         >
                                         <ul>
+                                            <li className="m-1 bg-white-300 p-1 hover:bg-blue-400 hover:text-white">
+                                                <Link to={`/Profile/${userData.fullName}`}> {userData.fullName} </Link>
+                                            </li>
                                             {menu.map((item, index) => (
                                                 <li key={index} className="m-1 bg-white-300 p-1 hover:bg-blue-400 hover:text-white">
-                                                    <Link>{item}</Link>
+                                                    <Link to={`/${item}`}> {item} </Link>
                                                 </li>
                                                 ))}
                                         </ul>
                                         <ul>
                                             {menu2.map((item, index) => (
                                             <li key={index} className="m-1 bg-white-300 p-1 hover:bg-blue-400 hover:text-white">
-                                                <Link>{item}</Link>
+                                                <Link to={`/${item}`}> {item} </Link>
                                             </li>
                                             ))}
                                         </ul>

@@ -1,21 +1,21 @@
 import api  from './api';
-// import { useNavigate } from 'react-router-dom';
 
 export const loginUser =(userData)=>{
     const result = api.post('/auth/signin', userData )
     .then((response) => {
         if(response?.data?.result){
             console.log("This is the resp data :",response.data)
-            const data = { user: response.data.userExistInfo , accessToken :response.data.result.token};
+            const data = { user: response.data.userExistInfo , accessToken :response.data.result.token, userData : response.data.result};
             return data;
         }
 
         if(!response.data.userExistInfo){
             console.log(response.data, " \n");
         }
+        
     }).catch((err)=>{
         console.log(err);
-        return { user: false , accessToken : null};
+        return { user: false , accessToken : null, userData : null};
     });
     return result;
 }
