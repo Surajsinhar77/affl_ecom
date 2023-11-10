@@ -89,7 +89,6 @@ function Navbar() {
                                     <li><Link to="/signup"> <button className='bg-gray-700 px-6 py-3 mr-2 rounded text-white text-md'>SignUp</button> </Link></li>
                                 </>
                         }
-
                         
                     </ul>
                 </div>
