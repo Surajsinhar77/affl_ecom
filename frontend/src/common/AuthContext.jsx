@@ -31,6 +31,7 @@ export const AuthProvider = ({ children }) => {
         localStorage.removeItem('accessToken');
         localStorage.removeItem('isLoggedIn');
         localStorage.removeItem('userData');
+        return;
     };
     
 
