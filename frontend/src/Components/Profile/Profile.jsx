@@ -12,10 +12,10 @@ function Profile({userData}){
             </div>
             <div className=" flex flex-col gap-2">
                 <div className=" flex gap-4">
-                    <div>{userData.fullName}</div>
+                    <div>{userData?.fullName}</div>
                     <div className=" text-blue-600 font-semibold">Edit</div>
                 </div>
-                <input type="text" value={userData.fullName} className="w-80 p-2 border rounded-lg"/>
+                <input type="text" value={userData?.fullName} className="w-80 p-2 border rounded-lg"/>
             </div>
             <div className=" flex flex-col gap-2">
                 <div className=" flex gap-2">
@@ -41,7 +41,7 @@ function Profile({userData}){
                     <div>Email</div>
                     <div className=" text-blue-600 font-semibold">Edit</div>
                 </div>
-                <input type="text" value={userData.email} className="w-80 p-2 border rounded-lg" />
+                <input type="text" value={userData?.email} className="w-80 p-2 border rounded-lg" />
             </div>
             <div className=" flex flex-col gap-2">
                 <div className=" flex gap-2">

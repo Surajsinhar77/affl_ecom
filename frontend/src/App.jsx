@@ -10,18 +10,19 @@ import Contact from './Components/Contact/Contact';
 import Productdisp from './Components/Product/Productdisp';
 import Profile from './Components/Profile/Profile';
 import { useAuth } from './common/AuthContext';
+import Login from './Components/DashboardUi/Home/Auth/Login';
 
 function App() {
   const {userData} = useAuth();
 
-  console.log("App  is using userData ", userData.fullName);
   return (
     <>
       <div className=' h-[100vh]'>
         <BrowserRouter>
           <Routes>
             <Route  path='/signup' element={<SignUp/>} />
-            <Route path='/Profile/Suraj' element={<Profile userData={userData} />} />
+            <Route  path='/admin' element={<Login/>} />
+            <Route path={`/Profile/${userData?.fullName}`} element={<Profile userData={userData?.fullName} />} />
             <Route  path='/signin' element={<SignIn/>} />
             <Route path='/' element={<MainPage/>} >
               <Route index element={<Home/>} />
