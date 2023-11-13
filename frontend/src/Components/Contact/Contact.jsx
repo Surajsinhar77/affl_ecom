@@ -4,7 +4,10 @@ import ProfilePage from '../Profile/ProfilePage'
 
 function Contact() {
   return (
-    <ProfilePage/>
+    // <ProfilePage/>
+    <div>
+      <h1>Contact page</h1>
+    </div>
   )
 }
 

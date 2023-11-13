@@ -36,13 +36,14 @@ function Navbar() {
                     <div className="navationtion navItem w-3/5 mr-5 flex items-center text-gray-700">
                         <div className='flex justify-around w-full items-center'>
                             <Link to=""> Home </Link>
-                            <Link to="service"> Service </Link>
-                            <Link to="about"> About </Link>
+                            <Link to="service"> Product </Link>
                             <Link to="contact"> Contact </Link>
+                            <Link to="about"> About </Link>
                         </div>
                     </div>
-                    <div className="serchBar w-4/5">
-                        <input type="text" placeholder='Search' className='focus:border border rounded p-2 w-4/5'/>
+                    <div className="serchBar w-3/5">
+                        <input type="text" placeholder='Search' className='focus:border border rounded p-2 w-3/5'/>
+                        <button className='border rounded py-2 px-3 ml-3 border-gray-600 hover:border-green-700 hover:text-gray-600'>Search</button>
                     </div>
                 </div>
                 
@@ -93,7 +94,7 @@ function Navbar() {
                     </ul>
                 </div>
             </div>
-            <Menubar/>
+            {/* <Menubar/> */}
         </div>
     )
 }
