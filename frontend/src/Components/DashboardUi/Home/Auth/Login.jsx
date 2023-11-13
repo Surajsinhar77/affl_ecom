@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Link, redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { loginUser } from "../../../../api/authAPI";
 import { useAuth } from "../../../../common/AuthContext";
 
+
 export default function LoginCard() {
-  const { login } = useAuth();
+  const { login, AdminLoginFunction } = useAuth();
   const navigate = useNavigate();
   const [form, setForm] = useState({});
 
@@ -19,12 +19,12 @@ export default function LoginCard() {
   async function transferdata(e) {
     e.preventDefault();
     const { email, password } = form;
-    const data = await loginUser({ email, password });
-    console.log("Data from the login user Function : ", data);
-    if (data.user) {
-      login({ accessToken: data.accessToken, userData: data.userData });
+    if(email=="suraj7@gmail.com" && password== '12345'){
+      alert("You are Successfull Login");
+      const accessToken = "18i1d1on29182319d1h91d";
+      AdminLoginFunction({email, accessToken});
+      navigate("/dashboard");
     }
-    navigate("/");
   }
 
 

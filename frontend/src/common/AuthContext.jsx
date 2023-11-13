@@ -1,6 +1,5 @@
 // AuthContext.js
 import { createContext, useContext, useState } from "react";
-import { json } from "react-router-dom";
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
@@ -18,6 +17,15 @@ export const AuthProvider = ({ children }) => {
         return JSON.parse(localStorage.getItem('userData'));
     });
 
+    const[adminLogIn, setAdminLogIn] = useState(()=>{
+        return localStorage.getItem("adminLogIn") === 'true';
+    })
+
+    // Temprory Login System
+    const AdminLoginFunction = (prop) =>{
+        setAdminLogIn(true);
+        localStorage.setItem('adminLogIn', "true");
+    }
 
     const login = (prop) => {
         setIsLoggedIn(true);
@@ -36,7 +44,16 @@ export const AuthProvider = ({ children }) => {
     
 
     return (
-        <AuthContext.Provider value={{ isLoggedIn, login, logout , accessToken, userData, SetUserData}}>
+        <AuthContext.Provider value={{ 
+                isLoggedIn, 
+                login, 
+                logout , 
+                accessToken, 
+                userData, 
+                SetUserData,
+                AdminLoginFunction,
+                adminLogIn
+            }}>
             {children}
         </AuthContext.Provider>
     );
