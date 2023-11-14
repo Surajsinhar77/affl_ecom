@@ -66,7 +66,6 @@ function AddProductForm() {
                     </div>
                 </div>
 
-
                 <div className="row">
                     <div className="row">
                         <h1 className="text-xl uppercase font-medium my-7">Image Uploader</h1>
