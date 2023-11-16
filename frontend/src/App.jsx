@@ -8,13 +8,15 @@ import About from './Components/About/About';
 import Service from './Components/Service/Service';
 import Contact from './Components/Contact/Contact';
 import Productdisp from './Components/Product/Productdisp';
-
+import Sidebar from './admin/component/sidebar/sidebar';
+import AHome from './admin/component/Main Page/page';
+import Aheader from './admin/component/header/header';
 
 function App() {
   return (
     <>
       <div className=' h-[100vh]'>
-        <BrowserRouter>
+        {/* <BrowserRouter>
           <Routes>
             <Route  path='/signup' element={<SignUp/>} />
             <Route  path='/signin' element={<SignIn/>} />
@@ -27,7 +29,14 @@ function App() {
             </Route>
           </Routes>
           <Outlet/>
-        </BrowserRouter>
+        </BrowserRouter> */}
+        <div className=' flex h-full w-full'>
+          <Sidebar className=' h-full'/>
+          <div className=' w-5/6 h-full'>
+            <Aheader />
+            <AHome />
+          </div>
+        </div>
       </div>
     </>
   )
