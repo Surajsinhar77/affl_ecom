@@ -14,6 +14,8 @@ import Login from './Components/DashboardUi/Home/Auth/Login';
 import Dashboard from './Components/DashboardUi/Home/Dashboard';
 
 import AddProductForm from './Components/DashboardUi/Forms/AddProductForm';
+//Page not found
+import PageNotFound from './Components/Home/PageNotFound';
 
 function App() {
   const {
@@ -27,23 +29,24 @@ function App() {
       <div className=' h-[100vh]'>
         <BrowserRouter>
           <Routes>
-            <Route  path='/signup' element={<SignUp/>} />
-            <Route  path='/admin' element={<Login/>} />
+            
             {(adminLogIn)?
                 <>
-                  <Route path='/dashboard' element={<Dashboard/>} />
-                  <Route path='/dashboard/additems' element={<AddProductForm/>} />
+                  <Route path='/admin/dashboard' element={<Dashboard/>} />
+                  <Route path='/admin/dashboard/additems' element={<AddProductForm/>} />
                 </>
                 :
-                ""
+                <>
+                  <Route  path='/signup' element={<SignUp/>} />
+                  <Route  path='/admin/login' element={<Login/>} />
+                  <Route path="*" element={<PageNotFound/>} />
+                </>
             }
-
             
-
+            <Route path="*" element={<PageNotFound/>} />
             <Route path={`/Profile/${userData?.fullName}`} element={<Profile userData={userData?.fullName} />} />
 
             <Route  path='/signin' element={<SignIn/>} />
-            
               <Route path='/' element={<MainPage/>} >
               <Route index element={<Home/>} />
               <Route path='about' element={<About/>} />

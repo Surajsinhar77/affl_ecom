@@ -309,15 +309,17 @@ function AddProductForm() {
 
                 <div className="row">
                     <div className="Heading">
-                        <h1 className="text-xl uppercase font-medium my-7">Discription
+                        <h1 className="text-xl uppercase font-medium my-7">Description
                         <span className='mandatory text-red-700'>*</span>
                         </h1>
                     </div>
 
                     <div className="col">
-                        <textarea name="Discription" id="" className="w-full border h-72 p-5 rounded-md" 
-                        onChange={handelformData}
-                        required
+                        <textarea 
+                            name="discription"  
+                            className="w-full border h-72 p-5 rounded-md" 
+                            onChange={handelformData}
+                            required
                         ></textarea>
                     </div>
                 </div>
