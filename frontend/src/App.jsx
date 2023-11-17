@@ -27,16 +27,18 @@ function App() {
       <div className=' h-[100vh]'>
         <BrowserRouter>
           <Routes>
-          
             <Route  path='/signup' element={<SignUp/>} />
             <Route  path='/admin' element={<Login/>} />
-            {(adminLogIn)? 
-                <Route path='/dashboard' element={<Dashboard/>} />
+            {(adminLogIn)?
+                <>
+                  <Route path='/dashboard' element={<Dashboard/>} />
+                  <Route path='/dashboard/additems' element={<AddProductForm/>} />
+                </>
                 :
                 ""
             }
 
-            <Route path='/dashboard/additems' element={<AddProductForm/>} />
+            
 
             <Route path={`/Profile/${userData?.fullName}`} element={<Profile userData={userData?.fullName} />} />
 
@@ -49,7 +51,7 @@ function App() {
               <Route path='contact' element={<Contact/>} />
               <Route path='product' element={<Productdisp/>} />
               
-            </Route>
+              </Route>
           </Routes>
           <Outlet/>
         </BrowserRouter>

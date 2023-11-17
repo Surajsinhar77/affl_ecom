@@ -12,14 +12,15 @@ function AddProductForm() {
     }
 
     const handelFileData = (e) =>{
-        setFormTextData({
+        setFormFileData({
             ...formFileData, [e.target.name] : e.target.files[0]
         })
     }
 
     const gettingAllData=(e)=>{
         e.preventDefault();
-        console.log(formTextData);
+        console.log("This is the files and Data :", formFileData);
+        console.log("This is text form Data :",formTextData);
     }
 
     return (
@@ -40,8 +41,8 @@ function AddProductForm() {
                             onChange={handelformData}
                             required
                         />
-
                     </div>
+
 
                     <div className="col flex flex-col">
                         <label htmlFor="">Category <span className='mandatory text-red-700'>*</span>
@@ -87,25 +88,73 @@ function AddProductForm() {
                     <div className="col">
                         <label htmlFor="">Enter Specification<span className='mandatory text-red-700'>*</span> </label>
                         <div className="col grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                            <input className="inputBox h-8 pl-3 rounded border border-gray-500" type="text" placeholder="Display" name="productSpecDisplay" onChange={handelformData}/>
-                        {/* <button className="ml-5 border h-8 px-3 border-gray-600 rounded-md flex items-center">Add more</button> */}
-                            <input className="inputBox h-8 pl-3 rounded border border-gray-500" type="text" placeholder="Processor" name="productSpecProcessor" onChange={handelformData}/>
+                            <input 
+                                className="inputBox h-8 pl-3 rounded border border-gray-500" 
+                                type="text" 
+                                placeholder="Display" 
+                                name="productSpecDisplay" 
+                                onChange={handelformData}
+                            />
+                        
+                            <input 
+                                className="inputBox h-8 pl-3 rounded border border-gray-500" 
+                                type="text" 
+                                placeholder="Processor" 
+                                name="productSpecProcessor" 
+                                onChange={handelformData}
+                            />
 
-                            <input className="inputBox h-8 pl-3 rounded border border-gray-500" type="text" placeholder="Front Camera" name="productSpecFrontCamera" onChange={handelformData}/>
+                            <input 
+                                className="inputBox h-8 pl-3 rounded border border-gray-500" 
+                                type="text" 
+                                placeholder="Front Camera" 
+                                name="productSpecFrontCamera" 
+                                onChange={handelformData}
+                            />
 
-                            <input className="inputBox h-8 pl-3 rounded border border-gray-500" type="text" placeholder="Rear Camera" name="productSpecRearCamera" onChange={handelformData}/>
+                            <input 
+                                className="inputBox h-8 pl-3 rounded border border-gray-500" 
+                                type="text" 
+                                placeholder="Rear Camera" 
+                                name="productSpecRearCamera" 
+                                onChange={handelformData}
+                            />
                             
-                            <input className="inputBox h-8 pl-3 rounded border border-gray-500" type="text" placeholder="Battery Capacity" name="productSpecBatteryCap" onChange={handelformData}/>
+                            <input 
+                                className="inputBox h-8 pl-3 rounded border border-gray-500" 
+                                type="text" 
+                                placeholder="Battery Capacity" 
+                                name="productSpecBatteryCap" 
+                                onChange={handelformData}
+                            />
 
-                            <input className="inputBox h-8 pl-3 rounded border border-gray-500" type="text" placeholder="Ram" name="productSpecRam" onChange={handelformData}/>
+                            <input 
+                                className="inputBox h-8 pl-3 rounded border border-gray-500" 
+                                type="text" 
+                                placeholder="Ram" 
+                                name="productSpecRam" 
+                                onChange={handelformData}
+                            />
 
-                            <input className="inputBox h-8 pl-3 rounded border border-gray-500" type="text" placeholder="Storage" name="productSpecStorage" onChange={handelformData}/>
+                            <input 
+                                className="inputBox h-8 pl-3 rounded border border-gray-500" 
+                                type="text" 
+                                placeholder="Storage" 
+                                name="productSpecStorage" 
+                                onChange={handelformData}
+                            />
 
-                            <input className="inputBox h-8 pl-3 rounded border border-gray-500" type="text" placeholder="OS" name="productSpecOs" onChange={handelformData}/>
+                            <input 
+                                className="inputBox h-8 pl-3 rounded border border-gray-500" 
+                                type="text" 
+                                placeholder="OS" 
+                                name="productSpecOs" 
+                                onChange={handelformData}
+                            />
                         </div>
-
                     </div>
                 </div>
+
 
                 <div className="row">
                     <div className="row">
@@ -115,14 +164,37 @@ function AddProductForm() {
                     <div className="col">
                         <label htmlFor="">Upload Image</label>
                         <div className="col grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                            <input className="inputBox m-auto items-center" type="file" placeholder="Display" />
-                        
-                            <input className="inputBox m-auto items-center" type="file" placeholder="Processor" />
-                            <input className="inputBox m-auto items-center" type="file" placeholder="Front Camera" />
+                            <input 
+                                className="inputBox m-auto items-center" 
+                                type="file" 
+                                placeholder="Display"
+                                name='file1'
+                                onChange={handelFileData}
+                            />
 
-                            <input className="inputBox m-auto items-center" type="file" placeholder="Rear Camera" />
-                            
-                            
+                            <input 
+                                className="inputBox m-auto items-center" 
+                                type="file" 
+                                placeholder="Processor"
+                                name='file2' 
+                                onChange={handelFileData}
+                            />
+
+                            <input 
+                                className="inputBox m-auto items-center" 
+                                type="file" 
+                                placeholder="Front Camera"
+                                name='file3' 
+                                onChange={handelFileData}
+                            />
+
+                            <input 
+                                className="inputBox m-auto items-center" 
+                                type="file" 
+                                placeholder="Rear Camera"
+                                name='file4' 
+                                onChange={handelFileData}
+                            />
                         </div>
 
                     </div>
@@ -134,7 +206,7 @@ function AddProductForm() {
                 <div className="row grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     <div className="">
                         <h1 className="text-xl uppercase font-medium my-7">Flipkart Varient
-                        <span className='mandatory text-red-700'>*</span>
+                            <span className='mandatory text-red-700'>*</span>
                         </h1>
                         <div className="col">
                             <div className="row flex flex-col h-32 justify-evenly">
@@ -145,12 +217,21 @@ function AddProductForm() {
                                     <option value="8 GB">8 GB</option>
                                     <option value="12 GB">12 GB</option>
                                 </select>
-                                <input className="inputBox h-8 pl-3 rounded border border-gray-500" type="text" placeholder="Rs.25000"
-                                onChange={handelformData}
+
+                                <input 
+                                    className="inputBox h-8 pl-3 rounded border border-gray-500" 
+                                    type="text" 
+                                    placeholder="Rs.25000"
+                                    onChange={handelformData}
                                 />
-                                <input className="inputBox h-8 pl-3 rounded border border-gray-500" type="text" placeholder="Product Link : https://..."
-                                onChange={handelformData}
+
+                                <input 
+                                    className="inputBox h-8 pl-3 rounded border border-gray-500" 
+                                    type="text" 
+                                    placeholder="Product Link : https://..."
+                                    onChange={handelformData}
                                 />
+
                             </div>
 
                             <div className="row flex flex-col h-32 justify-evenly">
@@ -161,23 +242,32 @@ function AddProductForm() {
                                     <option value="8 GB">8 GB</option>
                                     <option value="12 GB">12 GB</option>
                                 </select>
-                                <input className="inputBox h-8 pl-3 rounded border border-gray-500" type="text" placeholder="Rs.25000"
-                                onChange={handelformData}
+
+                                <input 
+                                    className="inputBox h-8 pl-3 rounded border border-gray-500" 
+                                    type="text" 
+                                    placeholder="Rs.25000"
+                                    onChange={handelformData}
                                 />
-                                <input className="inputBox h-8 pl-3 rounded border border-gray-500" type="text" placeholder="Product Link : https://..."
-                                onChange={handelformData}
+
+                                <input 
+                                    className="inputBox h-8 pl-3 rounded border border-gray-500" 
+                                    type="text" 
+                                    placeholder="Product Link : https://..."
+                                    onChange={handelformData}
                                 />
+
                             </div>
                         </div>
                     </div>
                     
                     <div className="">
                         <h1 className="text-xl uppercase font-medium my-7">Amazon Varient
-                        <span className='mandatory text-red-700'>*</span>
+                            <span className='mandatory text-red-700'>*</span>
                         </h1>
                         <div className="col">
                             <div className="row flex flex-col h-32 justify-evenly">
-                                <select name="amazonv1" id="" className="inputBox h-8 pl-3 rounded" 
+                                <select name="amazonv1" className="inputBox h-8 pl-3 rounded" 
                                 onChange={handelformData}>
                                     <option>Choose</option>
                                     <option value="4 GB">4 GB</option>
