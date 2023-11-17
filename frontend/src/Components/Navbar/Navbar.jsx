@@ -1,25 +1,29 @@
 import React from 'react'
 import { Link, Outlet, useNavigate} from 'react-router-dom';
 import { BiLogoMediumOld,BiUser } from "react-icons/bi";
-import Menubar from './Menubar';
+// import Menubar from './Menubar';
 import { useAuth } from '../../common/AuthContext';
-import Dropdown from './Dropdown';
+// import Dropdown from './Dropdown';
 import { useState } from 'react';
 
+
 function Navbar() {
-    const { navigation } = useNavigate;
+    const {userData} = useAuth();
+    const { navigation } = useNavigate();
     const { isLoggedIn, logout } = useAuth();
 
     const [dw, setDW] = useState(false);
 
+    // console.log("This is the User Data ", userData);
+
     const logoutFunction = () =>{
         logout();
-        navigation('/login');
+        navigation('/signin');
     }
 
 
-    const menu = ['Suraj Kumar', 'Setting', 'Blog', 'About']
-    const menu2 = ['Setting', 'Service', 'Blog', 'About']
+    const menu = ['Setting', 'Blog', 'About']
+    const menu2 = ['profile', 'Service', 'Blog', 'About']
 
 
     return (
@@ -32,13 +36,14 @@ function Navbar() {
                     <div className="navationtion navItem w-3/5 mr-5 flex items-center text-gray-700">
                         <div className='flex justify-around w-full items-center'>
                             <Link to=""> Home </Link>
-                            <Link to="service"> Service </Link>
-                            <Link to="about"> About </Link>
+                            <Link to="service"> Product </Link>
                             <Link to="contact"> Contact </Link>
+                            <Link to="about"> About </Link>
                         </div>
                     </div>
-                    <div className="serchBar w-4/5">
-                        <input type="text" placeholder='Search' className='focus:border border rounded p-2 w-4/5'/>
+                    <div className="serchBar w-3/5">
+                        <input type="text" placeholder='Search' className='focus:border border rounded p-2 w-3/5'/>
+                        <button className='border rounded py-2 px-3 ml-3 border-gray-600 hover:border-green-700 hover:text-gray-600'>Search</button>
                     </div>
                 </div>
                 
@@ -58,16 +63,19 @@ function Navbar() {
                                             className='dropdown z-50 border rounded flex text-white bg-gray-500 p-2 absolute top-20'
                                         >
                                         <ul>
+                                            <li className="m-1 bg-white-300 p-1 hover:bg-blue-400 hover:text-white">
+                                                <Link to={`/Profile/${userData.fullName}`}> {userData.fullName} </Link>
+                                            </li>
                                             {menu.map((item, index) => (
                                                 <li key={index} className="m-1 bg-white-300 p-1 hover:bg-blue-400 hover:text-white">
-                                                    <Link>{item}</Link>
+                                                    <Link to={`/${item}`}> {item} </Link>
                                                 </li>
                                                 ))}
                                         </ul>
                                         <ul>
                                             {menu2.map((item, index) => (
                                             <li key={index} className="m-1 bg-white-300 p-1 hover:bg-blue-400 hover:text-white">
-                                                <Link>{item}</Link>
+                                                <Link to={`/${item}`}> {item} </Link>
                                             </li>
                                             ))}
                                         </ul>
@@ -82,12 +90,11 @@ function Navbar() {
                                     <li><Link to="/signup"> <button className='bg-gray-700 px-6 py-3 mr-2 rounded text-white text-md'>SignUp</button> </Link></li>
                                 </>
                         }
-
                         
                     </ul>
                 </div>
             </div>
-            <Menubar/>
+            {/* <Menubar/> */}
         </div>
     )
 }

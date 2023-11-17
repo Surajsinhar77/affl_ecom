@@ -13,9 +13,24 @@ export const AuthProvider = ({ children }) => {
         return storedUserData ? JSON.parse(storedUserData) : null;
     });
 
+    const [userData, SetUserData] = useState(()=>{
+        return JSON.parse(localStorage.getItem('userData'));
+    });
+
+    const[adminLogIn, setAdminLogIn] = useState(()=>{
+        return localStorage.getItem("adminLogIn") === 'true';
+    })
+
+    // Temprory Login System
+    const AdminLoginFunction = (prop) =>{
+        setAdminLogIn(true);
+        localStorage.setItem('adminLogIn', "true");
+    }
+
     const login = (prop) => {
         setIsLoggedIn(true);
-        localStorage.setItem('accessToken',JSON.stringify(prop));
+        localStorage.setItem('userData', JSON.stringify(prop.userData));
+        localStorage.setItem('accessToken',JSON.stringify(prop.accessToken));
         localStorage.setItem('isLoggedIn',"true");
     };
 
@@ -23,11 +38,22 @@ export const AuthProvider = ({ children }) => {
         setIsLoggedIn(false);
         localStorage.removeItem('accessToken');
         localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('userData');
+        return;
     };
     
 
     return (
-        <AuthContext.Provider value={{ isLoggedIn, login, logout , accessToken}}>
+        <AuthContext.Provider value={{ 
+                isLoggedIn, 
+                login, 
+                logout , 
+                accessToken, 
+                userData, 
+                SetUserData,
+                AdminLoginFunction,
+                adminLogIn
+            }}>
             {children}
         </AuthContext.Provider>
     );
