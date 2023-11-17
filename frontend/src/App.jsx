@@ -11,6 +11,9 @@ import Productdisp from './Components/Product/Productdisp';
 import Sidebar from './admin/component/sidebar/sidebar';
 import AHome from './admin/component/Main Page/page';
 import Aheader from './admin/component/header/header';
+import Afooter from './admin/component/footer/footer';
+import Account from './admin/component/account setting/account/account';
+import Security from './admin/component/account setting/security/security';
 
 function App() {
   return (
@@ -32,9 +35,12 @@ function App() {
         </BrowserRouter> */}
         <div className=' flex h-full w-full'>
           <Sidebar className=' h-full'/>
-          <div className=' w-5/6 h-full'>
+          <div className=' w-5/6 h-full overflow-auto'>
             <Aheader />
-            <AHome />
+            {/* <AHome /> */}
+            {/* <Account/> */}
+            <Security/>
+            <Afooter/>
           </div>
         </div>
       </div>
