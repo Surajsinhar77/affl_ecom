@@ -67,7 +67,7 @@ function AddProductForm() {
                             name="productTags" 
                             required
                             onChange={handelformData}
-                            >
+                        >
                             <option>Choose</option>
                             <option value="Gaming">Gaming</option>
                             <option value="Battery">Battery</option>
