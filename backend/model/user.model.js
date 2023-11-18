@@ -19,6 +19,12 @@ function userSchemaGet(){
             required: true,
         },
         
+        role:{
+            type :String,
+            lowwercase : true,
+            required :true,
+        },
+        
         token:{
             type:String,
             required: true,

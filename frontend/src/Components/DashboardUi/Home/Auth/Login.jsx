@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../../common/AuthContext";
+import apiForAdmin from '../../../../api/apiForAdmin';
 
 
 export default function LoginCard() {
@@ -19,12 +20,23 @@ export default function LoginCard() {
   async function transferdata(e) {
     e.preventDefault();
     const { email, password } = form;
-    if(email=="suraj7@gmail.com" && password== '12345'){
-      alert("You are Successfull Login");
-      const accessToken = "18i1d1on29182319d1h91d";
-      AdminLoginFunction({email, accessToken});
-      navigate("/dashboard");
-    }
+
+    apiForAdmin.post('/admin', {email, password})
+    .then((response)=>{
+      // localStorage.setItem()
+      console.log(response);
+      alert(response.data.message);
+    }).catch((err)=>{
+      console.log(err);
+      alert(err.message);
+    })
+
+    // if(email=="suraj7@gmail.com" && password== '12345'){
+    //   alert("You are Successfull Login");
+    //   const accessToken = "18i1d1on29182319d1h91d";
+    //   AdminLoginFunction({email, accessToken});
+    //   navigate("/dashboard");
+    // }
   }
 
 

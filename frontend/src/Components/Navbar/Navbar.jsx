@@ -64,7 +64,7 @@ function Navbar() {
                                         >
                                         <ul>
                                             <li className="m-1 bg-white-300 p-1 hover:bg-blue-400 hover:text-white">
-                                                <Link to={`/Profile/${userData.fullName}`}> {userData.fullName} </Link>
+                                                <Link to={`/Profile/${userData?.fullName}`}> {userData?.fullName} </Link>
                                             </li>
                                             {menu.map((item, index) => (
                                                 <li key={index} className="m-1 bg-white-300 p-1 hover:bg-blue-400 hover:text-white">

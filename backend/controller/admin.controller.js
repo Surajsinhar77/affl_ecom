@@ -1,4 +1,6 @@
 const adminModel = require('../model/admin.model');
+const bcrypt = require('bcrypt');
+const serviceAuth = require('../service/auth');
 
 const adminLogin = async(req, res)=>{
     const {email, password} = req.body;
@@ -8,20 +10,16 @@ const adminLogin = async(req, res)=>{
         if(!userExist){
             return res.json({message: "user doesn't Exist"});
         }
-        const authToken = req.headers.authorization.split(" ")[1];
 
-        if(!authToken){
             const userExistInfo = await bcrypt.compare(password, userExist.password);
             if(userExistInfo){
                 const token = serviceAuth.setUserToken({name:userExist.name,email});
-                res.cookie('adminUid', token, {httpOnly: true,});
+                // res.cookie('adminUid', token, {httpOnly: true,});
+                res.setHeader('Authorization' , `Bearer ${token}`);
                 return res.status(200).json({message:"You are SuccessFull logged in",
                 result: userExist, userExistInfo})
             }
-            return res.status(404).json({message:"Invalid Credintial", userExistInfo});
-        }
-        
-        return res.json({message: "You are allow to login ",userExist});
+            return res.json({message: "Invalid username or Password" ,userExistInfo});
     }catch(err){
         console.log(err);
         res.status(404).json({message:"You are getting Error",errorMsg:err});
@@ -46,12 +44,12 @@ const addAdmin = async(req, res)=>{
             email,
             role, 
             password: hashPassword,
-            token: token,
+            token,
         });
 
         const result = await user.save();
-        res.cookie('adminuid', token, {httpOnly: true});
-        // res.setHeader(`Authorization : Bearer ${token}`);
+        // res.cookie('adminuid', token, {httpOnly: true});
+        res.setHeader('Authorization' , `Bearer ${token}`);
         return res.status(200).json({ message: "New Admin is sucessfull Added", result});
     } catch (err) {
         console.log("here is the errror ", err);

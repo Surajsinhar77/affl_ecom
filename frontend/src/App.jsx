@@ -29,7 +29,8 @@ function App() {
       <div className=' h-[100vh]'>
         <BrowserRouter>
           <Routes>
-            
+          
+          {/* This is the admin login system Start */}
             {(adminLogIn)?
                 <>
                   <Route path='/admin/dashboard' element={<Dashboard/>} />
@@ -37,12 +38,14 @@ function App() {
                 </>
                 :
                 <>
-                  <Route  path='/signup' element={<SignUp/>} />
                   <Route  path='/admin/login' element={<Login/>} />
                   <Route path="*" element={<PageNotFound/>} />
                 </>
             }
-            
+          {/* This is the admin login system End */}
+
+
+            <Route  path='/signup' element={<SignUp/>} />
             <Route path="*" element={<PageNotFound/>} />
             <Route path={`/Profile/${userData?.fullName}`} element={<Profile userData={userData?.fullName} />} />
 

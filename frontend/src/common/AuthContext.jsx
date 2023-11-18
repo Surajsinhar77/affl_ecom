@@ -21,6 +21,11 @@ export const AuthProvider = ({ children }) => {
         return localStorage.getItem("adminLogIn") === 'true';
     })
 
+    const[adminAccessToken, setAdminAccessToken] = useState(()=>{
+        const adAccessToken =  localStorage.getItem('adminAccessToken');
+        return adAccessToken ? JSON.parse(adAccessToken) : null;
+    })
+
     // Temprory Login System
     const AdminLoginFunction = (prop) =>{
         setAdminLogIn(true);
@@ -52,7 +57,7 @@ export const AuthProvider = ({ children }) => {
                 userData, 
                 SetUserData,
                 AdminLoginFunction,
-                adminLogIn
+                adminLogIn,
             }}>
             {children}
         </AuthContext.Provider>
