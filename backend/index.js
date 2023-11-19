@@ -22,7 +22,7 @@ const productIteamRoutes = require('./routes/items.routes');
 const adminRoutes =require('./routes/admin.routes');
 
 // Saprate Routes
-app.use('/auth', userVerfication ,authUserRouter);
+app.use('/auth', authUserRouter);
 app.use('/items', userVerfication ,authUserRouter);
 app.use('/admin', adminRoutes);
 

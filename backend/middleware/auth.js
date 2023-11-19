@@ -6,8 +6,9 @@ const verifyToken = (req, res, next) => {
     console.log(req.headers);
     console.log(Authorization)
     try{
-        if(Authorization != undefined && Authorization != null){
-            const token = Authorization.split(' ')[1];
+        const token = Authorization.split(' ')[1];
+        console.log("This is the token data from the middleware: ",token);
+        if(token != undefined && token != null){
             if(token) {
                 jwt.verify(token, secretkey, (err, decoded) => {
                     if (err) {
@@ -16,7 +17,7 @@ const verifyToken = (req, res, next) => {
                     next();
                 });
             }else{
-                return res.status(401).json({ message: 'Invalid token' });
+                return res.status(404).json({message: "token is not found or null"});
             }
         }else{
             return res.status(403).json({message : "Forbidden"});

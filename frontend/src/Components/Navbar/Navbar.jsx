@@ -9,7 +9,7 @@ import { useState } from 'react';
 
 function Navbar() {
     const {userData} = useAuth();
-    const { navigation } = useNavigate();
+    const  navigate  = useNavigate();
     const { isLoggedIn, logout } = useAuth();
 
     const [dw, setDW] = useState(false);
@@ -18,7 +18,7 @@ function Navbar() {
 
     const logoutFunction = () =>{
         logout();
-        navigation('/signin');
+        navigate('/signin');
     }
 
 

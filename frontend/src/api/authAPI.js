@@ -23,19 +23,27 @@ export const loginUser =(userData)=>{
 
 export const signUp = (userdata) => {
     const result = api.post('/auth/signup', userdata)
-    .then((response)=>{
-
-        if(response?.data?.result){
-            api.defaults.headers.common['Authorization'] = `Bearer ${response.data.result.token}`;
-            const  data = { user: false , accessToken :response.data.token}
-            return data;
-        }
-        alert(response.data?.message);
-        return {user: false , accessToken : response.data.token, userData : null };
+        .then((response)=>{
+            // const authorizationHeader = response.headers.get('Authorization');
+            // console.log("In the signUp Function :",response.headers, authorizationHeader);
+            console.log("Response : ",response);
+            if(response.status === 201){
+                if(response?.data?.result){
+                    const  dataa = { user: true , accessToken :response.data.result.token, userData : response.data.result}
+                    return dataa;
+                }
+            }
+            console.log("this is if status code is not ok :",response);
+            alert(response.data?.message);
+            throw new Error({message: response.data.error});
         }).catch((err)=>{
-            console.log(err);
-            alert(err,message);
-            return false;
+            let message
+            if(err.response?.status === 409){
+                message = err.response.data.error;
+            }else{
+                message = err.message;
+            }
+            return {user: false , message: message};
         })
     return result;
 }

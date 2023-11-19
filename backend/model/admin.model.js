@@ -7,9 +7,10 @@ function adminSchemaGet(){
             required : true,
         },
 
-        role :{
-            type: String,
-            required :true
+        role:{
+            type :String,
+            lowwercase : true,
+            required :true,
         },
     
         email :{
