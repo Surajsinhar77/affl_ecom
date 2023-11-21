@@ -12,7 +12,6 @@ import Profile from './Components/Profile/Profile';
 import { useAuth } from './common/AuthContext';
 import Login from './Components/DashboardUi/Home/Auth/Login';
 import Dashboard from './Components/DashboardUi/Home/Dashboard';
-
 import AddProductForm from './Components/DashboardUi/Forms/AddProductForm';
 //Page not found
 import PageNotFound from './Components/Home/PageNotFound';

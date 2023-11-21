@@ -1,13 +1,11 @@
 const jwt = require('jsonwebtoken');
-const secretkey = "*Suraj*Div*you@729";
+const params = require('../params.json');
+const secretkey = params.secretkey;
 
 const verifyToken = (req, res, next) => {
     const Authorization = req.headers['authorization'];
-    console.log(req.headers);
-    console.log(Authorization)
     try{
         const token = Authorization.split(' ')[1];
-        console.log("This is the token data from the middleware: ",token);
         if(token != undefined && token != null){
             if(token) {
                 jwt.verify(token, secretkey, (err, decoded) => {
