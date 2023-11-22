@@ -222,6 +222,7 @@ function AddProductForm() {
                                     className="inputBox h-8 pl-3 rounded border border-gray-500" 
                                     type="text" 
                                     placeholder="Rs.25000"
+                                    name='fv1Price'
                                     onChange={handelformData}
                                 />
 
@@ -229,6 +230,7 @@ function AddProductForm() {
                                     className="inputBox h-8 pl-3 rounded border border-gray-500" 
                                     type="text" 
                                     placeholder="Product Link : https://..."
+                                    name='fv1Link'
                                     onChange={handelformData}
                                 />
 
@@ -247,6 +249,7 @@ function AddProductForm() {
                                     className="inputBox h-8 pl-3 rounded border border-gray-500" 
                                     type="text" 
                                     placeholder="Rs.25000"
+                                    name='fv2Price'
                                     onChange={handelformData}
                                 />
 
@@ -254,6 +257,7 @@ function AddProductForm() {
                                     className="inputBox h-8 pl-3 rounded border border-gray-500" 
                                     type="text" 
                                     placeholder="Product Link : https://..."
+                                    name='fv2Link'
                                     onChange={handelformData}
                                 />
 
@@ -275,12 +279,18 @@ function AddProductForm() {
                                     <option value="8 GB">8 GB</option>
                                     <option value="12 GB">12 GB</option>
                                 </select>
-                                <input className="inputBox h-8 pl-3 rounded border border-gray-500" type="text" placeholder="Rs.25000"
-                                onChange={handelformData}
+                                <input 
+                                    className="inputBox h-8 pl-3 rounded border border-gray-500" type="text" 
+                                    placeholder="Rs.25000"
+                                    name='av1Price'
+                                    onChange={handelformData}
                                 />
 
-                                <input className="inputBox h-8 pl-3 rounded border border-gray-500" type="text" placeholder="Product Link : https://..."
-                                onChange={handelformData}
+                                <input 
+                                    className="inputBox h-8 pl-3 rounded border border-gray-500" type="text" 
+                                    placeholder="Product Link : https://..."
+                                    name='av1Link'
+                                    onChange={handelformData}
                                 />
                             </div>
 
@@ -295,12 +305,19 @@ function AddProductForm() {
                                     <option value="12 GB">12 GB</option>
 
                                 </select>
-                                <input className="inputBox h-8 pl-3 rounded border border-gray-500" type="text" placeholder="Rs.25000" 
-                                onChange={handelformData}
+                                <input 
+                                    className="inputBox h-8 pl-3 rounded border border-gray-500" 
+                                    type="text" 
+                                    placeholder="Rs.25000" 
+                                    name='av2Price'
+                                    onChange={handelformData}
                                 />
 
-                                <input className="inputBox h-8 pl-3 rounded border border-gray-500" type="text" placeholder="Product Link : https://..."
-                                onChange={handelformData}
+                                <input 
+                                    className="inputBox h-8 pl-3 rounded border border-gray-500" type="text" 
+                                    placeholder="Product Link : https://..."
+                                    name='av2Link'
+                                    onChange={handelformData}
                                 />
                             </div>
                         </div>
@@ -327,7 +344,11 @@ function AddProductForm() {
 
                 <div className="row my-5">
                     <div className="col flex">
-                        <input type="checkbox"  className="mr-3 w-5" name='termAndAgree' onChange={handelformData} required/>
+                        <input 
+                            type="checkbox"  
+                            className="mr-3 w-5" 
+                            name='termAndAgree' 
+                            onChange={handelformData} required/>
                         <p className="text-red-800">I agree and Checked everything is correct 
                         <span className='mandatory text-red-700'>*</span>
                         </p>
