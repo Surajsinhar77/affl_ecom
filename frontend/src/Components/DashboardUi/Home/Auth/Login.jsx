@@ -21,10 +21,16 @@ export default function LoginCard() {
     e.preventDefault();
     const { email, password } = form;
 
-    apiForAdmin.post('/admin', {email, password})
+    apiForAdmin.post('/admin/login', {email, password})
     .then((response)=>{
-      // localStorage.setItem()
-      console.log(response);
+      
+      AdminLoginFunction({
+        accessToken:response.data?.result.token , 
+        userLogin:true, adminData: 
+        response.data?.result
+      });
+
+      navigate("/admin/dashboard");
       alert(response.data.message);
     }).catch((err)=>{
       console.log(err);
@@ -86,10 +92,10 @@ export default function LoginCard() {
           SIGN IN
         </button>
         <div className=" flex gap-1 justify-center text-lg">
-          <div className=" text-gray-500">Don&apos;t have an account?</div>
-          <Link to="/signup" className=" font-semibold">
-            Sign Up
-          </Link>
+          {/* <div className=" text-gray-500">Don&apos;t have an account?</div>
+            <Link to="/signup" className=" font-semibold">
+              Sign Up
+            </Link> */}
         </div>
       </div>
     </div>

@@ -135,7 +135,7 @@ function enterItemSchemaGet(){
 }
 
 const itemsModel = ()=>{
-    const itemModel = new mongoose.model('users', enterItemSchemaGet());
+    const itemModel = new mongoose.model('ProductsInventorys', enterItemSchemaGet());
     return itemModel;
 }
 

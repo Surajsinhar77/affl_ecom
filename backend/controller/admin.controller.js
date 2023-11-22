@@ -10,7 +10,7 @@ const adminLogin = async(req, res)=>{
         if(!userExist){
             return res.json({message: "user doesn't Exist"});
         }
-
+        
             const userExistInfo = await bcrypt.compare(password, userExist.password);
             if(userExistInfo){
                 const token = serviceAuth.setUserToken({name:userExist.name,email});

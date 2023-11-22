@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import apiForAdmin from '../../../api/apiForAdmin';
 
 function AddProductForm() {
     const [formTextData, setFormTextData] = useState([]);
@@ -19,6 +20,16 @@ function AddProductForm() {
 
     const gettingAllData=(e)=>{
         e.preventDefault();
+
+        apiForAdmin.post('/dashboard/addProduct',{
+            textData:formTextData, 
+            fileData:formFileData
+        }).then((response)=>{
+            console.log(response);
+        }).catch((err)=>{
+            console.log(err.message);
+        });
+
         console.log("This is the files and Data :", formFileData);
         console.log("This is text form Data :",formTextData);
     }
