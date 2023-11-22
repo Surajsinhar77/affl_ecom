@@ -7,6 +7,10 @@ function enterItemSchemaGet(){
             type :String,
             required : true,
         },
+        productCode:{
+            type: String,
+            required: true,
+        },
     
         category :{
             type :String,
