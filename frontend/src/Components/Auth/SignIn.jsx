@@ -22,7 +22,7 @@ export default function LoginCard() {
       const data = await loginUser({email, password});
       console.log("Data from the login user Function : ", data);
       if(data.user){
-        login({accessToken: data.accessToken, userData : data.userData});
+        login({accessToken : data.accessToken, userData : data.userData});
       }
       navigate('/');
   }
