@@ -29,7 +29,6 @@ export default function LoginCard() {
 
 
   return (
-    
     <div className=" flex items-center justify-center w-full bg-gray-100 backdrop-blur-sm h-[100vh] p-10 text-black flex-col">
       <h1 className="mb-40 text-4xl uppercase font-bold">User Login</h1>
       <div className=" w-[420px] p-10 flex flex-col rounded-lg shadow-md bg-whiten relative bg-white">
