@@ -11,8 +11,7 @@ export default function LoginCard() {
   
   function handledata (e){
     setForm({
-      ...form,
-      [e.target.name] : e.target.value
+      ...form,[e.target.name] : e.target.value
     })
   }
 

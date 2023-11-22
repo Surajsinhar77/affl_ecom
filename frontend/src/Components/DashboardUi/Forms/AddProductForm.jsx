@@ -20,7 +20,7 @@ function AddProductForm() {
 
     const gettingAllData=(e)=>{
         e.preventDefault();
-
+        // write code from here for the axios api call to save this data
         apiForAdmin.post('/dashboard/addProduct',{
             textData:formTextData, 
             fileData:formFileData

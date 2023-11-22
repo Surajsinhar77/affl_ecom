@@ -23,7 +23,6 @@ export default function LoginCard() {
 
     apiForAdmin.post('/admin/login', {email, password})
     .then((response)=>{
-      
       AdminLoginFunction({
         accessToken:response.data?.result.token , 
         userLogin:true, adminData: 
@@ -36,13 +35,6 @@ export default function LoginCard() {
       console.log(err);
       alert(err.message);
     })
-
-    // if(email=="suraj7@gmail.com" && password== '12345'){
-    //   alert("You are Successfull Login");
-    //   const accessToken = "18i1d1on29182319d1h91d";
-    //   AdminLoginFunction({email, accessToken});
-    //   navigate("/dashboard");
-    // }
   }
 
 
