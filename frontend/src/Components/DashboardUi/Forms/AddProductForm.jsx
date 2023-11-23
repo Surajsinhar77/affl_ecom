@@ -21,6 +21,10 @@ function AddProductForm() {
     const gettingAllData=(e)=>{
         e.preventDefault();
         // write code from here for the axios api call to save this data
+        // write code here 
+        // you need to create new object of new FormDate(); 
+        // then object dot append('file' , file) maybe one by one 
+        // do this tommrow 
         apiForAdmin.post('/dashboard/addProduct',{
             textData:formTextData, 
             fileData:formFileData
