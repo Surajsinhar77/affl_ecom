@@ -11,8 +11,7 @@ export default function LoginCard() {
   
   function handledata (e){
     setForm({
-      ...form,
-      [e.target.name] : e.target.value
+      ...form,[e.target.name] : e.target.value
     })
   }
 
@@ -22,14 +21,15 @@ export default function LoginCard() {
       const data = await loginUser({email, password});
       console.log("Data from the login user Function : ", data);
       if(data.user){
-        login(data.accessToken);
+        login({accessToken : data.accessToken, userData : data.userData});
       }
       navigate('/');
   }
 
 
   return (
-    <div className=" flex items-center justify-center w-full bg-gray-100 backdrop-blur-sm h-[100vh] p-10 text-black">
+    <div className=" flex items-center justify-center w-full bg-gray-100 backdrop-blur-sm h-[100vh] p-10 text-black flex-col">
+      <h1 className="mb-40 text-4xl uppercase font-bold">User Login</h1>
       <div className=" w-[420px] p-10 flex flex-col rounded-lg shadow-md bg-whiten relative bg-white">
         <div className=" w-full bg-black text-white font-bold text-center p-5 text-3xl rounded-xl relative -top-16 shadow-lg">Sign In</div>
         <div className=" flex flex-col gap-2">

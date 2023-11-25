@@ -10,7 +10,11 @@ const userRegister = async (req, res) => {
         const isUserExist = await userModel.findOne({ email: email });
 
         if (isUserExist) {
-            return res.status(409).json({ message: "User Already Exist", userExist: true });
+            return res.status(409).json({
+                error: 'User already registered',
+                message: 'The username or email is already taken.', 
+                userExist: false 
+            });
         }
 
         const hashPassword = await bcrypt.hash(password, 10);
@@ -26,8 +30,8 @@ const userRegister = async (req, res) => {
 
         const result = await user.save();
         res.cookie('uid', token, {httpOnly: true});
-        // res.setHeader(`Authorization : Bearer ${token}`);
-        return res.status(200).json({ message: "User is sucessfull SignUp", result});
+        res.setHeader('Authorization' , `Bearer ${token}`);
+        return res.status(201).json({ message: "User is sucessfull SignUp", result});
     } catch (err) {
         console.log("here is the errror ", err);
         return res.status(404).json({message: err.message, err});

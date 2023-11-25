@@ -1,23 +1,27 @@
 const jwt = require('jsonwebtoken');
-const secretkey = "*Suraj*Div*you@729";
+const params = require('../params.json');
+const secretkey = params.secretkey;
 
 const verifyToken = (req, res, next) => {
-    const token = req.cookies?.uid;
-    
+    const Authorization = req.headers['authorization'];
     try{
-        if(token) {
-            jwt.verify(token, secretkey, (err, decoded) => {
-                if (err) {
-                    return res.status(401).json({ message: 'Invalid token' });
-                }
-        
-                return res.status(200).json({message:"you are suceess logedin ", data:decoded.user});
-            });
+        const token = Authorization.split(' ')[1];
+        if(token != undefined && token != null){
+            if(token) {
+                jwt.verify(token, secretkey, (err, decoded) => {
+                    if (err) {
+                        return res.status(401).json({ message: 'Invalid token' });
+                    }
+                    next();
+                });
+            }else{
+                return res.status(404).json({message: "token is not found or null"});
+            }
         }else{
-            next();
+            return res.status(403).json({message : "Forbidden"});
         }
     }catch(err){
-        return res.status(404).json({msg:"Error while verifying from middleware",error:err});
+        return res.status(404).json({message:"Error while verifying from middleware",error:err});
     }
 };
 

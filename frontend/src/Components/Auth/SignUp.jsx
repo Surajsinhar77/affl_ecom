@@ -17,7 +17,7 @@ function SignUp() {
 
 
   // This is the Function to Request to the Server
-  function signSubmit(e) {
+  async function signSubmit(e) {
     e.preventDefault();
     const { name, email, password, tandc } = loginData;
 
@@ -25,8 +25,15 @@ function SignUp() {
       console.log(!name ? "Enter the Name" : "", !email ? "Enter the Email" : "", !password ? "Enter he password" : "", !tandc ? "Agree on Term and Condition" : "");
     }
     
-    signUp({ name, email, password, tandc });
-    navigate('/');
+    const data = await signUp({ name, email, password, tandc });
+    if(data.user){
+      login({accessToken: data.accessToken, userData : data.userData});
+      alert('You are sucessfull signup and auto login');
+      navigate('/');
+    }else{
+      alert(data.message);
+      navigate('/signin');
+    }
   }
 
   return (
