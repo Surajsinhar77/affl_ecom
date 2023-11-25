@@ -14,6 +14,8 @@ import Aheader from './admin/component/header/header';
 import Afooter from './admin/component/footer/footer';
 import Account from './admin/component/account setting/account/account';
 import Security from './admin/component/account setting/security/security';
+import Anotification from './admin/component/account setting/notification/notification';
+import AccountSetting from './admin/component/account setting/accountseeting';
 
 function App() {
   return (
@@ -37,9 +39,11 @@ function App() {
           <Sidebar className=' h-full'/>
           <div className=' w-5/6 h-full overflow-auto'>
             <Aheader />
-            {/* <AHome /> */}
+            <AHome />
             {/* <Account/> */}
-            <Security/>
+            {/* <Security/> */}
+            {/* <Anotification/> */}
+            {/* <AccountSetting/> */}
             <Afooter/>
           </div>
         </div>

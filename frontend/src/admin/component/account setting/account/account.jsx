@@ -2,7 +2,7 @@ function Account(){
     return(
         <>
             <div className="">
-                <div className=" m-5 bg-white rounded-lg">
+                <div className=" bg-white rounded-lg">
                     <div className=" p-10 space-y-10">
                         <div className=" text-2xl font-semibold">
                             Account Details

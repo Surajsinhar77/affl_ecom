@@ -3,7 +3,7 @@ import ContentCopyOutlinedIcon from '@mui/icons-material/ContentCopyOutlined';
 function Security(){
     return(
         <>
-            <div className=" m-5 space-y-5">
+            <div className=" space-y-5">
                 <div className=" p-5 py-10 bg-white rounded-lg space-y-5">
                     <div className=" text-2xl font-semibold">
                         Account Details
