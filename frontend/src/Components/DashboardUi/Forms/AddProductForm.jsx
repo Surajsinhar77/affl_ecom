@@ -2,7 +2,7 @@ import {useState} from 'react';
 import apiForAdmin from '../../../api/apiForAdmin';
 
 function AddProductForm() {
-    const [formTextData, setFormTextData] = useState([]);
+    const [formTextData, setFormTextData] = useState({});
     const [formFileData, setFormFileData] = useState([]);
 
     const handelformData = (e) =>{
@@ -18,6 +18,18 @@ function AddProductForm() {
         })
     }
 
+
+    const handelFileUpload = ()=> {
+        console.log("Here is the handelFileUpload Function on Click");
+        const formData = new FromData();
+        formFileData.forEach((element, index)=>{
+            formData.append(`file${index}`, element);
+        })
+
+        console.log(formData);
+        return;
+    }
+
     const gettingAllData=(e)=>{
         e.preventDefault();
         // write code from here for the axios api call to save this data
@@ -25,6 +37,12 @@ function AddProductForm() {
         // you need to create new object of new FormDate(); 
         // then object dot append('file' , file) maybe one by one 
         // do this tommrow 
+
+            
+
+        console.log(formData);
+        return
+
         apiForAdmin.post('/dashboard/addProduct',{
             textData:formTextData, 
             fileData:formFileData
@@ -214,7 +232,10 @@ function AddProductForm() {
 
                     </div>
                     <div className="w-full flex justify-center">
-                        <button className="border-2 h-10 px-10 rounded border-green-600 my-5 text-red font-bold">Upload</button>
+                        <button 
+                            className="border-2 h-10 px-10 rounded border-green-600 my-5 text-red font-bold"
+                            onClick={handelFileUpload}
+                            >Upload</button>
                     </div>
                 </div>
 
@@ -369,9 +390,11 @@ function AddProductForm() {
                         </p>
                     </div>
                     <div className="col flex justify-center">
-                        <button className="border-2 h-10 px-10 rounded border-green-600 my-5 text-red font-bold"
-                        type='submit'
-                        >Submit</button>
+                        <input 
+                            className="border-2 h-10 px-10 rounded border-green-600 my-5 text-red font-bold cursor-pointer"
+                            type='submit'
+                            value={"Submit"}
+                        />
                     </div>
                 </div>
             </form>
