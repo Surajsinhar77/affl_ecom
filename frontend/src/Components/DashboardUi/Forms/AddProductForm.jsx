@@ -3,7 +3,7 @@ import apiForAdmin from '../../../api/apiForAdmin';
 
 function AddProductForm() {
     const [formTextData, setFormTextData] = useState({});
-    const [formFileData, setFormFileData] = useState([]);
+    const [formFileData, setFormFileData] = useState({});
 
     const handelformData = (e) =>{
         setFormTextData({
@@ -13,20 +13,14 @@ function AddProductForm() {
     }
 
     const handelFileData = (e) =>{
-        setFormFileData({
-            ...formFileData, [e.target.name] : e.target.files[0]
-        })
+        
     }
-
 
     const handelFileUpload = ()=> {
         console.log("Here is the handelFileUpload Function on Click");
-        const formData = new FromData();
-        formFileData.forEach((element, index)=>{
-            formData.append(`file${index}`, element);
-        })
-
-        console.log(formData);
+        
+        
+        console.log(urlForImages);
         return;
     }
 

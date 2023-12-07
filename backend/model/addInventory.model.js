@@ -130,7 +130,6 @@ function enterItemSchemaGet(){
             required : true,
         }
     })
-
     return itemsSchema;
 }
 
