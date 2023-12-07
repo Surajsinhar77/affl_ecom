@@ -7,6 +7,5 @@ const router = express.Router();
 router.post('/addNewAdmin',verifyToken ,addAdmin);
 router.post('/login', adminLogin);
 
-
 // returning the saprate Routes
 module.exports = router;

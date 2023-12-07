@@ -47,6 +47,15 @@ const addItemsToInventary = async(req, res) => {
     return res.json("I get the data Thank you");
 }
 
+const uploadImageForInventory = async (req, res) =>{
+    console.log("hello ji");
+    const formData = req.files
+    const formDataArray = req.body;
+    console.log(formData, formDataArray);
+    return res.json({message: "Data is reviced"});
+}
+
 module.exports ={
     addItemsToInventary,
+    uploadImageForInventory
 }

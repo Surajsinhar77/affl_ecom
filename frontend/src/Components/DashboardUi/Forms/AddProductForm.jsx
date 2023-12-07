@@ -3,7 +3,7 @@ import apiForAdmin from '../../../api/apiForAdmin';
 
 function AddProductForm() {
     const [formTextData, setFormTextData] = useState({});
-    const [formFileData, setFormFileData] = useState({});
+    const [formFileData, setFormFileData] = useState([]);
 
     const handelformData = (e) =>{
         setFormTextData({
@@ -13,33 +13,30 @@ function AddProductForm() {
     }
 
     const handelFileData = (e) =>{
-        
+        setFormFileData([...e.target.files])
     }
 
     const handelFileUpload = ()=> {
-        console.log("Here is the handelFileUpload Function on Click");
+        const formData = new FormData();
+        formFileData.forEach((image, index)=>{
+            formData.append(`image ${index}`, image);
+        })
         
-        
-        console.log(urlForImages);
+        console.log("This is the form Data in the handelFileUplaod Function : ",formData);
+        apiForAdmin.post('/dashboard/uploadImage',{
+            fileData : formData
+        }).then((response)=>{
+            console.log(response);
+        }).catch((err)=>{
+            console.log(err.message);
+        });
         return;
     }
 
     const gettingAllData=(e)=>{
         e.preventDefault();
-        // write code from here for the axios api call to save this data
-        // write code here 
-        // you need to create new object of new FormDate(); 
-        // then object dot append('file' , file) maybe one by one 
-        // do this tommrow 
-
-            
-
-        console.log(formData);
-        return
-
         apiForAdmin.post('/dashboard/addProduct',{
             textData:formTextData, 
-            fileData:formFileData
         }).then((response)=>{
             console.log(response);
         }).catch((err)=>{
@@ -197,9 +194,10 @@ function AddProductForm() {
                                 placeholder="Display"
                                 name='file1'
                                 onChange={handelFileData}
+                                multiple
                             />
 
-                            <input 
+                            {/* <input 
                                 className="inputBox m-auto items-center" 
                                 type="file" 
                                 placeholder="Processor"
@@ -221,7 +219,7 @@ function AddProductForm() {
                                 placeholder="Rear Camera"
                                 name='file4' 
                                 onChange={handelFileData}
-                            />
+                            /> */}
                         </div>
 
                     </div>
