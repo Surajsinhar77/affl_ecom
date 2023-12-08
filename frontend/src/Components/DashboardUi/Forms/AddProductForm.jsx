@@ -2,7 +2,7 @@ import {useState} from 'react';
 import apiForAdmin from '../../../api/apiForAdmin';
 
 function AddProductForm() {
-    const [formTextData, setFormTextData] = useState([]);
+    const [formTextData, setFormTextData] = useState({});
     const [formFileData, setFormFileData] = useState([]);
 
     const handelformData = (e) =>{
@@ -13,21 +13,30 @@ function AddProductForm() {
     }
 
     const handelFileData = (e) =>{
-        setFormFileData({
-            ...formFileData, [e.target.name] : e.target.files[0]
+        setFormFileData([...e.target.files])
+    }
+
+    const handelFileUpload = ()=> {
+        const formData = new FormData();
+        formFileData.forEach((image, index)=>{
+            formData.append(`image ${index}`, image);
         })
+        
+        console.log("This is the form Data in the handelFileUplaod Function : ",formData);
+        apiForAdmin.post('/dashboard/uploadImage',{
+            fileData : formData
+        }).then((response)=>{
+            console.log(response);
+        }).catch((err)=>{
+            console.log(err.message);
+        });
+        return;
     }
 
     const gettingAllData=(e)=>{
         e.preventDefault();
-        // write code from here for the axios api call to save this data
-        // write code here 
-        // you need to create new object of new FormDate(); 
-        // then object dot append('file' , file) maybe one by one 
-        // do this tommrow 
         apiForAdmin.post('/dashboard/addProduct',{
             textData:formTextData, 
-            fileData:formFileData
         }).then((response)=>{
             console.log(response);
         }).catch((err)=>{
@@ -185,9 +194,10 @@ function AddProductForm() {
                                 placeholder="Display"
                                 name='file1'
                                 onChange={handelFileData}
+                                multiple
                             />
 
-                            <input 
+                            {/* <input 
                                 className="inputBox m-auto items-center" 
                                 type="file" 
                                 placeholder="Processor"
@@ -209,12 +219,15 @@ function AddProductForm() {
                                 placeholder="Rear Camera"
                                 name='file4' 
                                 onChange={handelFileData}
-                            />
+                            /> */}
                         </div>
 
                     </div>
                     <div className="w-full flex justify-center">
-                        <button className="border-2 h-10 px-10 rounded border-green-600 my-5 text-red font-bold">Upload</button>
+                        <button 
+                            className="border-2 h-10 px-10 rounded border-green-600 my-5 text-red font-bold"
+                            onClick={handelFileUpload}
+                            >Upload</button>
                     </div>
                 </div>
 
@@ -369,9 +382,11 @@ function AddProductForm() {
                         </p>
                     </div>
                     <div className="col flex justify-center">
-                        <button className="border-2 h-10 px-10 rounded border-green-600 my-5 text-red font-bold"
-                        type='submit'
-                        >Submit</button>
+                        <input 
+                            className="border-2 h-10 px-10 rounded border-green-600 my-5 text-red font-bold cursor-pointer"
+                            type='submit'
+                            value={"Submit"}
+                        />
                     </div>
                 </div>
             </form>
