@@ -1,8 +1,10 @@
 const inventoryData = require('../model/addInventory.model');
+const multer = require('multer');
+
 
 const addItemsToInventary = async(req, res) => {
     const productData = req.body;
-    console.log(productData);
+    console.log("This is req files and it's data : ", req.files);
     // const {
     //     productName,
     //     category,
@@ -47,7 +49,18 @@ const addItemsToInventary = async(req, res) => {
     return res.json("I get the data Thank you");
 }
 
+
 const uploadImageForInventory = async (req, res) =>{
+
+    // try{
+        const fieldData = req.body;
+        const fileData = req.file;
+
+        console.log(fieldData);body
+        console.log(fileData);
+    // }catch(err){
+
+    // }
     console.log("hello ji");
     const formData = req.files
     const formDataArray = req.body;

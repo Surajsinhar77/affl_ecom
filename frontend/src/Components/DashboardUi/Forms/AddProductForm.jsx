@@ -16,28 +16,26 @@ function AddProductForm() {
         setFormFileData([...e.target.files])
     }
 
-    const handelFileUpload = ()=> {
+
+    const gettingAllData=(e)=>{
+        e.preventDefault();
+
         const formData = new FormData();
         formFileData.forEach((image, index)=>{
             formData.append(`image ${index}`, image);
         })
-        
-        console.log("This is the form Data in the handelFileUplaod Function : ",formData);
-        apiForAdmin.post('/dashboard/uploadImage',{
-            fileData : formData
-        }).then((response)=>{
-            console.log(response);
-        }).catch((err)=>{
-            console.log(err.message);
-        });
-        return;
-    }
-
-    const gettingAllData=(e)=>{
-        e.preventDefault();
-        apiForAdmin.post('/dashboard/addProduct',{
-            textData:formTextData, 
-        }).then((response)=>{
+        console.log("This is type of file Data => : ",formFileData);
+        apiForAdmin.post('/dashboard/addProduct',
+            {
+                formData:formFileData,
+                formTextData
+            },
+            {    
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            }
+        ).then((response)=>{
             console.log(response);
         }).catch((err)=>{
             console.log(err.message);
@@ -226,7 +224,7 @@ function AddProductForm() {
                     <div className="w-full flex justify-center">
                         <button 
                             className="border-2 h-10 px-10 rounded border-green-600 my-5 text-red font-bold"
-                            onClick={handelFileUpload}
+                            
                             >Upload</button>
                     </div>
                 </div>
