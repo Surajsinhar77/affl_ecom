@@ -16,33 +16,23 @@ function AddProductForm() {
         setFormFileData([...e.target.files])
     }
 
-
+    // i Need to do this thing
     const gettingAllData=(e)=>{
         e.preventDefault();
 
-        const formData = new FormData();
-        formFileData.forEach((image, index)=>{
-            formData.append(`image ${index}`, image);
-        })
-        console.log("This is type of file Data => : ",formFileData);
         apiForAdmin.post('/dashboard/addProduct',
             {
-                formData:formFileData,
-                formTextData
+                image: formFileData[0],
+                textData: formTextData,
             },
-            {    
-                headers: {
-                    "Content-Type": "multipart/form-data",
-                },
-            }
-        ).then((response)=>{
+        )
+        .then((response)=>{
             console.log(response);
-        }).catch((err)=>{
+            alert(response.data.message);
+        })
+        .catch((err)=>{
             console.log(err.message);
         });
-
-        console.log("This is the files and Data :", formFileData);
-        console.log("This is text form Data :",formTextData);
     }
 
     return (
@@ -246,7 +236,7 @@ function AddProductForm() {
 
                                 <input 
                                     className="inputBox h-8 pl-3 rounded border border-gray-500" 
-                                    type="text" 
+                                    type="number" 
                                     placeholder="Rs.25000"
                                     name='fv1Price'
                                     onChange={handelformData}
@@ -273,7 +263,7 @@ function AddProductForm() {
 
                                 <input 
                                     className="inputBox h-8 pl-3 rounded border border-gray-500" 
-                                    type="text" 
+                                    type="number" 
                                     placeholder="Rs.25000"
                                     name='fv2Price'
                                     onChange={handelformData}

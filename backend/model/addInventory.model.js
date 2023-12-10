@@ -52,10 +52,6 @@ function enterItemSchemaGet(){
                 type : String,
                 required :true,
             },
-            productSpecStorage :{
-                type : String,
-                required :true,
-            },
             productSpecOs :{
                 type : String,
                 required :true,
@@ -63,8 +59,24 @@ function enterItemSchemaGet(){
         },
 
         ProductPicture:{
-            type :Array,
-            required :true,
+            image:{
+                data:{
+                    type : Buffer,
+                    required :true,
+                },
+                filename:{
+                    type : String,
+                    required : true,
+                },
+                contentType:{
+                    type : String,
+                    required : true,
+                },
+                uploadingDate:{
+                    type : String,
+                    required : true,
+                }
+            }
         },
 
         varient : {
