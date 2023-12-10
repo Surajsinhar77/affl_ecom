@@ -1,8 +1,9 @@
 const {addItemsToInventary, uploadImageForInventory} = require('../controller/dashboard.controller');
 const express = require('express');
 const router = express.Router();
+const upload = require('../middleware/multer.Uploader');
 
-router.post('/addProduct', addItemsToInventary);
-router.post('/uploadImage', uploadImageForInventory);
+router.post('/addProduct', upload.single('image') ,addItemsToInventary);
+// router.post('/uploadImage', uploadImageForInventory);
 
 module.exports = router;

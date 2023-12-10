@@ -16,35 +16,23 @@ function AddProductForm() {
         setFormFileData([...e.target.files])
     }
 
-    const handelFileUpload = ()=> {
-        const formData = new FormData();
-        formFileData.forEach((image, index)=>{
-            formData.append(`image ${index}`, image);
-        })
-        
-        console.log("This is the form Data in the handelFileUplaod Function : ",formData);
-        apiForAdmin.post('/dashboard/uploadImage',{
-            fileData : formData
-        }).then((response)=>{
-            console.log(response);
-        }).catch((err)=>{
-            console.log(err.message);
-        });
-        return;
-    }
-
+    // i Need to do this thing
     const gettingAllData=(e)=>{
         e.preventDefault();
-        apiForAdmin.post('/dashboard/addProduct',{
-            textData:formTextData, 
-        }).then((response)=>{
+
+        apiForAdmin.post('/dashboard/addProduct',
+            {
+                image: formFileData[0],
+                textData: formTextData,
+            },
+        )
+        .then((response)=>{
             console.log(response);
-        }).catch((err)=>{
+            alert(response.data.message);
+        })
+        .catch((err)=>{
             console.log(err.message);
         });
-
-        console.log("This is the files and Data :", formFileData);
-        console.log("This is text form Data :",formTextData);
     }
 
     return (
@@ -226,7 +214,7 @@ function AddProductForm() {
                     <div className="w-full flex justify-center">
                         <button 
                             className="border-2 h-10 px-10 rounded border-green-600 my-5 text-red font-bold"
-                            onClick={handelFileUpload}
+                            
                             >Upload</button>
                     </div>
                 </div>
@@ -248,7 +236,7 @@ function AddProductForm() {
 
                                 <input 
                                     className="inputBox h-8 pl-3 rounded border border-gray-500" 
-                                    type="text" 
+                                    type="number" 
                                     placeholder="Rs.25000"
                                     name='fv1Price'
                                     onChange={handelformData}
@@ -275,7 +263,7 @@ function AddProductForm() {
 
                                 <input 
                                     className="inputBox h-8 pl-3 rounded border border-gray-500" 
-                                    type="text" 
+                                    type="number" 
                                     placeholder="Rs.25000"
                                     name='fv2Price'
                                     onChange={handelformData}
