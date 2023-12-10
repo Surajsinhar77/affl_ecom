@@ -1,0 +1,38 @@
+[
+    {
+        "img" : "C:/Users/divan/Documents/Project/main project/affl_ecom/frontend/src/Components/Latestproduct/img/IPhone 15 pro.png",
+        "name" : "IPhone 15 Pro",
+        "tag" : "All Rounder",
+        "price" : "Rs. 120000"
+    },
+    {
+        "img" : "C:/Users/divan/Documents/Project/main project/affl_ecom/frontend/src/Components/Latestproduct/img/Samsung Flip.png",
+        "name" : "Samsung Flip",
+        "tag" : "Good Looking + Camera",
+        "price" : "Rs. 108000"
+    },
+    {
+        "img" : "C:/Users/divan/Documents/Project/main project/affl_ecom/frontend/src/Components/Latestproduct/img/Google Pixel 7a.png",
+        "name" : "Google Pixel 7a",
+        "tag" : "Camera",
+        "price" : "Rs. 55000"
+    },
+    {
+        "img" : "C:/Users/divan/Documents/Project/main project/affl_ecom/frontend/src/Components/Latestproduct/img/Motorola Edge 40.png",
+        "name" : "Motorola Edge 40",
+        "tag" : "Gaming",
+        "price" : "Rs. 42000"
+    },
+    {
+        "img" : "C:/Users/divan/Documents/Project/main project/affl_ecom/frontend/src/Components/Latestproduct/img/Samsung S22.png",
+        "name" : "Samsung Galaxy S22",
+        "tag" : "Display",
+        "price" : "Rs. 50000"
+    },
+    {
+        "img" : "./img/Nothing Phone 2.png",
+        "name" : "Nothing Phone 2",
+        "tag" : "Good Looking",
+        "price" : "Rs. 60000"
+    }
+]

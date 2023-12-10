@@ -12,6 +12,9 @@ module.exports = {
   settings: { react: { version: '18.2' } },
   plugins: ['react-refresh'],
   rules: {
+    test: /\.json$/,
+    loader: 'json-loader',
+    type: 'javascript/auto',
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },

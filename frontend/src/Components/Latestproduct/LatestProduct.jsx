@@ -1,5 +1,7 @@
 import React from 'react'
 import Productcard from './Productcard'
+import data from './data.json';
+
 
 function LatestProduct({item}) {
 
@@ -44,7 +46,7 @@ function LatestProduct({item}) {
             </div>
             <div className="latestProducts w-4/5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 m-auto">
                 {
-                    ProjectList.map((item,index)=>
+                    data.map((item,index)=>
                         <Productcard key={index} project={item}/>
                     )
                 }
