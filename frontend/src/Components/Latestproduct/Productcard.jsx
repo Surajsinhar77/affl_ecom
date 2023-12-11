@@ -4,16 +4,16 @@ import {SiV} from 'react-icons/si';
 import { Link } from 'react-router-dom';
 import ProdcutImage from '../../assets/Img/headphone.jpg'
 
-function Productcard({project}){
-   
+function Productcard(props){
+    const {project, image} =  props;
     return (
         <div>
             <div className="cardBody  border m-auto bg-white shadow-md rounded-lg overflow-hidden mb-5">
                 
 
-                <div className="productImage w-full hover:bg-gray-200 hover:liner">
+                <div className="productImage w-full h-72 hover:bg-gray-200 hover:liner flex justify-center">
                     <Link to='/product'>
-                    <img src={project.img} className="h-72 w-full object-cover"  alt="project image" />
+                    <img src={image} className=" h-72 w-fit object-cover"  alt="project image" />
                     </Link>
                 </div>
 
@@ -25,7 +25,7 @@ function Productcard({project}){
                         <h2 className='text-red-400'>Rs: <span>{project.price}</span></h2>
                     </div>
                     <div>
-                        <h2 className='font-bold text-red-500'>{project.tag}</h2>
+                        <h2 className='font-bold text-red-500'># {project.tag}</h2>
                     </div>
                 </div>
             </div>

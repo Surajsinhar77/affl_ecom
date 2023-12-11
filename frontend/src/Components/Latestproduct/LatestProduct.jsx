@@ -1,10 +1,16 @@
 import React from 'react'
 import Productcard from './Productcard'
 import data from './data.json';
-
+import img1 from './img/IPhone 15 pro.png'
+import img2 from './img/Samsung Flip.png'
+import img3 from './img/Google Pixel 7a.png'
+import img4 from './img/Motorola Edge 40.png'
+import img5 from './img/Samsung S22.png'
+import img6 from './img/Nothing Phone 2.png'
 
 function LatestProduct({item}) {
 
+    const img = [img1, img2, img3, img4, img5, img6];
     const ProjectList =[
         {
             name : "e-Commarce VegMarket Store",
@@ -47,7 +53,7 @@ function LatestProduct({item}) {
             <div className="latestProducts w-4/5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 m-auto">
                 {
                     data.map((item,index)=>
-                        <Productcard key={index} project={item}/>
+                        <Productcard key={index} project={item} image = {img[index]}/>
                     )
                 }
             </div>
