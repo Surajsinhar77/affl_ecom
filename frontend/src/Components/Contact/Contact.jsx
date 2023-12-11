@@ -6,7 +6,7 @@ function Contact() {
   return (
     // <ProfilePage/>
     <div>
-      <div className="mainContactDiv bg-slate-200 rounded w-[50%] m-auto">
+      <div className="mainContactDiv bg-slate-200 rounded w-[50%] m-auto mb-20">
         <div className="row my-5">
           <h1 className='mainHeading font-bold text-4xl'>Contact Us</h1>
         </div>

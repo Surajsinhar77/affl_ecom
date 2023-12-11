@@ -36,7 +36,7 @@ function Navbar() {
                     <div className="navationtion navItem w-3/5 mr-5 flex items-center text-gray-700">
                         <div className='flex justify-around w-full items-center'>
                             <Link to=""> Home </Link>
-                            <Link to="service"> Product </Link>
+                            <Link to="service"> Smartphone </Link>
                             <Link to="contact"> Contact </Link>
                             <Link to="about"> About </Link>
                         </div>
