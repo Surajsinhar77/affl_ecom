@@ -2,22 +2,21 @@ import React, { useEffect, useState } from 'react'
 import ProductCard from '../ProductCard/card'
 import { Link } from 'react-router-dom';
 import apiForAdmin from '../../api/apiForAdmin';
-import apiForUpload from '../../api/uploaderApi';
 
 function Service() {
 
+  const [data, setData] = useState([])
   useEffect(() => {
-    apiForAdmin.get('/items/getItems')
+    apiForAdmin.get('/dashboard/getItems')
     .then((response)=>{
-      console.log(response);
+      setData(response.data.data);
+      console.log(response.data.data);
       alert(response.data?.message);
     })
     .catch((err)=>{
         console.log(err.message);
     });
   }, []); 
-
-  const arr = [0, 0, 0, 0];
 
   return (
     <div className='flex flex-row m-auto w-full  text-black mt-5 justify-center'>
@@ -82,8 +81,8 @@ function Service() {
 
       <div className='flex flex-col w-3/4'>
         {
-          arr.map((a, index) =>
-            <Link to='/product'><ProductCard key={index}/></Link>
+          data.map((a, index) =>
+            <Link to='/product' key={index}><ProductCard detail={a}/></Link>
           )
         }
       </div>

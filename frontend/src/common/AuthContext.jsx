@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => {
     const AdminLoginFunction = (prop) =>{
         setAdminLogIn(true);
         localStorage.setItem('adminAccessToken', JSON.stringify(prop.accessToken));
-        localStorage.setItem('adminLogIn', "true");
+        localStorage.setItem('adminLogIn', 'true');
     }
 
     const login = (prop) => {
