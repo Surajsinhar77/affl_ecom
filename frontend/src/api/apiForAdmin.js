@@ -5,7 +5,7 @@ const apiForAdmin = axios.create({
     timeout: 1000,
     headers: {
         'Authorization': `Bearer ${localStorage.getItem('adminAccessToken')}`, 
-        "Content-Type": "multipart/form-data",
+        "Content-Type": "application/json",
 
     },
 })
