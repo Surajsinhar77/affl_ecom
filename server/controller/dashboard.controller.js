@@ -3,10 +3,8 @@ const inventoryData = require('../model/addInventory.model');
 const fs = require('fs');
 const mongoose = require('mongoose');
 
-
 const addItemsToInventary = async (req, res) => {
     const productImageData = req.file;
-
     const {
         productName,
         category,
@@ -108,6 +106,19 @@ const addItemsToInventary = async (req, res) => {
     }catch(err){
         console.log(err);
         return res.status(500).json({message: err.message});
+    }
+}
+
+const getAllItemData = async(res, req) =>{
+    try{
+        const allItemData = await inventoryData.find({});
+        if(allItemData){
+            return res.status(200).json({message: "Data is sucessFull sent", itemData : allItemData});
+        }
+        return res.status(200).json({message: "Database is Empty", itemData : allItemData});
+    }catch(err){
+        console.log(err);
+        return res.json({message: "err.message"});
     }
 }
 
@@ -215,7 +226,5 @@ const deleteItem = async (req, res) => {
 module.exports = {
     addItemsToInventary,
     uploadImageForInventory,
-    getItems,
-    getData,
-    deleteItem
+    getAllItemData
 }
