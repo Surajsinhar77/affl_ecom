@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import apiForAdmin from '../../../api/apiForAdmin';
+import apiForUpload from '../../../api/uploaderApi';
 
 function AddProductForm() {
     const [formTextData, setFormTextData] = useState({});
@@ -20,7 +20,7 @@ function AddProductForm() {
     const gettingAllData=(e)=>{
         e.preventDefault();
 
-        apiForAdmin.post('/dashboard/addProduct',
+        apiForUpload.post('/dashboard/addProduct',
             {
                 image: formFileData[0],
                 textData: formTextData,

@@ -1,9 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ProductCard from '../ProductCard/card'
 import { Link } from 'react-router-dom';
+import apiForAdmin from '../../api/apiForAdmin';
+import apiForUpload from '../../api/uploaderApi';
 
 function Service() {
+
+  useEffect(() => {
+    apiForAdmin.get('/items/getItems')
+    .then((response)=>{
+      console.log(response);
+      alert(response.data?.message);
+    })
+    .catch((err)=>{
+        console.log(err.message);
+    });
+  }, []); 
+
   const arr = [0, 0, 0, 0];
+
   return (
     <div className='flex flex-row m-auto w-full  text-black mt-5 justify-center'>
       <div className='h-full bg-white w-[23%] mr-2 flex flex-col'>

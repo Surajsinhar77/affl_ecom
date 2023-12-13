@@ -4,11 +4,15 @@ const secretkey = params.secretkey;
 
 const verifyToken = (req, res, next) => {
     const Authorization = req.headers['authorization'];
+    console.log(Authorization)
     try{
         const token = Authorization.split(' ')[1];
+        
+        console.log("token: ", token)
         if(token != undefined && token != null){
             if(token) {
                 jwt.verify(token, secretkey, (err, decoded) => {
+                    console.log("error : ", err)
                     if (err) {
                         return res.status(401).json({ message: 'Invalid token' });
                     }

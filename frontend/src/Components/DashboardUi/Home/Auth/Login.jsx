@@ -21,10 +21,12 @@ export default function LoginCard() {
     e.preventDefault();
     const { email, password } = form;
 
+    console.log(email, password);
     apiForAdmin.post('/admin/login', {email, password})
     .then((response)=>{
+      console.log(response.data?.result.token);
       AdminLoginFunction({
-        accessToken:response.data?.result.token , 
+        accessToken:response.data?.result.token, 
         userLogin:true, adminData: 
         response.data?.result
       });

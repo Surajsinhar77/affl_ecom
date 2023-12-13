@@ -130,7 +130,22 @@ const uploadImageForInventory = async (req, res) => {
     return res.json({ message: "Data is reviced" });
 }
 
+const getItems = async (req, res) => {
+    console.log("hello")
+    try{
+        const data = await inventoryData.find({});
+        if(data){
+            return res.json({message : "Data fetched Successfully", data : data});
+        }
+        return res.status(404).json({message : "Data is empty"})
+    }catch(error){
+        console.error("message : ", error.message);
+        return res.json({message :error.message, error: error});
+    }
+}
+
 module.exports = {
     addItemsToInventary,
-    uploadImageForInventory
+    uploadImageForInventory,
+    getItems
 }
