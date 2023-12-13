@@ -24,14 +24,16 @@ export default function LoginCard() {
     console.log(email, password);
     apiForAdmin.post('/admin/login', {email, password})
     .then((response)=>{
-      console.log("fg: ", response.data?.result.token);
-      AdminLoginFunction({
-        accessToken:response.data?.result.token, 
-        userLogin:true, 
-        adminData:response.data?.result
-      });
+      
+      if(response.data.result?.token){
+        AdminLoginFunction({
+          accessToken:response.data?.result?.token, 
+          userLogin:true, 
+          adminData: response.data?.result
+        });
+        navigate("/admin/dashboard");
+      }
 
-      navigate("/admin/dashboard");
       alert(response.data.message);
     }).catch((err)=>{
       console.log(err);

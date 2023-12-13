@@ -4,6 +4,7 @@ const serviceAuth = require('../service/auth');
 
 const adminLogin = async(req, res)=>{
     const {email, password} = req.body;
+    console.log("From the admin Login Function:",email, password);
 
     try{
         const userExist = await adminModel.findOne({email: email});
