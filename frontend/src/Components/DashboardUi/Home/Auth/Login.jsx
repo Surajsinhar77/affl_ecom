@@ -23,13 +23,16 @@ export default function LoginCard() {
 
     apiForAdmin.post('/admin/login', {email, password})
     .then((response)=>{
-      AdminLoginFunction({
-        accessToken:response.data?.result.token , 
-        userLogin:true, adminData: 
-        response.data?.result
-      });
+      
+      if(response.data.result?.token){
+        AdminLoginFunction({
+          accessToken:response.data?.result?.token, 
+          userLogin:true, 
+          adminData: response.data?.result
+        });
+        navigate("/admin/dashboard");
+      }
 
-      navigate("/admin/dashboard");
       alert(response.data.message);
     }).catch((err)=>{
       console.log(err);

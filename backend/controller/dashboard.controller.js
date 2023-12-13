@@ -3,10 +3,8 @@ const inventoryData = require('../model/addInventory.model');
 const fs = require('fs');
 
 
-
 const addItemsToInventary = async (req, res) => {
     const productImageData = req.file;
-
     const {
         productName,
         category,
@@ -111,6 +109,19 @@ const addItemsToInventary = async (req, res) => {
     }
 }
 
+const getAllItemData = async(res, req) =>{
+    try{
+        const allItemData = await inventoryData.find({});
+        if(allItemData){
+            return res.status(200).json({message: "Data is sucessFull sent", itemData : allItemData});
+        }
+        return res.status(200).json({message: "Database is Empty", itemData : allItemData});
+    }catch(err){
+        console.log(err);
+        return res.json({message: "err.message"});
+    }
+}
+
 
 const uploadImageForInventory = async (req, res) => {
 
@@ -132,5 +143,6 @@ const uploadImageForInventory = async (req, res) => {
 
 module.exports = {
     addItemsToInventary,
-    uploadImageForInventory
+    uploadImageForInventory,
+    getAllItemData
 }
