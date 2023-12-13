@@ -7,7 +7,8 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
+# .gitignore
+node_modules/
 params.json
 dist
 dist-ssr
