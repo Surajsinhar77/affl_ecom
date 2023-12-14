@@ -4,7 +4,7 @@ const serviceAuth = require('../service/auth');
 
 const adminLogin = async(req, res)=>{
     const {email, password} = req.body;
-    console.log("From the admin Login Function:",email, password);
+    console.log(res.body);
 
     try{
         const userExist = await adminModel.findOne({email: email});
@@ -52,27 +52,13 @@ const addAdmin = async(req, res)=>{
         res.setHeader('Authorization' , `Bearer ${token}`);
         return res.status(200).json({ message: "New Admin is sucessfull Added", result});
     } catch (err) {
+        console.log("here is the errror ", err);
         return res.status(404).json({message: err.message, err});
     }
 }
 
-const getUsers = async (req, res) => {
-    try{
-        const data = await adminModel.find({});
-
-        if(data){
-            res.status(200).json({msg: "Users data fetched successfully", data : data})
-        }else{
-            res.status(404).json({msg: "No user found"})
-        }
-    }catch(err){
-        console.log(err)
-        res.status(500).json({msg: "Internal Server Error!"})
-    }
-}
 
 module.exports={
     adminLogin,
-    addAdmin,
-    getUsers
+    addAdmin
 }
