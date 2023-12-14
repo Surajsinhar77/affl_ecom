@@ -32,6 +32,11 @@ export const AuthProvider = ({ children }) => {
         localStorage.setItem('adminAccessToken', JSON.stringify(prop.accessToken));
         localStorage.setItem('adminLogIn', 'true');
     }
+    const AdminLogoutFunction = () =>{
+        setAdminLogIn(false);
+        localStorage.removeItem('adminAccessToken');
+        localStorage.removeItem('adminLogIn');
+    }
 
     const login = (prop) => {
         setIsLoggedIn(true);
@@ -59,6 +64,7 @@ export const AuthProvider = ({ children }) => {
                 SetUserData,
                 AdminLoginFunction,
                 adminLogIn,
+                AdminLogoutFunction
             }}>
             {children}
         </AuthContext.Provider>
