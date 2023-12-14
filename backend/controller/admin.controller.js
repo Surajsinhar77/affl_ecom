@@ -8,24 +8,21 @@ const adminLogin = async(req, res)=>{
 
     try{
         const userExist = await adminModel.findOne({email: email});
-        console.log(userExist)
         if(!userExist){
-            return res.json({message: "user doesn't Exist"});
+            return res.status(404).json({message: "User not found", user : false});
         }
-        
             const userExistInfo = await bcrypt.compare(password, userExist.password);
             if(userExistInfo){
-                console.log(userExistInfo)
                 const token = serviceAuth.setUserToken({name:userExist.name,email});
                 // res.cookie('adminUid', token, {httpOnly: true,});
                 res.setHeader('Authorization' , `Bearer ${token}`);
                 return res.status(200).json({message:"You are SuccessFull logged in",
                 result: userExist, userExistInfo})
             }
-            return res.json({message: "Invalid username or Password" ,userExistInfo});
+            return res.status(401).json({message: "Invalid username or Password" ,userExistInfo});
     }catch(err){
         console.log(err);
-        res.status(404).json({message:"You are getting Error",errorMsg:err});
+        res.status(500).json({message:"You are getting Error",errorMsg:err});
     }
 }
 

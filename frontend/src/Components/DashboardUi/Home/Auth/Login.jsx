@@ -17,28 +17,39 @@ export default function LoginCard() {
     });
   }
 
+  // Need to make Proper Function for this and hendel all the error and code 
   async function transferdata(e) {
     e.preventDefault();
     const { email, password } = form;
-
-    console.log(email, password);
-    apiForAdmin.post('/admin/login', {email, password})
-    .then((response)=>{
-      console.log("fg: ", response.data?.result.token);
-      AdminLoginFunction({
-        accessToken:response.data?.result.token, 
-        userLogin:true, 
-        adminData:response.data?.result
+  
+    apiForAdmin.post('/admin/login', { email, password })
+      .then((response) => {
+        if (response.status === 200) {
+          AdminLoginFunction({
+            accessToken: response.data?.result.token,
+            userLogin: true,
+            adminData: response.data?.result
+          });
+          navigate("/admin/dashboard");
+          return alert(response.data.message + " Status code: " + response.status);
+        } else {
+          throw new error(response.data.message + " Status code: " + response.status);
+        }
+      })
+      .catch((err) => {
+        switch (err.response?.status) {
+          case 401:
+            alert(err.response.data.message);
+            break;
+          case 404:
+            alert(err.response.data.message);
+            break;
+          default:
+            alert(err.message);
+        }
       });
-
-      navigate("/admin/dashboard");
-      alert(response.data.message);
-    }).catch((err)=>{
-      console.log(err);
-      alert(err.message);
-    })
   }
-
+  
 
   return (
     <div className=" flex items-center justify-center w-full bg-gray-100 backdrop-blur-sm h-[100vh] p-10 text-black flex-col">
