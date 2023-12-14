@@ -123,7 +123,6 @@ const uploadImageForInventory = async (req, res) => {
     // }catch(err){
 
     // }
-    console.log("hello ji");
     const formData = req.files
     const formDataArray = req.body;
     console.log(formData, formDataArray);
@@ -131,8 +130,8 @@ const uploadImageForInventory = async (req, res) => {
 }
 
 const getItems = async (req, res) => {
-    console.log("hello")
-    try{
+    try{    console.log("hello")
+
         const data = await inventoryData.find({});
         if(data){
             return res.json({message : "Data fetched Successfully", data : data});

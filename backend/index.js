@@ -22,9 +22,9 @@ const dashboardApiCall = require('./routes/items.routes');
 
 // Saprate Routes
 app.use('/auth', authUserRouter);
-app.use('/items', userVerfication ,productIteamRoutes);
+// app.use('/items',  ,productIteamRoutes);
 app.use('/admin', adminRoutes);
-app.use('/dashboard', dashboardApiCall)
+app.use('/dashboard', userVerfication, dashboardApiCall)
 
 
 // Database Connection
@@ -35,6 +35,6 @@ main('mongodb://127.0.0.1:27017/demodb').then((resp)=>{
 })
 
 
-app.listen(8000, ()=>{
-    console.log("Server start on http://localhost:8000");
+app.listen(8001, ()=>{
+    console.log("Server start on http://localhost:8001");
 })

@@ -1,3 +1,6 @@
 Today when I try to login as a admin then i got some error.
 Then I get to know that no data is received by backend.
 Then i gat to know that the content type i want to send is in JSON format but i declared some other content type.
+
+
+Convert base 64 image to original image
