@@ -130,7 +130,7 @@ const uploadImageForInventory = async (req, res) => {
 }
 
 const getItems = async (req, res) => {
-    try{    console.log("hello")
+    try{
 
         const data = await inventoryData.find({});
         if(data){
