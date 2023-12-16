@@ -12,7 +12,7 @@ function Service() {
     .then((response)=>{
       setData(response.data.data);
       console.log(response.data.data);
-      alert(response.data?.message);
+      // alert(response.data?.message);
     })
     .catch((err)=>{
         console.log(err.message);
@@ -83,7 +83,7 @@ function Service() {
       <div className='flex flex-col w-3/4'>
         {
           data.map((a, index) =>
-            <Link to={`/product/${a.project.name}`} key={index}><ProductCard detail={a}/></Link>
+            <Link to={`/product/${a.productName}`} key={index}><ProductCard detail={a}/></Link>
           )
         }
         <Routes>
