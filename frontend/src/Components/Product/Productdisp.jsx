@@ -7,6 +7,7 @@ import { BsBatteryCharging } from "react-icons/bs";
 import { BsMemory } from "react-icons/bs";
 import { BiMemoryCard } from "react-icons/bi";
 import { PiAndroidLogoLight } from "react-icons/pi";
+import {useParams} from 'react-router-dom';
 
 import Productiondetail from './Productiondetail';
 import ProductDesc from './ProductDesc';
@@ -18,6 +19,8 @@ import Review from '../Users/Review';
 import UserRating from '../Users/UserRating';
 
 function Productdisp() {
+    const {c} = useParams();
+    console.log(c);
 
     const [c1, setC1] = useState(true);
     const [c2, setC2] = useState(true);

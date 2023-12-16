@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ProductCard from '../ProductCard/card'
-import { Link } from 'react-router-dom';
+import Productdisp from '../Product/Productdisp';
+import { Link, Route, Routes  } from 'react-router-dom';
 import apiForAdmin from '../../api/apiForAdmin';
 
 function Service() {
@@ -82,9 +83,12 @@ function Service() {
       <div className='flex flex-col w-3/4'>
         {
           data.map((a, index) =>
-            <Link to='/product' key={index}><ProductCard detail={a}/></Link>
+            <Link to={`/product/${a.project.name}`} key={index}><ProductCard detail={a}/></Link>
           )
         }
+        <Routes>
+          <Route path="product/:productId" element={<Productdisp/>} />
+        </Routes>
       </div>
     </div>
   )
