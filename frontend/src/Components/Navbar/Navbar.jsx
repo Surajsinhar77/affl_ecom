@@ -1,11 +1,12 @@
 import React, { Fragment, useEffect } from 'react'
-import { Link, Outlet, useNavigate} from 'react-router-dom';
+import { Link, Outlet, useNavigate, Route, Routes } from 'react-router-dom';
 import { BiLogoMediumOld,BiUser } from "react-icons/bi";
 // import Menubar from './Menubar';
 import { useAuth } from '../../common/AuthContext';
 // import Dropdown from './Dropdown';
 import { useState } from 'react';
 import apiForAdmin from '../../api/apiForAdmin';
+import Productdisp from '../Product/Productdisp';
 
 
 
@@ -75,7 +76,14 @@ function Navbar() {
                                 </ul>
                             </div>
                         </div>
-                        <button className='border rounded py-2 px-3 ml-3 border-gray-600 hover:border-green-700 hover:text-gray-600'>Search</button>
+                        <div>
+                            <Link to={`/product/${searchValue}`}>
+                                <button className='border rounded py-2 px-3 ml-3 border-gray-600 hover:border-green-700 hover:text-gray-600'>Search</button>
+                            </Link>
+                            <Routes>
+                                <Route path="product/:productId" element={<Productdisp/>} />
+                            </Routes>
+                        </div>
                     </div>
                 </div>
                 

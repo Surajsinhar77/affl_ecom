@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import imag1 from '../../assets/Img/headphone.jpg'
 import { BsDisplay } from "react-icons/bs";
 import { GiProcessor } from "react-icons/gi";
@@ -18,13 +18,22 @@ import Review from '../Users/Review';
 
 import UserRating from '../Users/UserRating';
 
-function Productdisp() {
-    const {c} = useParams();
-    console.log(c);
+function Productdisp({a}) {
+    const data = useParams();
+    console.log(data);
 
+    // console.log("data is this:  ", a);
     const [c1, setC1] = useState(true);
     const [c2, setC2] = useState(true);
-    
+    // const [productData, setProductData] = useState([]);
+    // useEffect(()=>{
+    //     const data2 = fetch('/http://localhost:3001/'+data).then((response)=>{
+    //         console.log("hdc:",response);
+    //         setProductData(response?.data);
+    //     }).catch((err)=>{
+    //         console.log(err);
+    //     })
+    // },[])
     const specs = [
         {
             specsName: "Display",

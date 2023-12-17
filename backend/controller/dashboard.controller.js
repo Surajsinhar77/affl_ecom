@@ -168,13 +168,12 @@ const getData = async (req, res)=>{
         const data = await inventoryData.find(
             { 'productName': { $regex: re } },
             { 'productName': 1, '_id': 0 }
-          );
-        console.log(" data : ", data);
-            if(!data){
-                return res.status(404).json({message:"Data is not present "});
-            }
-    
-            return res.status(200).json({message:"data is fetch", data : data});
+        );
+        if(!data){
+            return res.status(404).json({message:"Data is not present "});
+        }
+
+        return res.status(200).json({message:"data is fetch", data : data});
     }catch(err){
         // console.err(err);
         console.log(err.status);

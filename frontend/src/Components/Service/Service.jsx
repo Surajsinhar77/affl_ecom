@@ -20,6 +20,7 @@ function Service() {
   }, []); 
 
   return (
+
     <div className='flex flex-row m-auto w-full  text-black mt-5 justify-center'>
       <div className='h-full bg-white w-[23%] mr-2 flex flex-col'>
         <div className=' m-6 text-2xl font-semibold'>
@@ -82,7 +83,7 @@ function Service() {
 
       <div className='flex flex-col w-3/4'>
         {
-          data.map((a, index) =>
+          data?.map((a, index) =>
             <Link to={`/product/${a.productName}`} key={index}><ProductCard detail={a}/></Link>
           )
         }
