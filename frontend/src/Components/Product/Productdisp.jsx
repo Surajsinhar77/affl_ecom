@@ -8,15 +8,13 @@ import { BsMemory } from "react-icons/bs";
 import { BiMemoryCard } from "react-icons/bi";
 import { PiAndroidLogoLight } from "react-icons/pi";
 import {useParams} from 'react-router-dom';
-
 import Productiondetail from './Productiondetail';
 import ProductDesc from './ProductDesc';
 import ProductPrice from './ProductPrice';
-
 import productDataFile from './ProductData.json';
 import Review from '../Users/Review';
-
 import UserRating from '../Users/UserRating';
+import api from '../../api/api';
 
 function Productdisp({a}) {
     const data = useParams();
@@ -25,15 +23,17 @@ function Productdisp({a}) {
     // console.log("data is this:  ", a);
     const [c1, setC1] = useState(true);
     const [c2, setC2] = useState(true);
-    // const [productData, setProductData] = useState([]);
-    // useEffect(()=>{
-    //     const data2 = fetch('/http://localhost:3001/'+data).then((response)=>{
-    //         console.log("hdc:",response);
-    //         setProductData(response?.data);
-    //     }).catch((err)=>{
-    //         console.log(err);
-    //     })
-    // },[])
+    const [productData, setProductData] = useState([]);
+    
+    useEffect(()=>{
+        api.get('/dashboard/getData'+data).then((response)=>{
+            console.log(response);
+        }).catch((err)=>{
+            console.log(err);
+            return
+        })
+    },[productData]);
+
     const specs = [
         {
             specsName: "Display",
