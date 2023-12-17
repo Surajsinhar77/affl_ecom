@@ -31,6 +31,16 @@ function Navbar() {
     const [sugg, setSugg] = useState([]);
     const [searchValue, setValue] = useState("");
 
+    const data = [
+        
+        {
+            productName:"a1"
+        },
+        {
+            productName:"a2"
+        }
+    ]
+
     useEffect(() => {
         apiForAdmin.get('/dashboard/getData?'+new URLSearchParams({data:searchValue}).toString())
         .then((response) => {
@@ -42,6 +52,9 @@ function Navbar() {
             console.log(err)
         })
     }, [searchValue]);
+    <Routes>
+    <Route path="product/:productId" element={<Productdisp/>} />
+  </Routes>
 
     return (
         <div className='flex flex-col justify-center items-center'>
@@ -76,14 +89,9 @@ function Navbar() {
                                 </ul>
                             </div>
                         </div>
-                        <div>
                             <Link to={`/product/${searchValue}`}>
                                 <button className='border rounded py-2 px-3 ml-3 border-gray-600 hover:border-green-700 hover:text-gray-600'>Search</button>
                             </Link>
-                            <Routes>
-                                <Route path="product/:productId" element={<Productdisp/>} />
-                            </Routes>
-                        </div>
                     </div>
                 </div>
                 
