@@ -34,7 +34,6 @@ main('mongodb://127.0.0.1:27017/demodb').then((resp)=>{
   console.log(err);
 })
 
+const PORT = process.env.PORT || 8000
 
-app.listen(8000, ()=>{
-    console.log("Server start on http://localhost:8000");
-})
+app.listen(PORT, ()=> console.log("The Server is lisenting on : http://localhost:"+PORT));
