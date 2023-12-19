@@ -141,7 +141,7 @@ const uploadImageForInventory = async (req, res) => {
 }
 
 const getItems = async (req, res) => {
-    try{    console.log("hello")
+    try{
 
         const data = await inventoryData.find({});
         if(data){
@@ -154,8 +154,47 @@ const getItems = async (req, res) => {
     }
 }
 
+const getDataById = async (req, res)=>{
+    console("hfhf");
+    const _id = req.params;
+
+    try{
+        const productId = new mongoose.Types.ObjectId(_id);
+        const data = await inventoryData.findOne(productId);
+        if(!data){
+            return res.status(404).json({message:"Data is not present "});
+        }
+
+        return res.status(200).json({message:"data is fetch", data : data});
+    }catch(err){
+        console.err(err);
+        console.log(err.status);
+        return res.status(err?.status).json({message: err.message});
+    }
+}
+
+const getData = async (req, res)=>{
+    const re = new RegExp(req.query.data);
+    try{
+        const data = await inventoryData.find(
+            { 'productName': { $regex: re } },
+            { 'productName': 1, '_id': 0 }
+        );
+        if(!data){
+            return res.status(404).json({message:"Data is not present "});
+        }
+
+        return res.status(200).json({message:"data is fetch", data : data});
+    }catch(err){
+        // console.err(err);
+        console.log(err.status);
+        // return res.status(err?.status).json({message: err.message});
+    }
+}
+
 module.exports = {
     addItemsToInventary,
     uploadImageForInventory,
-    getItems
+    getItems,
+    getData
 }

@@ -1,10 +1,13 @@
-import React from 'react'
-import { Link, Outlet, useNavigate} from 'react-router-dom';
+import React, { Fragment, useEffect } from 'react'
+import { Link, Outlet, useNavigate, Route, Routes } from 'react-router-dom';
 import { BiLogoMediumOld,BiUser } from "react-icons/bi";
 // import Menubar from './Menubar';
 import { useAuth } from '../../common/AuthContext';
 // import Dropdown from './Dropdown';
 import { useState } from 'react';
+import apiForAdmin from '../../api/apiForAdmin';
+import Productdisp from '../Product/Productdisp';
+
 
 
 function Navbar() {
@@ -25,6 +28,33 @@ function Navbar() {
     const menu = ['Setting', 'Blog', 'About']
     const menu2 = ['profile', 'Service', 'Blog', 'About']
 
+    const [sugg, setSugg] = useState([]);
+    const [searchValue, setValue] = useState("");
+
+    const data = [
+        
+        {
+            productName:"a1"
+        },
+        {
+            productName:"a2"
+        }
+    ]
+
+    useEffect(() => {
+        apiForAdmin.get('/dashboard/getData?'+new URLSearchParams({data:searchValue}).toString())
+        .then((response) => {
+            console.log(response.data.data)
+            setSugg(response.data.data)
+            // alert(response.data.message)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    }, [searchValue]);
+    <Routes>
+    <Route path="product/:productId" element={<Productdisp/>} />
+  </Routes>
 
     return (
         <div className='flex flex-col justify-center items-center'>
@@ -41,9 +71,27 @@ function Navbar() {
                             <Link to="about"> About </Link>
                         </div>
                     </div>
-                    <div className="serchBar w-3/5">
-                        <input type="text" placeholder='Search' className='focus:border border rounded p-2 w-3/5'/>
-                        <button className='border rounded py-2 px-3 ml-3 border-gray-600 hover:border-green-700 hover:text-gray-600'>Search</button>
+                    <div className="serchBar w-3/5 flex">
+                        <div className=' w-3/5 h-10'>
+                            <input type="text" placeholder='Search' className='focus:border border rounded p-2 w-full' onChange={(e) => setValue(e.target.value)}
+                            value={searchValue}/>
+                            <div className='relative bg-slate-300 border border-black z-20 '>
+                                <ul className='px-1'>
+                                    {
+                                        sugg.map((item, index) => 
+                                            <Fragment key={index}>
+                                                <li  
+                                                className='py-2 border'
+                                                onClick={()=>setValue(item.productName)}>{item.productName}</li>
+                                            </Fragment>
+                                        )
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                            <Link to={`/product/${searchValue}`}>
+                                <button className='border rounded py-2 px-3 ml-3 border-gray-600 hover:border-green-700 hover:text-gray-600'>Search</button>
+                            </Link>
                     </div>
                 </div>
                 

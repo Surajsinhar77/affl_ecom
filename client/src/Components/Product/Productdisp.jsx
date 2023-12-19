@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import imag1 from '../../assets/Img/headphone.jpg'
 import { BsDisplay } from "react-icons/bs";
 import { GiProcessor } from "react-icons/gi";
@@ -7,21 +7,33 @@ import { BsBatteryCharging } from "react-icons/bs";
 import { BsMemory } from "react-icons/bs";
 import { BiMemoryCard } from "react-icons/bi";
 import { PiAndroidLogoLight } from "react-icons/pi";
-
+import {useParams} from 'react-router-dom';
 import Productiondetail from './Productiondetail';
 import ProductDesc from './ProductDesc';
 import ProductPrice from './ProductPrice';
-
 import productDataFile from './ProductData.json';
 import Review from '../Users/Review';
-
 import UserRating from '../Users/UserRating';
+import api from '../../api/api';
 
-function Productdisp() {
+function Productdisp({a}) {
+    const data = useParams();
+    console.log(data);
 
+    // console.log("data is this:  ", a);
     const [c1, setC1] = useState(true);
     const [c2, setC2] = useState(true);
+    const [productData, setProductData] = useState([]);
     
+    useEffect(()=>{
+        api.get('/dashboard/getData'+data).then((response)=>{
+            console.log(response);
+        }).catch((err)=>{
+            console.log(err);
+            return
+        })
+    },[productData]);
+
     const specs = [
         {
             specsName: "Display",

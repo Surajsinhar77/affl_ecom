@@ -1,4 +1,10 @@
-const {addItemsToInventary, uploadImageForInventory, getItems} = require('../controller/dashboard.controller');
+const {
+    addItemsToInventary, 
+    uploadImageForInventory, 
+    getItems,
+    getData
+} = require('../controller/dashboard.controller');
+
 const express = require('express');
 const router = express.Router();
 const upload = require('../middleware/multer.Uploader');
