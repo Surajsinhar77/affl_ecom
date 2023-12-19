@@ -45,7 +45,7 @@ function App() {
 
 
             <Route  path='/signup' element={<SignUp/>} />
-            {/* <Route path="*" element={<PageNotFound/>} /> */}
+            <Route path="*" element={<PageNotFound/>} />
             <Route path={`/Profile/${userData?.fullName}`} element={<Profile userData={userData?.fullName} />} />
 
             <Route  path='/signin' element={<SignIn/>} />
