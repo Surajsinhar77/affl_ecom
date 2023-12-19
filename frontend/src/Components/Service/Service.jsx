@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ProductCard from '../ProductCard/card'
-import { Link } from 'react-router-dom';
+import Productdisp from '../Product/Productdisp';
+import { Link, Route, Routes  } from 'react-router-dom';
 import apiForAdmin from '../../api/apiForAdmin';
 
 function Service() {
@@ -11,7 +12,7 @@ function Service() {
     .then((response)=>{
       setData(response.data.data);
       console.log(response.data.data);
-      alert(response.data?.message);
+      // alert(response.data?.message);
     })
     .catch((err)=>{
         console.log(err.message);
@@ -19,6 +20,7 @@ function Service() {
   }, []); 
 
   return (
+
     <div className='flex flex-row m-auto w-full  text-black mt-5 justify-center'>
       <div className='h-full bg-white w-[23%] mr-2 flex flex-col'>
         <div className=' m-6 text-2xl font-semibold'>
@@ -81,10 +83,13 @@ function Service() {
 
       <div className='flex flex-col w-3/4'>
         {
-          data.map((a, index) =>
-            <Link to='/product' key={index}><ProductCard detail={a}/></Link>
+          data?.map((a, index) =>
+            <Link to={`/product/${a.productName}`} key={index}><ProductCard detail={a}/></Link>
           )
         }
+        <Routes>
+          <Route path="product/:productId" element={<Productdisp/>} />
+        </Routes>
       </div>
     </div>
   )

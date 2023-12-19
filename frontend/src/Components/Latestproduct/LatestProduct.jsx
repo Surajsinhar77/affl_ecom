@@ -1,5 +1,7 @@
 import React from 'react'
 import Productcard from './Productcard'
+import Productdisp from '../Product/Productdisp';
+import { Link, Route, Routes  } from 'react-router-dom';
 import data from './data.json';
 import img1 from './img/IPhone 15 pro.png'
 import img2 from './img/Samsung Flip.png'
@@ -53,9 +55,12 @@ function LatestProduct({item}) {
             <div className="latestProducts w-4/5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 m-auto">
                 {
                     data.map((item,index)=>
-                        <Productcard key={index} project={item} image = {img[index]}/>
+                        <Link to={`/product/${item.name}`} key={index}><Productcard project={item} image = {img[index]}/></Link>
                     )
                 }
+                <Routes>
+                    <Route path="/product/:productId" element={<Productdisp/>} />
+                </Routes>
             </div>
         </div>
     )

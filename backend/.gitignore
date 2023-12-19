@@ -8,7 +8,7 @@ pnpm-debug.log*
 lerna-debug.log*
 
 # .gitignore
-node_modules/
+node_modules
 params.json
 dist
 dist-ssr
