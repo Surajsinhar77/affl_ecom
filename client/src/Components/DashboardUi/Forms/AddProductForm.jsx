@@ -36,7 +36,7 @@ function AddProductForm() {
     }
 
     return (
-        <div className="addItemform bg-yellow-50 w-3/5 m-auto p-10 rounded-md">
+        <div className="addItemform bg-yellow-50 m-auto p-10 rounded-md">
             <div className="heading4Form">
                 <h1 className="text-3xl uppercase font-medium mb-7 text-center underline">Add Items</h1>
             </div>

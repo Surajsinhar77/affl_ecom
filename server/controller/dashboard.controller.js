@@ -163,12 +163,21 @@ const getDataById = async (req, res)=>{
 }
 
 const getData = async (req, res)=>{
-    const re = new RegExp(req.query.data);
+    const q = req.query?.data;
+    var re;
+    if(q){
+        re = new RegExp(q);
+    }
     try{
-        const data = await inventoryData.find(
-            { 'productName': { $regex: re } },
-            { 'productName': 1, '_id': 0 }
-        );
+        var data;
+        if(q){
+            data = await inventoryData.find(
+                { 'productName': { $regex: re } },
+                { 'productName': 1, '_id': 0 }
+            );
+        }else{
+            data = await inventoryData.find();
+        }
         if(!data){
             return res.status(404).json({message:"Data is not present "});
         }

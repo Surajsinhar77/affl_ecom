@@ -14,6 +14,9 @@ import { useAuth } from './common/AuthContext';
 import Login from './Components/DashboardUi/Home/Auth/Login';
 import Dashboard from './Components/DashboardUi/Home/Dashboard';
 import AddProductForm from './Components/DashboardUi/Forms/AddProductForm';
+import ManageInventory from './Components/DashboardUi/Manage Inventory/manageInventory';
+import Favourites from './Components/Profile/Favourites';
+import AdminHome from './Components/DashboardUi/Home/Home';
 //Page not found
 import PageNotFound from './Components/Home/PageNotFound';
 
@@ -33,8 +36,11 @@ function App() {
           {/* This is the admin login system Start */}
             {(adminLogIn)?
                 <>
-                  <Route path='/admin/dashboard' element={<Dashboard/>} />
-                  <Route path='/admin/dashboard/additems' element={<AddProductForm/>} />
+                  <Route path='/admin/dashboard/' element={<Dashboard/>} >
+                    <Route index element={<AdminHome/>}/>
+                    <Route path='additems' element={<AddProductForm/>} />
+                    <Route path='manageInventory' element={<ManageInventory/>} />
+                  </Route>
                 </>
                 :
                 <>
@@ -56,10 +62,12 @@ function App() {
               <Route path='service' element={<Service/>} />
               <Route path='contact' element={<Contact/>} />
               <Route path='product/:id' element={<Productdisp/>} />
-              <Route path='profile' element={<ProfilePage/>} />
+              <Route path='profile' element={<ProfilePage/>} >
+                <Route path='favourite' element={<Favourites/>} />
+                <Route index path='userProfile' element={<Profile/>} />
               </Route>
+            </Route>
           </Routes>
-          <Outlet/>
         </BrowserRouter>
       </div>
     </>

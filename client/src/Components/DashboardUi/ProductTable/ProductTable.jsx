@@ -1,6 +1,6 @@
 import { Button, Card, Typography } from "@material-tailwind/react";
 
-const TABLE_HEAD = ["S.No", "Name", "Catogary", "Publish Date", "Action"];
+const TABLE_HEAD = ["S.No", "Name", "Category", "Join Date"];
 
 const TABLE_ROWS = [
     {
@@ -98,17 +98,6 @@ function ProductTable() {
                                         className="font-normal"
                                     >
                                         {date}
-                                    </Typography>
-                                </td>
-                                <td className={classes}>
-                                    <Typography
-                                        as="a"
-                                        href="#"
-                                        variant="small"
-                                        color="blue-gray"
-                                        className="font-medium"
-                                    >
-                                        <Button className="text-red-400 border border-red-700 hover:text-gray-500">Delete</Button>
                                     </Typography>
                                 </td>
                             </tr>

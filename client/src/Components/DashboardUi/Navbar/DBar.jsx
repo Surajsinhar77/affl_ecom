@@ -1,4 +1,4 @@
-import { Button } from '@material-tailwind/react';
+import { Link } from 'react-router-dom';
 // import AddProductForm from '../Forms/AddProductForm';
 
 function DBar() {
@@ -8,29 +8,22 @@ function DBar() {
 
 
     return (
-        <div className='navBar bg-slate-50 py-3 rounded-lg'>
-            <ul className='flex w-3/5 justify-evenly'>
+        <div className='navBar bg-slate-50 p-3 rounded-lg'>
+            <ul className='flex justify-evenly p-3'>
                 <li>
-                    <Button className='border border-gray-500 text-purple-700
-                    hover:border-purple-700 hover:text-gray-600'>Home</Button>
+                    <Link to='/admin/dashboard' className=' rounded-md border-purple-600 border-[1px] text-purple-700 text-sm font-semibold p-2 px-4 shadow-md'>Home</Link>
                 </li>
                 <li>
-                    <Button className='border border-gray-500 text-purple-700
-                    hover:border-purple-700 hover:text-gray-600'>Setting</Button>
+                    <Link className=' rounded-md border-purple-600 border-[1px] text-purple-700 text-sm font-semibold p-2 px-4 shadow-md'>Setting</Link>
                 </li>
                 <li>
-                    <Button className='border border-gray-500 text-purple-700
-                    hover:border-purple-700 hover:text-gray-600'>Profile</Button>
+                    <Link className=' rounded-md border-purple-600 border-[1px] text-purple-700 text-sm font-semibold p-2 px-4 shadow-md'>Profile</Link>
                 </li>
                 <li>
-                    <Button className='border border-gray-500 text-purple-700
-                    hover:border-purple-700 hover:text-gray-600'>Manage inventory</Button>
+                    <Link to='/admin/dashboard/manageInventory' className=' rounded-md border-purple-600 border-[1px] text-purple-700 text-sm font-semibold p-2 px-4 shadow-md'>Manage Inventory</Link>
                 </li>
                 <li>
-                    <Button className='border border-gray-500 text-purple-700
-                    hover:border-purple-700 hover:text-gray-600'
-                        
-                    >Add Items</Button>
+                    <Link to='/admin/dashboard/additems' className=' rounded-md border-purple-600 border-[1px] text-purple-700 text-sm font-semibold p-2 px-4 shadow-md'>Add Items</Link>
                 </li>
             </ul>
         </div>
