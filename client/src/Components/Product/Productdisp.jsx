@@ -7,7 +7,6 @@ import { BsBatteryCharging } from "react-icons/bs";
 import { BsMemory } from "react-icons/bs";
 import { BiMemoryCard } from "react-icons/bi";
 import { PiAndroidLogoLight } from "react-icons/pi";
-import {useParams} from 'react-router-dom';
 import Productiondetail from './Productiondetail';
 import ProductDesc from './ProductDesc';
 import ProductPrice from './ProductPrice';
@@ -16,64 +15,81 @@ import Review from '../Users/Review';
 import UserRating from '../Users/UserRating';
 import api from '../../api/api';
 
-function Productdisp({a}) {
-    const data = useParams();
-    console.log(data);
+function Productdisp() {
+    const data = JSON.parse(localStorage.getItem('Product Details'))
+    // localStorage.removeItem('Product Details')
 
-    // console.log("data is this:  ", a);
+    console.log("h: ",data.productSpecs)
+
+    // const { data, filename, contentType, x } ;
+
+    // Convert the binary data to a base64 string
+    const base64String = data.ProductPicture.image.data.toString('base64');
+
+    // Function to convert Uint8Array to base64
+    const uint8ArrayToBase64 = (uint8Array) => {
+        let binary = '';
+        uint8Array.forEach((byte) => {
+        binary += String.fromCharCode(byte);
+        });
+        return btoa(binary);
+    };
+    // Construct the data URL for the image
+    const imageUrl = `data:${data.ProductPicture.image.contentType};base64,${uint8ArrayToBase64(data.ProductPicture.image.data.data).toString('base64')}`;
+
     const [c1, setC1] = useState(true);
     const [c2, setC2] = useState(true);
-    const [productData, setProductData] = useState([]);
+    // const [productData, setProductData] = useState([]);
     
-    useEffect(()=>{
-        api.get('/dashboard/getData'+data).then((response)=>{
-            console.log(response);
-        }).catch((err)=>{
-            console.log(err);
-            return
-        })
-    },[productData]);
+    // useEffect(()=>{
+    //     api.get('/dashboard/getData'+data).then((response)=>{
+    //         console.log(response);
+    //     }).catch((err)=>{
+    //         console.log(err);
+    //         return
+    //     })
+    // },[productData]);
 
     const specs = [
         {
             specsName: "Display",
             iconname: <BsDisplay className='text-4xl' />,
-            detail: "6.72-inch <br/> (2400x1080)",
+            detail: data.productSpecs.productSpecDisplay,
         },
         {
             specsName: "Processor",
             iconname: <GiProcessor className='text-4xl' />,
-            detail: "MediaTex Dimensity 6100+",
+            detail: data.productSpecs.productSpecProcessor,
         },
         {
             specsName: "Front Camera",
             iconname: <AiOutlineCamera className='text-4xl' />,
-            detail: "8mp",
+            detail: data.productSpecs.productSpecFrontCamera,
         },
         {
             specsName: "Rear Camera",
             iconname: <AiOutlineCamera className='text-4xl' />,
-            detail: "64mp + 2mp",
+            detail: data.productSpecs.productSpecRearCamera,
         },
         {
             specsName: "Battery Capacity",
             iconname: <BsBatteryCharging className='text-4xl' />,
-            detail: "5000mAh",
+            detail: data.productSpecs.productSpecBatteryCap,
         },
         {
             specsName: "Ram",
             iconname: <BsMemory className='text-4xl' />,
-            detail: "4GB, 6GB",
+            detail: data.productSpecs.productSpecRam,
         },
         {
             specsName: "Storage",
             iconname: <BiMemoryCard className='text-4xl' />,
-            detail: "128GB",
+            detail: data.productSpecs.productSpecStorage,
         },
         {
             specsName: "Os",
             iconname: <PiAndroidLogoLight className='text-4xl' />,
-            detail: "Android 13",
+            detail: data.productSpecs.productSpecOs,
         },
     ]
 
@@ -96,20 +112,20 @@ function Productdisp({a}) {
                             {/* image Section section */}
                             <div className="imageSelection flex flex-col w-fit">
                                 <div className="images p-2 border mb-2">
-                                    <img className='w-15 h-20' src={imag1} alt="image of product 1" />
+                                    <img className='w-15 h-20' src={imageUrl} alt="image of product 1" />
                                 </div>
                                 <div className="images p-2 border mb-2">
-                                    <img className='w-15 h-20' src={imag1} alt="image of product 2" />
+                                    <img className='w-15 h-20' src={imageUrl} alt="image of product 2" />
                                 </div>
                             </div>
 
                             <div className="mainProductImage ml-4">
-                                <img className='h-96 rounded' src={imag1} alt="" />
+                                <img className='h-96 rounded' src={imageUrl} alt="" />
                             </div>
                         </div>
 
                         <div className='text-black mt-10'>
-                            <div className='text-xl p-4'>Samsung S21 Price</div>
+                            <div className='text-xl p-4'>{data.productName}</div>
                             <div className='p-2 border rounded-lg bg-slate-100'>
                                 <ProductPrice/>
                                 <ProductPrice/>
@@ -134,7 +150,7 @@ function Productdisp({a}) {
 
 
                     {/* FROM HERE RIGHT SIDE CONTENT START */}
-                    <div className="productInformation ml-10 w-3/5 overflow-hidden">
+                    <div id="right" className="productInformation ml-10 w-3/5 overflow-hidden">
                         <div className="headingPart">
                             <h1 className='text-gray-700 m-3 text-xl'>Key Specs</h1>
                             <div className='px-2 pt-2  border bg-gray-200 rounded-3xl'>
@@ -149,7 +165,7 @@ function Productdisp({a}) {
                                                 </div>
                                                 <div className='ml-2'>
                                                     <h4 className=''>{item.specsName}</h4>
-                                                    <p className='flex flex-col'><span>6.72-inch</span> <span>(2400x1080)</span> </p>
+                                                    <p className='flex flex-col'><span>{item.detail}</span> </p>
                                                 </div>
                                             </div>
                                         )

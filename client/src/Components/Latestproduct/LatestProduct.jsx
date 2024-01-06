@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Productcard from './Productcard'
 import Productdisp from '../Product/Productdisp';
 import { Link, Route, Routes  } from 'react-router-dom';
@@ -11,6 +11,7 @@ import img5 from './img/Samsung S22.png'
 import img6 from './img/Nothing Phone 2.png'
 
 function LatestProduct({item}) {
+    const [data, setData] = useState();
 
     const img = [img1, img2, img3, img4, img5, img6];
     const ProjectList =[
@@ -55,11 +56,11 @@ function LatestProduct({item}) {
             <div className="latestProducts w-4/5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 m-auto">
                 {
                     data.map((item,index)=>
-                        <Link to={`/product/${item.name}`} key={index}><Productcard project={item} image = {img[index]}/></Link>
+                        <Link onClick={()=>{setData(item); console.log(data)}} to={`/product/${item.name}`} key={index}><Productcard project={item} image = {img[index]}/></Link>
                     )
                 }
                 <Routes>
-                    <Route path="/product/:productId" element={<Productdisp/>} />
+                    <Route path="/product/:productId" element={<Productdisp detail={data}/>} />
                 </Routes>
             </div>
         </div>

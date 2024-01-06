@@ -21,7 +21,6 @@ function ProductCard({ detail }) {
     const imageUrl = `data:${contentType};base64,${uint8ArrayToBase64(detail.ProductPicture.image.data.data).toString('base64')}`;
 
 
-    console.log(detail.ProductPicture.image.contentType, detail.ProductPicture.image.data.data);
     return (
         <>
             <div className='flex bg-gray-50 flex-row justify-between'>
