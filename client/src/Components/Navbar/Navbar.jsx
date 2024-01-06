@@ -32,18 +32,19 @@ function Navbar() {
     const [searchValue, setValue] = useState("");
     const [vis, setVis] = useState(false);
 
-    // useEffect(() => {
-    //     apiForAdmin.get('/dashboard/getData?'+new URLSearchParams({data:searchValue}).toString())
-    //     .then((response) => {
-    //         console.log(response.data.data)
-    //         setSugg(response.data.data)
-    //         // alert(response.data.message)
-    //     })
-    //     .catch((err) => {
-    //         console.log(err)
-    //     })
-    // }, [searchValue]);
-    <Routes>
+    useEffect(() => {
+        apiForAdmin.get('/dashboard/getData?'+new URLSearchParams({data:searchValue}).toString())
+        .then((response) => {
+            console.log(response.data.data)
+            setSugg(response.data.data)
+            // alert(response.data.message)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    }, [searchValue]);
+
+<Routes>
     <Route path="product/:productId" element={<Productdisp/>} />
   </Routes>
 

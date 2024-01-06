@@ -1,7 +1,7 @@
 const { error } = require('console');
 const inventoryData = require('../model/addInventory.model');
 const fs = require('fs');
-
+const mongoose = require('mongoose');
 
 
 const addItemsToInventary = async (req, res) => {
@@ -190,9 +190,41 @@ const getData = async (req, res)=>{
     }
 }
 
+const deleteItem = async (req, res) => {
+    try {
+        // Ensure 'custom' header is present
+        const _id = req.headers['custom'];
+        console.log(_id)
+        if (!_id) {
+            return res.status(400).json({ message: 'Missing or invalid "custom" header' });
+        }
+    
+    //     // Attempt to create an ObjectId from the 'custom' header value
+        const objectId = new mongoose.Types.ObjectId(_id);
+        console.log(objectId)
+    
+    //     // Delete the document by its _id
+        const result = await inventoryData.deleteOne({ _id: objectId });
+    
+        // Check if the document was found and deleted
+        if (result.deletedCount === 0) {
+            return res.status(404).json({ message: 'Item not found or not deleted' });
+        }
+    
+        // Return success response
+        return res.status(200).json({ message: 'Item deleted successfully', data: result });
+    } catch (err) {
+        // Handle errors
+        console.error(err);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
+    
+}
+
 module.exports = {
     addItemsToInventary,
     uploadImageForInventory,
     getItems,
-    getData
+    getData,
+    deleteItem
 }

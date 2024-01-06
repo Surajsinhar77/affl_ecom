@@ -1,4 +1,6 @@
 import { Button, Card, Typography } from "@material-tailwind/react";
+import apiForAdmin from "../../../api/apiForAdmin";
+import { useEffect, useState } from "react";
 
 const TABLE_HEAD = ["S.No", "Name", "Category", "Join Date"];
 
@@ -36,6 +38,19 @@ const TABLE_ROWS = [
 ];
 
 function ProductTable() {
+    // const [userData, setUserData] = useState([])
+
+    // useEffect(()=>{
+    //     apiForAdmin.get('/admin/getUsers')
+    //     .then((response)=>{
+    //         console.log(response.data.data)
+    //         setUserData(response.data.data)
+    //     })
+    //     .catch((err)=>{
+    //         console.log(err)
+    //     })
+    // }, [])
+
     return (
         <Card className="h-full w-full overflow-scroll">
             <table className="w-full min-w-max table-auto text-left">

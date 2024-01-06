@@ -91,7 +91,7 @@ function Productdisp({a}) {
                 <div className="productDetail w-4/5 bg-white m-auto p-5 flex flex-row">
 
                     {/* Left Side Bar  with product picture and prizing Start */}
-                    <div className='flex w-2/5 flex-col'>
+                    <div id="left" className='flex w-2/5 flex-col h-fit'>
                         <div className="productImageSection flex">
                             {/* image Section section */}
                             <div className="imageSelection flex flex-col w-fit">
@@ -134,7 +134,7 @@ function Productdisp({a}) {
 
 
                     {/* FROM HERE RIGHT SIDE CONTENT START */}
-                    <div className="productInformation ml-10 w-3/5">
+                    <div className="productInformation ml-10 w-3/5 overflow-hidden">
                         <div className="headingPart">
                             <h1 className='text-gray-700 m-3 text-xl'>Key Specs</h1>
                             <div className='px-2 pt-2  border bg-gray-200 rounded-3xl'>
