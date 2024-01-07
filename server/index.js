@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const {main} = require('./db/connection');
-
+require('dotenv').config();
 // Creating The Main App also known as server
 const app = express();
 
@@ -28,7 +28,7 @@ app.use('/dashboard', userVerfication, dashboardApiCall)
 
 
 // Database Connection
-main('mongodb://127.0.0.1:27017/demodb').then((resp)=>{
+main(process.env.DATABASE_URL).then((resp)=>{
   console.log("Database is sucessfull connected");
 }).catch((err)=>{
   console.log(err);
