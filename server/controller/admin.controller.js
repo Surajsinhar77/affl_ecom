@@ -56,7 +56,7 @@ const addAdmin = async(req, res)=>{
 }
 
 const getUsers = async (req, res) => {
-    try{
+    try{ 
         const data = await adminModel.find({});
 
         if(data){
