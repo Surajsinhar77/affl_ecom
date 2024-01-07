@@ -67,5 +67,6 @@ const getUsers = async (req, res) => {
 
 module.exports={
     adminLogin,
-    addAdmin
+    addAdmin,
+    getUsers,
 }
