@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 
 // Saprate Routes for this 
-router.post('/addNewAdmin',verifyToken ,addAdmin);
+router.post('/addNewAdmin' ,addAdmin);
 router.post('/login', adminLogin);
 router.get('/getUsers', getUsers)
 
