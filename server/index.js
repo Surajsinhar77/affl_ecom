@@ -14,11 +14,13 @@ app.use(cors());
 //import middleware
 const userVerfication = require('./middleware/auth');
 
+
 // Require Routes here
 const authUserRouter = require('./routes/user.routes');
 const productIteamRoutes = require('./routes/items.routes');
 const adminRoutes = require('./routes/admin.routes');
 const dashboardApiCall = require('./routes/items.routes');
+
 
 // Saprate Routes
 app.use('/auth', authUserRouter);
