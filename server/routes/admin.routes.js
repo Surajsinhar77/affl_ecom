@@ -10,3 +10,4 @@ router.get('/getUsers', getUsers)
 
 // returning the saprate Routes
 module.exports = router;
+ 

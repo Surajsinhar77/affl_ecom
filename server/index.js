@@ -16,15 +16,15 @@ const userVerfication = require('./middleware/auth');
 
 // Require Routes here
 const authUserRouter = require('./routes/user.routes');
-const productIteamRoutes = require('./routes/items.routes');
+const productItemRoutes = require('./routes/items.routes');
 const adminRoutes =require('./routes/admin.routes');
-const dashboardApiCall = require('./routes/items.routes');
+const dashboardApiCall = require('./routes/dashboard.routes');
 
 // Saprate Routes
 app.use('/auth', authUserRouter);
-// app.use('/items',  ,productIteamRoutes);
+app.use('/items',productIteamRoutes);
 app.use('/admin', adminRoutes);
-app.use('/dashboard', userVerfication, dashboardApiCall)
+app.use('/dashboard', userVerfication,dashboardApiCall)
 
 
 // Database Connection

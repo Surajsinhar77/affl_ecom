@@ -19,7 +19,7 @@ function Productdisp() {
     const data = JSON.parse(localStorage.getItem('Product Details'))
     // localStorage.removeItem('Product Details')
 
-    console.log("h: ",data.productSpecs)
+    // console.log("h: ",data.productSpecs)
 
     // const { data, filename, contentType, x } ;
 
@@ -100,6 +100,8 @@ function Productdisp() {
     const hwSpec = productDataFile.hwSpec;
     const cameraSpec = productDataFile.cameraSpec;
 
+    const [attr, setAttr] = useState(true)
+
     var arr=0;
     return (
         <>
@@ -127,10 +129,10 @@ function Productdisp() {
                         <div className='text-black mt-10'>
                             <div className='text-xl p-4'>{data.productName}</div>
                             <div className='p-2 border rounded-lg bg-slate-100'>
-                                <ProductPrice/>
-                                <ProductPrice/>
-                                <ProductPrice/>
-                                <ProductPrice/>
+                                <ProductPrice image={imageUrl} productName={data.productName} detail={data.varient.amazonVariant.amazonV1}/>
+                                <ProductPrice image={imageUrl} productName={data.productName} detail={data.varient.amazonVariant.amazonV2}/>
+                                {/* <ProductPrice/>
+                                <ProductPrice/> */}
                                 {/* <div className='py-8'>
                                     Samsung S21 price in India starts from ₹ 90,000. The lowest price of Samsung S21 is ₹ 90,000 at Amazon on 30st October 2023.
                                 </div> */}
@@ -138,7 +140,7 @@ function Productdisp() {
                                 <div className='flex justify-center pt-8'>
                                     <div className='flex-col text-center'>
                                         <div>Price too high? Wait for upcoming Sale.</div>
-                                        <button className='bg-slate-400 w-fit p-1 mb-8 border rounded-lg text-white'>
+                                        <button className={`bg-slate-400 w-fit p-1 mb-8 border rounded-lg text-white transition-all ${attr ? 'scale-[1.05]' : 'scale-[100/105]'}`} onMouseDown={()=>setAttr(!attr)} onMouseUp={()=>setAttr(!attr)}>
                                         Get Notification for Sale
                                         </button>
                                     </div>
@@ -196,7 +198,7 @@ function Productdisp() {
                         
 
                         {/* Production Detail Start from here  */}
-                        <Productiondetail/>
+                        <Productiondetail productName={data.productName} description={data.Description}/>
                         <div className='relative top-0 align-text-bottom'>
                             <div className={`${ c1 ? "h-[600px] overflow-hidden":"h-full overflow-visible"}`}>
                                 <p className='text-3xl text-black font-normal mt-10'>Samsung S21 Full Specifications</p>

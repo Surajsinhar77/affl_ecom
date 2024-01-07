@@ -4,18 +4,14 @@ const serviceAuth = require('../service/auth');
 
 const adminLogin = async(req, res)=>{
     const {email, password} = req.body;
-    console.log(res.body);
 
     try{
         const userExist = await adminModel.findOne({email: email});
-        console.log(userExist)
         if(!userExist){
             return res.json({message: "user doesn't Exist"});
         }
-        
             const userExistInfo = await bcrypt.compare(password, userExist.password);
             if(userExistInfo){
-                console.log(userExistInfo)
                 const token = serviceAuth.setUserToken({name:userExist.name,email});
                 // res.cookie('adminUid', token, {httpOnly: true,});
                 res.setHeader('Authorization' , `Bearer ${token}`);
@@ -31,19 +27,26 @@ const adminLogin = async(req, res)=>{
 
 
 const addAdmin = async(req, res)=>{
-    const {name,email,password, role} = req.body;
+    // console.log("jhbdsf");
+    // console.log(req.body)
+    const {username,email,password, role} = req.body.data;
+    console.log(username, email, password, role)
     try {
         const isAdminExist = await adminModel.findOne({ email: email });
+        console.log(isAdminExist)
 
         if (isAdminExist) {
             return res.status(409).json({ message: "Admin Already Exist", AdminExist: true });
         }
 
         const hashPassword = await bcrypt.hash(password, 10);
-        const token = serviceAuth.setUserToken({ name , email });
+        // console.log("hash", hashPassword)
+        const token = serviceAuth.setUserToken({ username , email });
+
+        // console.log("token", token)
 
         const user = new adminModel({
-            fullName: name,
+            fullName: username,
             email,
             role, 
             password: hashPassword,
@@ -55,13 +58,12 @@ const addAdmin = async(req, res)=>{
         res.setHeader('Authorization' , `Bearer ${token}`);
         return res.status(200).json({ message: "New Admin is sucessfull Added", result});
     } catch (err) {
-        console.log("here is the errror ", err);
         return res.status(404).json({message: err.message, err});
     }
 }
 
 const getUsers = async (req, res) => {
-    try{
+    try{ 
         const data = await adminModel.find({});
 
         if(data){

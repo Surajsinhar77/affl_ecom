@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import ProductCard from '../ProductCard/card'
 import Productdisp from '../Product/Productdisp';
 import { Link, Route, Routes  } from 'react-router-dom';
-import apiForAdmin from '../../api/apiForAdmin';
+import api from '../../api/api';
 
 function Service() {
 
@@ -15,16 +15,14 @@ function Service() {
   }
 
   useEffect(() => {
-    apiForAdmin.get('/dashboard/getItems')
+    api.get('/items/getItems')
     .then((response)=>{
       setData(response.data.data);
-      console.log(response.data.data);
-      // alert(response.data?.message);
     })
     .catch((err)=>{
         console.log(err.message);
     });
-  }, []); 
+  }, [setData]); 
 
   return (
 
@@ -33,7 +31,7 @@ function Service() {
         <div className=' m-6 text-2xl font-semibold'>
           Filters
         </div>
-        <hr className='w-full' />productName
+        <hr className='w-full' />
         <div className=' space-y-4 m-6'>
           <div className=' text-lg font-semibold'>CATOGRIES</div>
           <div className=' text-lg text-gray-600 font-semibold'>&lt; Mobile & Accessories</div>
@@ -59,13 +57,6 @@ function Service() {
                 <option value="">10,000</option>
               </select>
             </div>
-          </div>
-        </div>
-        <hr className='w-full' />
-        <div className=' m-6'>
-          <div className=' text-lg font-semibold'>
-            <div>OFFERS</div>
-            <div></div>
           </div>
         </div>
         <hr className='w-full' />
