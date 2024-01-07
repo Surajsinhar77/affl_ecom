@@ -1,10 +1,4 @@
-const {
-    addItemsToInventary, 
-    uploadImageForInventory, 
-    getItems,
-    getData,
-    deleteItem
-} = require('../controller/dashboard.controller');
+const { addItemsToInventary, uploadImageForInventory, getItems, getData, deleteItem} = require('../controller/dashboard.controller');
 
 const express = require('express');
 const router = express.Router();

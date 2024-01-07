@@ -3,7 +3,7 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const {main} = require('./db/connection');
 require('dotenv').config();
-// Creating The Main App also known as server
+
 const app = express();
 
 // BuiltIn Middelware
@@ -17,14 +17,14 @@ const userVerfication = require('./middleware/auth');
 // Require Routes here
 const authUserRouter = require('./routes/user.routes');
 const productIteamRoutes = require('./routes/items.routes');
-const adminRoutes =require('./routes/admin.routes');
+const adminRoutes = require('./routes/admin.routes');
 const dashboardApiCall = require('./routes/items.routes');
 
 // Saprate Routes
 app.use('/auth', authUserRouter);
 app.use('/items', userVerfication ,productIteamRoutes);
 app.use('/admin', adminRoutes);
-app.use('/dashboard', userVerfication, dashboardApiCall)
+app.use('/dashboard', userVerfication, dashboardApiCall);
 
 
 // Database Connection
@@ -34,6 +34,6 @@ main(process.env.DATABASE_URL).then((resp)=>{
   console.log(err);
 })
 
-const PORT = process.env.PORT || 8000
+const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, ()=> console.log("The Server is lisenting on : http://localhost:"+PORT));

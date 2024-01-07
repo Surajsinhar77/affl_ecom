@@ -225,5 +225,9 @@ const deleteItem = async (req, res) => {
 module.exports = {
     addItemsToInventary,
     uploadImageForInventory,
-    getAllItemData
+    getAllItemData,
+    getData,
+    deleteItem,
+    getDataById,
+    getItems,
 }
