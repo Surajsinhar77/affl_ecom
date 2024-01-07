@@ -1,4 +1,3 @@
-const { error } = require('console');
 const inventoryData = require('../model/addInventory.model');
 const fs = require('fs');
 
@@ -243,5 +242,7 @@ module.exports = {
     getAllItemData,
     getData,
     deleteItem,
-    getLatestItems
+    getLatestItems,
+    getDataById,
+    getItems,
 }
