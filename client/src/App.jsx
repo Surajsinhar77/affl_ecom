@@ -22,7 +22,7 @@ import PageNotFound from './Components/Home/PageNotFound';
 
 function App() {
   const {
-    userData, 
+    userData,
     AdminLoginFunction,
     adminLogIn,
   } = useAuth();
@@ -32,44 +32,41 @@ function App() {
       <div className=' h-[100vh]'>
         <BrowserRouter>
           <Routes>
-          
-          {/* This is the admin login system Start */}
-            {(adminLogIn)?
-                <>
-                  <Route path='/admin/dashboard/' element={<Dashboard/>} >
-                    <Route index element={<AdminHome/>}/>
-                    <Route path='additems' element={<AddProductForm/>} />
-                    <Route path='manageInventory' element={<ManageInventory/>} />
-                  </Route>
-                </>
-                :
-                <>
-                  <Route  path='/admin/login' element={<Login/>} />
-                  <Route path="*" element={<PageNotFound/>} />
-                </>
+
+            {/* This is the admin login system Start */}
+            {(adminLogIn) ?
+              <>
+                <Route path='/admin/dashboard/' element={<Dashboard />} >
+                  <Route index element={<AdminHome />} />
+                  <Route path='additems' element={<AddProductForm />} />
+                  <Route path='manageInventory' element={<ManageInventory />} />
+                </Route>
+              </>
+              :
+              <>
+                <Route path='/admin/login' element={<Login />} />
+                <Route path="*" element={<PageNotFound />} />
+              </>
             }
-          {/* This is the admin login system End */}
+            {/* This is the admin login system End */}
 
 
-            <Route  path='/signup' element={<SignUp/>} />
-            {/* <Route path="*" element={<PageNotFound/>} /> */}
+            <Route path='/signup' element={<SignUp />} />
+            <Route path="*" element={<PageNotFound />} />
             <Route path={`/Profile/${userData?.fullName}`} element={<Profile userData={userData?.fullName} />} />
 
-            <Route  path='/signin' element={<SignIn/>} />
-              <Route path='/' element={<MainPage/>} >
-              <Route index element={<Home/>} />
-              <Route path='about' element={<About/>} />
-              <Route path='service' element={<Service/>} />
-              <Route path='contact' element={<Contact/>} />
-              <Route path='product/:id' element={<Productdisp/>} />
-              <Route path='profile' element={<ProfilePage/>} >
-                <Route path='favourite' element={<Favourites/>} />
-                <Route index path='userProfile' element={<Profile/>} />
-              </Route>
+            <Route path='/signin' element={<SignIn />} />
+            <Route path='/' element={<MainPage />} >
+              <Route index element={<Home />} />
+              <Route path='about' element={<About />} />
+              <Route path='service' element={<Service />} />
+              <Route path='contact' element={<Contact />} />
+              <Route path='product/:id' element={<Productdisp />} />
+              <Route path='profile' element={<ProfilePage />} />
             </Route>
-          </Routes>
-        </BrowserRouter>
-      </div>
+        </Routes>
+      </BrowserRouter>
+    </div >
     </>
   )
 }

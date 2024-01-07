@@ -4,8 +4,6 @@ const serviceAuth = require('../service/auth');
 
 const adminLogin = async(req, res)=>{
     const {email, password} = req.body;
-    console.log(res.body);
-
     try{
         const userExist = await adminModel.findOne({email: email});
         if(!userExist){
@@ -22,23 +20,19 @@ const adminLogin = async(req, res)=>{
             return res.status(401).json({message: "Invalid username or Password" ,userExistInfo});
     }catch(err){
         console.log(err);
-        res.status(500).json({message:"You are getting Error",errorMsg:err});
+        res.status(404).json({message:"You are getting Error",errorMsg:err});
     }
 }
-
 
 const addAdmin = async(req, res)=>{
     const {name,email,password, role} = req.body;
     try {
         const isAdminExist = await adminModel.findOne({ email: email });
-
         if (isAdminExist) {
             return res.status(409).json({ message: "Admin Already Exist", AdminExist: true });
         }
-
         const hashPassword = await bcrypt.hash(password, 10);
         const token = serviceAuth.setUserToken({ name , email });
-
         const user = new adminModel({
             fullName: name,
             email,
@@ -46,7 +40,6 @@ const addAdmin = async(req, res)=>{
             password: hashPassword,
             token,
         });
-
         const result = await user.save();
         // res.cookie('adminuid', token, {httpOnly: true});
         res.setHeader('Authorization' , `Bearer ${token}`);
@@ -56,7 +49,6 @@ const addAdmin = async(req, res)=>{
         return res.status(404).json({message: err.message, err});
     }
 }
-
 
 module.exports={
     adminLogin,

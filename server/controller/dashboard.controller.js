@@ -1,7 +1,6 @@
 const { error } = require('console');
 const inventoryData = require('../model/addInventory.model');
 const fs = require('fs');
-const mongoose = require('mongoose');
 
 const addItemsToInventary = async (req, res) => {
     const productImageData = req.file;
