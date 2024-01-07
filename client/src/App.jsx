@@ -8,6 +8,7 @@ import About from './Components/About/About';
 import Service from './Components/Service/Service';
 import Contact from './Components/Contact/Contact';
 import Productdisp from './Components/Product/Productdisp';
+import ProfilePage from './Components/Profile/ProfilePage';
 import Profile from './Components/Profile/Profile';
 import { useAuth } from './common/AuthContext';
 import Login from './Components/DashboardUi/Home/Auth/Login';
@@ -55,7 +56,7 @@ function App() {
               <Route path='service' element={<Service/>} />
               <Route path='contact' element={<Contact/>} />
               <Route path='product/:id' element={<Productdisp/>} />
-              
+              <Route path='profile' element={<ProfilePage/>} />
               </Route>
           </Routes>
           <Outlet/>
