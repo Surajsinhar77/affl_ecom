@@ -1,21 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import Productcard from './Productcard'
 import Productdisp from '../Product/Productdisp';
-import apiForAdmin from '../../api/apiForAdmin';
 import { Link, Route, Routes  } from 'react-router-dom';
-import data from './data.json';
-import img1 from './img/IPhone 15 pro.png'
-import img2 from './img/Samsung Flip.png'
-import img3 from './img/Google Pixel 7a.png'
-import img4 from './img/Motorola Edge 40.png'
-import img5 from './img/Samsung S22.png'
-import img6 from './img/Nothing Phone 2.png'
+import api from '../../api/api';
 
 function LatestProduct({item}) {
     const [data, setData] = useState([]);
 
     useEffect(()=>{
-        apiForAdmin.get('/dashboard/getLatestItems')
+        api.get('/dashboard/getLatestItems')
         .then((response)=>{
             setData(response.data.data)
             alert(response.data.message)

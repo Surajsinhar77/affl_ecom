@@ -2,11 +2,7 @@ import axios from 'axios'
 
 const api = axios.create({
     baseURL: 'http://localhost:8000',
-    timeout: 1000,
-    headers: {
-        'Authorization': `Bearer ${localStorage.getItem('accessToken')}`, 
-        'Content-Type': 'application/json',
-    },
+    timeout: 100000,
 });
 
 export default api;

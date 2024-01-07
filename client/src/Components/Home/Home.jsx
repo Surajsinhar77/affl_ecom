@@ -8,12 +8,12 @@ function Home() {
     {
       sectionName : "Latest launch Product",
     },
-    {
-      sectionName : "Most Selling Product",
-    },
-    {
-      sectionName : "Most Discount Product",
-    },
+    // {
+    //   sectionName : "Most Selling Product",
+    // },
+    // {
+    //   sectionName : "Most Discount Product",
+    // },
     
   ]
 

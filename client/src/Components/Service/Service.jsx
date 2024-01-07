@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import ProductCard from '../ProductCard/card'
 import Productdisp from '../Product/Productdisp';
 import { Link, Route, Routes  } from 'react-router-dom';
-import apiForAdmin from '../../api/apiForAdmin';
+import api from '../../api/api';
 
 function Service() {
 
@@ -15,7 +15,7 @@ function Service() {
   }
 
   useEffect(() => {
-    apiForAdmin.get('/dashboard/getItems')
+    api.get('/dashboard/getItems')
     .then((response)=>{
       setData(response.data.data);
       // alert(response.data?.message);
