@@ -19,9 +19,9 @@ function LatestProduct({item}) {
     },[])
 
     return (
-        <div className='flex flex-col justify-center items-center my-40 bg-white mx-40 pb-10'>
-            <div className="MainHeaderTopic mt-5 mb-5 w-4/5 bg-white">
-                <h1 className='text-4xl p-20 text-center  text-gray-500'>{item.sectionName}</h1>
+        <div className='flex flex-col justify-center items-center my-40 bg-white pb-10'>
+            <div className="MainHeaderTopic mt-5 mb-5 bg-white w-4/5">
+                <h1 className='text-4xl max-md:text-3xl max-sm:text-2xl p-20 text-center  text-gray-500 '>{item.sectionName}</h1>
             </div>
             <div className="latestProducts w-4/5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 m-auto object-cover">
                 {
