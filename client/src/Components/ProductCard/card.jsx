@@ -25,7 +25,7 @@ function ProductCard({ detail }) {
         <>
             <div className='flex bg-gray-50 flex-row justify-between'>
                 <div className='flex px-5 pb-10 py-2'>
-                    <img src={imageUrl} alt={`Product: ${filename}`} className='w-[240px] h-[240px] object-contain' />
+                    <img src={imageUrl} loading="lazy" alt={`Product: ${filename}`} className='w-[240px] h-[240px] object-contain' />
                     <div className='text-gray-400 text-2xl'>♥</div>
                 </div>
                 <div className='p-5 w-fit'>

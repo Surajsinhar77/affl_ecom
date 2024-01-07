@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import ProductCard from '../ProductCard/card'
 import Productdisp from '../Product/Productdisp';
 import { Link, Route, Routes  } from 'react-router-dom';
-import apiForAdmin from '../../api/apiForAdmin';
+import api from '../../api/api';
 
 function Service() {
 
@@ -15,15 +15,14 @@ function Service() {
   }
 
   useEffect(() => {
-    apiForAdmin.get('/dashboard/getItems')
+    api.get('/items/getItems')
     .then((response)=>{
       setData(response.data.data);
-      console.log(response.data.data);
     })
     .catch((err)=>{
         console.log(err.message);
     });
-  }, []); 
+  }, [setData]); 
 
   return (
     <div className='flex flex-row m-auto w-full  text-black mt-5 justify-center'>

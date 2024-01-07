@@ -25,16 +25,23 @@ const adminLogin = async(req, res)=>{
 }
 
 const addAdmin = async(req, res)=>{
-    const {name,email,password, role} = req.body;
+    // console.log("jhbdsf");
+    // console.log(req.body)
+    const {username,email,password, role} = req.body.data;
     try {
         const isAdminExist = await adminModel.findOne({ email: email });
+
         if (isAdminExist) {
             return res.status(409).json({ message: "Admin Already Exist", AdminExist: true });
         }
         const hashPassword = await bcrypt.hash(password, 10);
-        const token = serviceAuth.setUserToken({ name , email });
+        // console.log("hash", hashPassword)
+        const token = serviceAuth.setUserToken({ username , email });
+
+        // console.log("token", token)
+
         const user = new adminModel({
-            fullName: name,
+            fullName: username,
             email,
             role, 
             password: hashPassword,
