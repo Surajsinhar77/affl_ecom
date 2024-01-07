@@ -24,7 +24,7 @@ const dashboardApiCall = require('./routes/items.routes');
 app.use('/auth', authUserRouter);
 app.use('/items',productIteamRoutes);
 app.use('/admin', adminRoutes);
-app.use('/dashboard', dashboardApiCall)
+app.use('/dashboard', userVerfication,dashboardApiCall)
 
 
 // Database Connection
