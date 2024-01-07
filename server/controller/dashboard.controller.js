@@ -117,15 +117,8 @@ const uploadImageForInventory = async (req, res) => {
     // try{
     const fieldData = req.body;
     const fileData = req.file;
-
-    console.log(fieldData); body
-    console.log(fileData);
-    // }catch(err){
-
-    // }
     const formData = req.files
     const formDataArray = req.body;
-    console.log(formData, formDataArray);
     return res.json({ message: "Data is reviced" });
 }
 
@@ -194,14 +187,12 @@ const deleteItem = async (req, res) => {
     try {
         // Ensure 'custom' header is present
         const _id = req.headers['custom'];
-        console.log(_id)
         if (!_id) {
             return res.status(400).json({ message: 'Missing or invalid "custom" header' });
         }
     
     //     // Attempt to create an ObjectId from the 'custom' header value
         const objectId = new mongoose.Types.ObjectId(_id);
-        console.log(objectId)
     
     //     // Delete the document by its _id
         const result = await inventoryData.deleteOne({ _id: objectId });

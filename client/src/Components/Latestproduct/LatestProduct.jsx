@@ -55,7 +55,7 @@ function LatestProduct({item}) {
             </div>
             <div className="latestProducts w-4/5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 m-auto">
                 {
-                    data.map((item,index)=>
+                    ProjectList.map((item,index)=>
                         <Link onClick={()=>{setData(item); console.log(data)}} to={`/product/${item.name}`} key={index}><Productcard project={item} image = {img[index]}/></Link>
                     )
                 }

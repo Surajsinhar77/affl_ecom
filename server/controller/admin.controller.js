@@ -4,18 +4,14 @@ const serviceAuth = require('../service/auth');
 
 const adminLogin = async(req, res)=>{
     const {email, password} = req.body;
-    console.log(res.body);
 
     try{
         const userExist = await adminModel.findOne({email: email});
-        console.log(userExist)
         if(!userExist){
             return res.json({message: "user doesn't Exist"});
         }
-        
             const userExistInfo = await bcrypt.compare(password, userExist.password);
             if(userExistInfo){
-                console.log(userExistInfo)
                 const token = serviceAuth.setUserToken({name:userExist.name,email});
                 // res.cookie('adminUid', token, {httpOnly: true,});
                 res.setHeader('Authorization' , `Bearer ${token}`);
@@ -55,7 +51,6 @@ const addAdmin = async(req, res)=>{
         res.setHeader('Authorization' , `Bearer ${token}`);
         return res.status(200).json({ message: "New Admin is sucessfull Added", result});
     } catch (err) {
-        console.log("here is the errror ", err);
         return res.status(404).json({message: err.message, err});
     }
 }
