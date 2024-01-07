@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Productcard from './Productcard'
 import Productdisp from '../Product/Productdisp';
+import apiForAdmin from '../../api/apiForAdmin';
 import { Link, Route, Routes  } from 'react-router-dom';
 import data from './data.json';
 import img1 from './img/IPhone 15 pro.png'
@@ -11,42 +12,18 @@ import img5 from './img/Samsung S22.png'
 import img6 from './img/Nothing Phone 2.png'
 
 function LatestProduct({item}) {
-    const [data, setData] = useState();
+    const [data, setData] = useState([]);
 
-    const img = [img1, img2, img3, img4, img5, img6];
-    const ProjectList =[
-        {
-            name : "e-Commarce VegMarket Store",
-            date : [2,"Sep",2023],
-            tags : ['next.js', 'react.js', 'node.js','express.js', 'mongodb']
-        },
-
-        {
-            name : "Hostel Management System",
-            date : [10,"Sep",2022],
-            tags : ['Bootstrap', 'HTML', 'Javascript','Flask', 'Python', 'MySql']
-        },
-        {
-            name : "StackOver Clone",
-            date : [10,"Sep",2022],
-            tags : ['react.js', 'node.js','express.js', 'mongodb','Redux']
-        },
-        {
-            name : "StackOver Clone",
-            date : [10,"Sep",2022],
-            tags : ['react.js', 'node.js','express.js', 'mongodb','Redux']
-        },
-        {
-            name : "StackOver Clone",
-            date : [10,"Sep",2022],
-            tags : ['react.js', 'node.js','express.js', 'mongodb','Redux']
-        },
-        {
-            name : "StackOver Clone",
-            date : [10,"Sep",2022],
-            tags : ['react.js', 'node.js','express.js', 'mongodb','Redux']
-        },
-    ]
+    useEffect(()=>{
+        apiForAdmin.get('/dashboard/getLatestItems')
+        .then((response)=>{
+            setData(response.data.data)
+            alert(response.data.message)
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+    }, [])
 
     return (
         <div className='flex flex-col justify-center items-center my-40 bg-white mx-40 pb-10'>
@@ -55,12 +32,12 @@ function LatestProduct({item}) {
             </div>
             <div className="latestProducts w-4/5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 m-auto">
                 {
-                    ProjectList.map((item,index)=>
-                        <Link onClick={()=>{setData(item); console.log(data)}} to={`/product/${item.name}`} key={index}><Productcard project={item} image = {img[index]}/></Link>
+                    data.map((item,index)=>
+                        <Link to={`/product/${item.name}`} key={index}><Productcard project={item}/></Link>
                     )
                 }
                 <Routes>
-                    <Route path="/product/:productId" element={<Productdisp detail={data}/>} />
+                    <Route path="/product/:productId" element={<Productdisp/>} />
                 </Routes>
             </div>
         </div>

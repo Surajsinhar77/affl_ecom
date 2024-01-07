@@ -18,7 +18,6 @@ function Service() {
     apiForAdmin.get('/dashboard/getItems')
     .then((response)=>{
       setData(response.data.data);
-      console.log(response.data.data);
       // alert(response.data?.message);
     })
     .catch((err)=>{

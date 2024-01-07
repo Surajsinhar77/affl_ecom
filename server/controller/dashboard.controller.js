@@ -33,7 +33,7 @@ const addItemsToInventary = async (req, res) => {
         av2Link,
         discription,
         termAndAgree,
-    } = req.body.textData;
+    } = req.body.textData; 
 
     try{
         const productExist =  await inventoryData.findOne({productName:productName});
@@ -123,9 +123,10 @@ const uploadImageForInventory = async (req, res) => {
 }
 
 const getItems = async (req, res) => {
+    console.log("dsf");
     try{
-
         const data = await inventoryData.find({});
+        console.log(data);
         if(data){
             return res.json({message : "Data fetched Successfully", data : data});
         }
@@ -212,10 +213,26 @@ const deleteItem = async (req, res) => {
     
 }
 
+const getLatestItems = async (req, res) => {
+    try{
+        const recentItems = await inventoryData.find().sort({ createdAt: -1 }).limit(4);
+        console.log()
+        if(recentItems){
+            res.status(200).json({message: "Data fetched successfully", data:recentItems})
+        }else{
+            res.status(402).json({message: "Data not found"})
+        }
+    }catch(err){
+        console.log(err)
+        res.status(500).json({message: "Internal Server Error"})
+    }
+} 
+
 module.exports = {
     addItemsToInventary,
     uploadImageForInventory,
     getItems,
     getData,
-    deleteItem
+    deleteItem,
+    getLatestItems
 }

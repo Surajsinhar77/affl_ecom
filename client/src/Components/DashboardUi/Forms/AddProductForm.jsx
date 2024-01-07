@@ -211,12 +211,12 @@ function AddProductForm() {
                         </div>
 
                     </div>
-                    <div className="w-full flex justify-center">
+                    {/* <div className="w-full flex justify-center">
                         <button 
                             className="border-2 h-10 px-10 rounded border-green-600 my-5 text-red font-bold"
                             
                             >Upload</button>
-                    </div>
+                    </div> */}
                 </div>
 
                 <div className="row grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

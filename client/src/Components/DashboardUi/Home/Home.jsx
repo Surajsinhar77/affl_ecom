@@ -1,6 +1,10 @@
+import { useState } from "react"
 import ProductTable from "../ProductTable/ProductTable"
+import apiForAdmin from "../../../api/apiForAdmin"
 
 export default function Home(){
+    const [data, setData] = useState({})
+
     return (
         <div className="ProductList">
         <div className="HeadingProduct">
@@ -19,6 +23,36 @@ export default function Home(){
                     </th>
                 </tbody>
             </table> */}
+        </div>
+        <div className=" m-5 p-5 rounded-md bg-white flex flex-col gap-2">
+            <label>UserName:</label>
+            <input type="text" className=" border" onChange={(e)=>{
+                setData({...data, "username" : e.target.value})
+            }}/>
+            <label>Email:</label>
+            <input type="email" className=" border" onChange={(e)=>{
+                setData({...data, "email" : e.target.value})
+            }}/>
+            <label>Password:</label>
+            <input type="password" className=" border" onChange={(e)=>{
+                setData({...data, "password" : e.target.value})
+            }}/>
+            <label>Role:</label>
+            <input type="text" className=" border" onChange={(e)=>{
+                setData({...data, "role" : e.target.value})
+            }}/>
+            <button className=" p-2 px-4 rounded-md bg-slate-400" onClick={()=>{
+                apiForAdmin.post('/admin/addNewAdmin', {
+                    data:data
+                })
+                .then((response)=>{
+                    console.log(response)
+                    alert(response.data.message)
+                })
+                .catch((err)=>{
+                    console.log(err)
+                })
+            }}>Submit</button>
         </div>
     </div>
 )
