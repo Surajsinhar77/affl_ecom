@@ -17,8 +17,6 @@ function Navbar() {
 
     const [dw, setDW] = useState(false);
 
-    // console.log("This is the User Data ", userData);
-
     const logoutFunction = () =>{
         logout();
         navigate('/signin');

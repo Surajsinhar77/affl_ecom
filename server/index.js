@@ -24,7 +24,7 @@ const dashboardApiCall = require('./routes/items.routes');
 
 // Saprate Routes
 app.use('/auth', authUserRouter);
-app.use('/items', userVerfication ,productIteamRoutes);
+// app.use('/items', userVerfication ,productIteamRoutes);
 app.use('/admin', adminRoutes);
 app.use('/dashboard', userVerfication, dashboardApiCall);
 

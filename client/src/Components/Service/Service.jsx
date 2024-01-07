@@ -19,7 +19,6 @@ function Service() {
     .then((response)=>{
       setData(response.data.data);
       console.log(response.data.data);
-      // alert(response.data?.message);
     })
     .catch((err)=>{
         console.log(err.message);
@@ -27,13 +26,12 @@ function Service() {
   }, []); 
 
   return (
-
     <div className='flex flex-row m-auto w-full  text-black mt-5 justify-center'>
-      <div className='h-full bg-white w-[23%] mr-2 flex flex-col'>
+      <div className='h-full bg-white w-[23%] mr-2 flex flex-col my-4'>
         <div className=' m-6 text-2xl font-semibold'>
           Filters
         </div>
-        <hr className='w-full' />productName
+        <hr className='w-full' />
         <div className=' space-y-4 m-6'>
           <div className=' text-lg font-semibold'>CATOGRIES</div>
           <div className=' text-lg text-gray-600 font-semibold'>&lt; Mobile & Accessories</div>

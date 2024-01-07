@@ -21,9 +21,6 @@ function Productdisp() {
 
     console.log("h: ",data.productSpecs)
 
-    // const { data, filename, contentType, x } ;
-
-    // Convert the binary data to a base64 string
     const base64String = data.ProductPicture.image.data.toString('base64');
 
     // Function to convert Uint8Array to base64
