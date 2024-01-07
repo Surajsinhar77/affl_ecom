@@ -1,9 +1,9 @@
 import React from 'react'
 import { FaEllipsisVertical } from "react-icons/fa6";
-import {SiV} from 'react-icons/si';
+import { SiV } from 'react-icons/si';
 import ProdcutImage from '../../assets/Img/headphone.jpg'
 
-function Productcard(details){
+function Productcard(details) {
     // const {project, image} =  props;
     const { data, filename, contentType } = details.project.ProductPicture.image;
 
@@ -11,27 +11,27 @@ function Productcard(details){
     const base64String = data.toString('base64');
 
     // Function to convert Uint8Array to base64
-  const uint8ArrayToBase64 = (uint8Array) => {
-    let binary = '';
-    uint8Array.forEach((byte) => {
-      binary += String.fromCharCode(byte);
-    });
-    return btoa(binary);
-  };
+    const uint8ArrayToBase64 = (uint8Array) => {
+        let binary = '';
+        uint8Array.forEach((byte) => {
+            binary += String.fromCharCode(byte);
+        });
+        return btoa(binary);
+    };
     // Construct the data URL for the image
     const imageUrl = `data:${contentType};base64,${uint8ArrayToBase64(details.project.ProductPicture.image.data.data).toString('base64')}`;
 
     return (
         <div className=' '>
             <div className="cardBody  border m-auto text-xs bg-white shadow-md rounded-lg overflow-hidden mb-5">
-                
 
-                <div className="productImage w-full h-72 hover:bg-gray-200 hover:liner flex p-2 justify-center">
-                    <img src={imageUrl} className=" h-72 w-fit object-cover"  alt="project image" />
+
+                <div className="productImage w-full h-80 hover:bg-gray-200 hover:liner flex p-2 justify-center">
+                    <img src={imageUrl} className="object-contain" alt="project image" />
                 </div>
 
 
-                
+
                 <div className="useTech p-3 border-t-2 text-black text-sm flex justify-between">
                     <div>
                         <h2>{details.project.productName}</h2>

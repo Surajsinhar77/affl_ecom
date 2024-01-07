@@ -126,7 +126,6 @@ const getItems = async (req, res) => {
     console.log("dsf");
     try{
         const data = await inventoryData.find({});
-        console.log(data);
         if(data){
             return res.json({message : "Data fetched Successfully", data : data});
         }

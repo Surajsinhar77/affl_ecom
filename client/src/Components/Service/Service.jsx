@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import ProductCard from '../ProductCard/card'
 import Productdisp from '../Product/Productdisp';
 import { Link, Route, Routes  } from 'react-router-dom';
-import api from '../../api/api';
+import apiForAdmin from '../../api/apiForAdmin';
 
 function Service() {
 
@@ -15,15 +15,14 @@ function Service() {
   }
 
   useEffect(() => {
-    api.get('/dashboard/getItems')
+    apiForAdmin.get('/dashboard/getItems')
     .then((response)=>{
       setData(response.data.data);
-      // alert(response.data?.message);
     })
     .catch((err)=>{
         console.log(err.message);
     });
-  }, []); 
+  }, [setData]); 
 
   return (
 

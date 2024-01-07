@@ -1,6 +1,6 @@
 import { useState } from "react"
 import ProductTable from "../ProductTable/ProductTable"
-import apiForAdmin from "../../../api/apiForAdmin"
+import api from "../../../api/api"
 
 export default function Home(){
     const [data, setData] = useState({})
