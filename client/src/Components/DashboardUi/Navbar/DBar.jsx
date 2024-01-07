@@ -1,15 +1,20 @@
 import { Link } from 'react-router-dom';
 // import AddProductForm from '../Forms/AddProductForm';
+import {useAuth} from './../../../common/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 function DBar() {
-    // const NavBarListig ={
-    //     1 : <AddProductForm/>
-    // }
-
+    
+    const navigate = useNavigate();
+    const { AdminLogoutFunction } = useAuth();
+    function onClickLogOut(){
+        AdminLogoutFunction();
+        navigate('/admin/login');
+    }
 
     return (
         <div className='navBar bg-slate-50 p-3 rounded-lg'>
-            <ul className='flex justify-evenly p-3'>
+            <ul className='flex justify-evenly p-3 items-center'>
                 <li>
                     <Link to='/admin/dashboard' className=' rounded-md border-purple-600 border-[1px] text-purple-700 text-sm font-semibold p-2 px-4 shadow-md'>Home</Link>
                 </li>
@@ -24,6 +29,9 @@ function DBar() {
                 </li>
                 <li>
                     <Link to='/admin/dashboard/additems' className=' rounded-md border-purple-600 border-[1px] text-purple-700 text-sm font-semibold p-2 px-4 shadow-md'>Add Items</Link>
+                </li>
+                <li>
+                    <button onClick={onClickLogOut} className=' rounded-md border-purple-600 border-[1px] text-purple-700 text-sm font-semibold p-2 px-4 shadow-md'>Logout</button>
                 </li>
             </ul>
         </div>
