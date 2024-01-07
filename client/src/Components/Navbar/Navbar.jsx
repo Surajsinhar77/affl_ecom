@@ -37,7 +37,6 @@ function Navbar() {
         .then((response) => {
             console.log(response.data.data)
             setSugg(response.data.data)
-            // alert(response.data.message)
         })
         .catch((err) => {
             console.log(err)
