@@ -30,28 +30,19 @@ function Navbar() {
 
     const [sugg, setSugg] = useState([]);
     const [searchValue, setValue] = useState("");
+    const [vis, setVis] = useState(false);
 
-    const data = [
-        
-        {
-            productName:"a1"
-        },
-        {
-            productName:"a2"
-        }
-    ]
-
-    useEffect(() => {
-        apiForAdmin.get('/dashboard/getData?'+new URLSearchParams({data:searchValue}).toString())
-        .then((response) => {
-            console.log(response.data.data)
-            setSugg(response.data.data)
-            // alert(response.data.message)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
-    }, [searchValue]);
+    // useEffect(() => {
+    //     apiForAdmin.get('/dashboard/getData?'+new URLSearchParams({data:searchValue}).toString())
+    //     .then((response) => {
+    //         console.log(response.data.data)
+    //         setSugg(response.data.data)
+    //         // alert(response.data.message)
+    //     })
+    //     .catch((err) => {
+    //         console.log(err)
+    //     })
+    // }, [searchValue]);
     <Routes>
     <Route path="product/:productId" element={<Productdisp/>} />
   </Routes>
@@ -69,13 +60,14 @@ function Navbar() {
                             <Link to="service"> Smartphone </Link>
                             <Link to="contact"> Contact </Link>
                             <Link to="about"> About </Link>
+                            <Link to="profile"> Profile </Link>
                         </div>
                     </div>
                     <div className="serchBar w-3/5 flex">
                         <div className=' w-3/5 h-10'>
                             <input type="text" placeholder='Search' className='focus:border border rounded p-2 w-full' onChange={(e) => setValue(e.target.value)}
-                            value={searchValue}/>
-                            <div className='relative bg-slate-300 border border-black z-20 '>
+                            value={searchValue} onFocus={()=>setVis(true)} onBlur={()=>setVis(false)}/>
+                            <div className={` relative bg-slate-300 border border-black z-20 ${vis?"visible":"hidden"}`}>
                                 <ul className='px-1'>
                                     {
                                         sugg.map((item, index) => 
