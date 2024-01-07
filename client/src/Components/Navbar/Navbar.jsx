@@ -46,7 +46,7 @@ function Navbar() {
 
 <Routes>
     <Route path="product/:productId" element={<Productdisp/>} />
-  </Routes>
+</Routes>
 
     return (
         <div className='flex flex-col justify-center items-center'>
