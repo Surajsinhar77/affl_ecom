@@ -14,7 +14,7 @@ function ProfilePage(){
                     <div className=" flex flex-col gap-5 bg-white text-lg h-full p-5">
                         {/* <div onClick={()=>setX(1)} className=' cursor-pointer'>Profile</div>
                         <div onClick={()=>setX(2)} className=' cursor-pointer'>Favourites</div> */}
-                        <Link to='userProfile'> Profile </Link>
+                        <Link to=''> Profile </Link>
                         <Link to='favourite'> Favourites </Link>
                         <div>Logout</div>
                     </div>

@@ -62,9 +62,9 @@ function App() {
               <Route path='service' element={<Service/>} />
               <Route path='contact' element={<Contact/>} />
               <Route path='product/:id' element={<Productdisp/>} />
-              <Route path='profile' element={<ProfilePage/>} >
+              <Route path='profile/' element={<ProfilePage/>} >
+                <Route index element={<Profile/>} />
                 <Route path='favourite' element={<Favourites/>} />
-                <Route index path='userProfile' element={<Profile/>} />
               </Route>
             </Route>
           </Routes>

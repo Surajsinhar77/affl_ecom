@@ -31,7 +31,7 @@ function Service() {
         <div className=' m-6 text-2xl font-semibold'>
           Filters
         </div>
-        <hr className='w-full' />productName
+        <hr className='w-full' />
         <div className=' space-y-4 m-6'>
           <div className=' text-lg font-semibold'>CATOGRIES</div>
           <div className=' text-lg text-gray-600 font-semibold'>&lt; Mobile & Accessories</div>
@@ -57,13 +57,6 @@ function Service() {
                 <option value="">10,000</option>
               </select>
             </div>
-          </div>
-        </div>
-        <hr className='w-full' />
-        <div className=' m-6'>
-          <div className=' text-lg font-semibold'>
-            <div>OFFERS</div>
-            <div></div>
           </div>
         </div>
         <hr className='w-full' />
