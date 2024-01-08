@@ -61,13 +61,6 @@ function Service() {
         <hr className='w-full' />
         <div className=' m-6'>
           <div className=' text-lg font-semibold'>
-            <div>OFFERS</div>
-            <div></div>
-          </div>
-        </div>
-        <hr className='w-full' />
-        <div className=' m-6'>
-          <div className=' text-lg font-semibold'>
             <div>CUSTOMER RATING</div>
           </div>
         </div>

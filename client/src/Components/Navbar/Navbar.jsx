@@ -5,7 +5,7 @@ import { BiLogoMediumOld,BiUser } from "react-icons/bi";
 import { useAuth } from '../../common/AuthContext';
 // import Dropdown from './Dropdown';
 import { useState } from 'react';
-import apiForAdmin from '../../api/apiForAdmin';
+import api from '../../api/api';
 import Productdisp from '../Product/Productdisp';
 
 
@@ -31,7 +31,7 @@ function Navbar() {
     const [vis, setVis] = useState(false);
 
     useEffect(() => {
-        apiForAdmin.get('/dashboard/getData?'+new URLSearchParams({data:searchValue}).toString())
+        api.get('/items/getData?'+new URLSearchParams({data:searchValue}).toString())
         .then((response) => {
             console.log(response.data.data)
             setSugg(response.data.data)

@@ -55,14 +55,17 @@ function App() {
             <Route path="*" element={<PageNotFound />} />
             <Route path={`/Profile/${userData?.fullName}`} element={<Profile userData={userData?.fullName} />} />
 
-            <Route path='/signin' element={<SignIn />} />
-            <Route path='/' element={<MainPage />} >
-              <Route index element={<Home />} />
-              <Route path='about' element={<About />} />
-              <Route path='service' element={<Service />} />
-              <Route path='contact' element={<Contact />} />
-              <Route path='product/:id' element={<Productdisp />} />
-              <Route path='profile' element={<ProfilePage />} />
+            <Route  path='/signin' element={<SignIn/>} />
+              <Route path='/' element={<MainPage/>} >
+              <Route index element={<Home/>} />
+              <Route path='about' element={<About/>} />
+              <Route path='service' element={<Service/>} />
+              <Route path='contact' element={<Contact/>} />
+              <Route path='product/:id' element={<Productdisp/>} />
+              <Route path='profile/' element={<ProfilePage/>} >
+                <Route index element={<Profile/>} />
+                <Route path='favourite' element={<Favourites/>} />
+              </Route>
             </Route>
         </Routes>
       </BrowserRouter>
