@@ -46,23 +46,23 @@ function Navbar() {
 </Routes>
 
     return (
-        <div className='flex flex-col justify-center items-center'>
-            <div className="navContainer bg-white flex p-6 m-5 w-4/5 items-center">
+        <div className='flex flex-col justify-center items-center rounded-lg'>
+            <div className="navContainer bg-white flex p-6 m-5 w-4/5 items-center max-sm:flex-col">
                 <div className="logoContainer">
                     <h1> <BiLogoMediumOld className='text-4xl text-red-500'/> </h1>
                 </div>
-                <div className='flex w-full '>
-                    <div className="navationtion navItem w-3/5 mr-5 flex items-center text-gray-700">
-                        <div className='flex justify-around w-full items-center'>
-                            <Link to=""> Home </Link>
-                            <Link to="service"> Smartphone </Link>
-                            <Link to="contact"> Contact </Link>
-                            <Link to="about"> About </Link>
-                            <Link to="profile"> Profile </Link>
+                <div className='flex max-lg:flex-col w-full max-lg:h-auto max-md:h-auto max-md:py-2 max-lg:justify-evenly max-lg:px-5 max-lg:rounded max-lg:gap-3'>
+                    <div className="navationtion navItem w-3/5 max-lg:w-full mr-5 flex items-center text-gray-700">
+                        <div className='flex justify-around w-full items-center max-md:flex-col max-lg:items-start' >
+                            <Link className='max-lg:px-1 max-lg:text-lg' to=""> Home </Link>
+                            <Link className='max-lg:px-1 max-lg:text-lg' to="service"> Smartphone </Link>
+                            <Link className='max-lg:px-1 max-lg:text-lg' to="contact"> Contact </Link>
+                            <Link className='max-lg:px-1 max-lg:text-lg' to="about"> About </Link>
+                            <Link className='max-lg:px-1 max-lg:text-lg' to="profile"> Profile </Link>
                         </div>
                     </div>
-                    <div className="serchBar w-3/5 flex">
-                        <div className=' w-3/5 h-10'>
+                    <div className="serchBar w-3/5 max-lg:w-full flex">
+                        <div className='w-3/5 max-lg:w-full h-10'>
                             <input type="text" placeholder='Search' className='focus:border border rounded p-2 w-full' onChange={(e) => setValue(e.target.value)}
                             value={searchValue} onFocus={()=>setVis(true)} onBlur={()=>setVis(false)}/>
                             <div className={` relative bg-slate-300 border border-black z-20 ${vis?"visible":"hidden"}`}>
