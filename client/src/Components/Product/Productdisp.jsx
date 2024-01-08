@@ -17,13 +17,10 @@ import api from '../../api/api';
 
 function Productdisp() {
     const data = JSON.parse(localStorage.getItem('Product Details'))
-    // localStorage.removeItem('Product Details')
-
-    // console.log("h: ",data.productSpecs)
 
     const base64String = data.ProductPicture.image.data.toString('base64');
 
-    // Function to convert Uint8Array to base64
+
     const uint8ArrayToBase64 = (uint8Array) => {
         let binary = '';
         uint8Array.forEach((byte) => {
@@ -198,14 +195,14 @@ function Productdisp() {
                         <Productiondetail productName={data.productName} description={data.Description}/>
                         <div className='relative top-0 align-text-bottom'>
                             <div className={`${ c1 ? "h-[600px] overflow-hidden":"h-full overflow-visible"}`}>
-                                <p className='text-3xl text-black font-normal mt-10'>Samsung S21 Full Specifications</p>
-                                <p className='bg-slate-100 text-3xl text-black p-5 pb-0 rounded-t-lg mt-2'>General</p>
+                                <p className='text-2xl text-black font-normal mt-10'>Samsung S21 Full Specifications</p>
+                                <p className='bg-slate-100 text-xl text-black p-5 pb-0 rounded-t-lg mt-2'>General</p>
                                 <ProductDesc aprops={arr=x}/>
-                                <p className='bg-slate-100 text-3xl text-black p-5 pb-0 rounded-t-lg mt-2'>Display</p>
+                                <p className='bg-slate-100 text-xl text-black p-5 pb-0 rounded-t-lg mt-2'>Display</p>
                                 <ProductDesc aprops={arr=disSpec}/>
-                                <p className='bg-slate-100 text-3xl text-black p-5 pb-0 rounded-t-lg mt-2'>Hardware</p>
+                                <p className='bg-slate-100 text-xl text-black p-5 pb-0 rounded-t-lg mt-2'>Hardware</p>
                                 <ProductDesc aprops={arr=hwSpec}/>
-                                <p className='bg-slate-100 text-3xl text-black p-5 pb-0 rounded-t-lg mt-2'>Camera</p>
+                                <p className='bg-slate-100 text-xl text-black p-5 pb-0 rounded-t-lg mt-2'>Camera</p>
                                 <ProductDesc aprops={arr=cameraSpec}/>
                                 <button className='flex justify-center text-sm cursor-pointer m-auto px-3  rounded-full  bg-gray-700 text-white py-2 border border-gray-700 hover:bg-white hover:text-gray-700 mt-5 shadow-lg shadow-slate-700' onClick={()=>{setC1(true); setC2(true)}}>show less</button>
                             </div>
