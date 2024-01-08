@@ -24,13 +24,9 @@ function Productcard(details) {
     return (
         <div className=' '>
             <div className="cardBody  border m-auto text-xs bg-white shadow-md rounded-lg overflow-hidden mb-5">
-
-
                 <div className="productImage w-full h-80 hover:bg-gray-200 hover:liner flex p-2 justify-center">
                     <img src={imageUrl} className="object-contain" alt="project image" />
                 </div>
-
-
 
                 <div className="useTech p-3 border-t-2 text-black text-sm flex justify-between">
                     <div>

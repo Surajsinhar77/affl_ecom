@@ -52,8 +52,8 @@ function Navbar() {
     </Routes>
 
     return (
-        <div className='flex flex-col justify-center items-center rounded-lg'>
-            <div className="navContainer bg-white flex p-6 m-5 w-4/5 items-center max-sm:flex-col">
+        <div className='flex flex-col justify-center items-center'>
+            <div className="navContainer bg-white flex p-6 m-5 w-4/5 items-center max-sm:flex-col rounded">
                 <div className="logoContainer">
                     <h1> <BiLogoMediumOld className='text-4xl text-red-500' /> </h1>
                 </div>
