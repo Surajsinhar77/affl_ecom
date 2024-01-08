@@ -72,21 +72,21 @@ function Navbar() {
 
                     <div className="navationtion navItem w-3/5 max-lg:w-full mr-5 md:flex items-center text-gray-700 hidden">
                         <div className='flex justify-around w-full items-center max-md:flex-col max-lg:items-start' >
-                            <Link className='max-lg:px-1 max-lg:text-lg mx-1' to=""> Home </Link>
-                            <Link className='max-lg:px-1 max-lg:text-lg mx-1' to="service"> Smartphone </Link>
-                            <Link className='max-lg:px-1 max-lg:text-lg mx-1' to="contact"> Contact </Link>
-                            <Link className='max-lg:px-1 max-lg:text-lg mx-1' to="about"> About </Link>
-                            <Link className='max-lg:px-1 max-lg:text-lg mx-1' to="profile"> Profile </Link>
+                            <Link className='max-lg:px-1 max-lg:text-lg mx-1 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500' to=""> Home </Link>
+                            <Link className='max-lg:px-1 max-lg:text-lg mx-1 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500' to="service"> Smartphone </Link>
+                            <Link className='max-lg:px-1 max-lg:text-lg mx-1 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500' to="contact"> Contact </Link>
+                            <Link className='max-lg:px-1 max-lg:text-lg mx-1 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500' to="about"> About </Link>
+                            <Link className='max-lg:px-1 max-lg:text-lg mx-1 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500' to="profile"> Profile </Link>
                         </div>
                     </div>
 
                     <div id="mobile-menu" className={`md:hidden mt-2 ${isMobileMenuOpen ? '' : 'hidden'}`}>
                         <div className='flex justify-around w-full items-center max-md:flex-col max-lg:items-start' >
-                            <Link className='max-lg:px-1 max-lg:text-lg mx-1' to=""> Home </Link>
-                            <Link className='max-lg:px-1 max-lg:text-lg mx-1' to="service"> Smartphone </Link>
-                            <Link className='max-lg:px-1 max-lg:text-lg mx-1' to="contact"> Contact </Link>
-                            <Link className='max-lg:px-1 max-lg:text-lg mx-1' to="about"> About </Link>
-                            <Link className='max-lg:px-1 max-lg:text-lg mx-1' to="profile"> Profile </Link>
+                            <Link className='max-lg:px-1 max-lg:text-lg mx-1 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500' to=""> Home </Link>
+                            <Link className='max-lg:px-1 max-lg:text-lg mx-1 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500' to="service"> Smartphone </Link>
+                            <Link className='max-lg:px-1 max-lg:text-lg mx-1 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500' to="contact"> Contact </Link>
+                            <Link className='max-lg:px-1 max-lg:text-lg mx-1 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500' to="about"> About </Link>
+                            <Link className='max-lg:px-1 max-lg:text-lg mx-1 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500' to="profile"> Profile </Link>
                         </div>
                     </div>
                     <div className="serchBar w-3/5 max-lg:w-full flex">

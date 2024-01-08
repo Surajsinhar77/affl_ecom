@@ -25,8 +25,8 @@ function Service() {
   }, [setData]); 
 
   return (
-    <div className='flex flex-row m-auto w-full  text-black mt-5 justify-center'>
-      <div className='h-full bg-white w-[23%] mr-2 flex flex-col my-4'>
+    <div className='flex flex-row m-auto w-full  text-black mt-5 justify-center max-sm:flex-col max-sm:m-auto'>
+      <div className='h-full bg-white w-[23%] mr-2 flex flex-col my-4 max-sm:w-full'>
         <div className=' m-6 text-2xl font-semibold'>
           Filters
         </div>
@@ -78,7 +78,7 @@ function Service() {
         </div>
       </div>
 
-      <div className='flex flex-col w-3/4'>
+      <div className='flex flex-col w-3/4 max-sm:m-auto'>
         {
           data?.map((item, index) =>
               <Link onClick={()=>fun(item)} to={`/product/${item.productName}`} key={index}><ProductCard detail={item}/></Link>
