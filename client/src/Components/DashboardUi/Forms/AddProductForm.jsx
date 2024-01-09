@@ -36,7 +36,7 @@ function AddProductForm() {
     }
 
     return (
-        <div className="addItemform bg-yellow-50 w-3/5 m-auto p-10 rounded-md">
+        <div className="addItemform bg-yellow-50 m-auto p-10 rounded-md">
             <div className="heading4Form">
                 <h1 className="text-3xl uppercase font-medium mb-7 text-center underline">Add Items</h1>
             </div>
@@ -211,12 +211,12 @@ function AddProductForm() {
                         </div>
 
                     </div>
-                    <div className="w-full flex justify-center">
+                    {/* <div className="w-full flex justify-center">
                         <button 
                             className="border-2 h-10 px-10 rounded border-green-600 my-5 text-red font-bold"
                             
                             >Upload</button>
-                    </div>
+                    </div> */}
                 </div>
 
                 <div className="row grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

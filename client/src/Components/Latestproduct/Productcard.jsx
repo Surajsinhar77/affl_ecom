@@ -1,31 +1,40 @@
 import React from 'react'
 import { FaEllipsisVertical } from "react-icons/fa6";
-import {SiV} from 'react-icons/si';
-import { Link } from 'react-router-dom';
+import { SiV } from 'react-icons/si';
 import ProdcutImage from '../../assets/Img/headphone.jpg'
 
-function Productcard(props){
-    const {project, image} =  props;
-    return (
-        <div>
-            <div className="cardBody  border m-auto bg-white shadow-md rounded-lg overflow-hidden mb-5">
-                
+function Productcard(details) {
+    // const {project, image} =  props;
+    const { data, filename, contentType } = details.project.ProductPicture.image;
 
-                <div className="productImage w-full h-72 hover:bg-gray-200 hover:liner flex justify-center">
-                    <Link to='/product'>
-                    <img src={image} className=" h-72 w-fit object-cover"  alt="project image" />
-                    </Link>
+    // Convert the binary data to a base64 string
+    const base64String = data.toString('base64');
+
+    // Function to convert Uint8Array to base64
+    const uint8ArrayToBase64 = (uint8Array) => {
+        let binary = '';
+        uint8Array.forEach((byte) => {
+            binary += String.fromCharCode(byte);
+        });
+        return btoa(binary);
+    };
+    // Construct the data URL for the image
+    const imageUrl = `data:${contentType};base64,${uint8ArrayToBase64(details.project.ProductPicture.image.data.data).toString('base64')}`;
+
+    return (
+        <div className=' '>
+            <div className="cardBody  border m-auto text-xs bg-white shadow-md rounded-lg overflow-hidden mb-5">
+                <div className="productImage w-full h-80 hover:bg-gray-200 hover:liner flex p-2 justify-center">
+                    <img src={imageUrl} className="object-contain" alt="project image" />
                 </div>
 
-
-                
-                <div className="useTech p-3 border-t-2 text-black text-base flex justify-between">
+                <div className="useTech p-3 border-t-2 text-black text-sm flex justify-between">
                     <div>
-                        <Link to="/product"><h2>{project.name}</h2></Link>
-                        <h2 className='text-red-400'>Rs: <span>{project.price}</span></h2>
+                        <h2>{details.project.productName}</h2>
+                        <h2 className='text-red-400'>Rs: <span>{details.project.varient.amazonVariant.amazonV1.price}</span></h2>
                     </div>
                     <div>
-                        <h2 className='font-bold text-red-500'># {project.tag}</h2>
+                        <h2 className='font-bold text-red-500'># {details.project.productTags}</h2>
                     </div>
                 </div>
             </div>

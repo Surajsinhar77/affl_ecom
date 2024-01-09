@@ -1,7 +1,5 @@
-const { error } = require('console');
 const inventoryData = require('../model/addInventory.model');
 const fs = require('fs');
-
 
 const addItemsToInventary = async (req, res) => {
     const productImageData = req.file;
@@ -31,7 +29,7 @@ const addItemsToInventary = async (req, res) => {
         av2Link,
         discription,
         termAndAgree,
-    } = req.body.textData;
+    } = req.body.textData; 
 
     try{
         const productExist =  await inventoryData.findOne({productName:productName});
@@ -128,21 +126,14 @@ const uploadImageForInventory = async (req, res) => {
     // try{
     const fieldData = req.body;
     const fileData = req.file;
-
-    console.log(fieldData); body
-    console.log(fileData);
-    // }catch(err){
-
-    // }
     const formData = req.files
     const formDataArray = req.body;
-    console.log(formData, formDataArray);
     return res.json({ message: "Data is reviced" });
 }
 
 const getItems = async (req, res) => {
-    try{    console.log("hello")
-
+    console.log("dsf");
+    try{
         const data = await inventoryData.find({});
         if(data){
             return res.json({message : "Data fetched Successfully", data : data});
@@ -154,8 +145,104 @@ const getItems = async (req, res) => {
     }
 }
 
+const getDataById = async (req, res)=>{
+    console("hfhf");
+    const _id = req.params;
+
+    try{
+        const productId = new mongoose.Types.ObjectId(_id);
+        const data = await inventoryData.findOne(productId);
+        if(!data){
+            return res.status(404).json({message:"Data is not present "});
+        }
+
+        return res.status(200).json({message:"data is fetch", data : data});
+    }catch(err){
+        console.err(err);
+        console.log(err.status);
+        return res.status(err?.status).json({message: err.message});
+    }
+}
+
+const getData = async (req, res)=>{
+    const q = req.query?.data;
+    var re;
+    if(q){
+        re = new RegExp(q);
+    }
+    try{
+        var data;
+        if(q){
+            data = await inventoryData.find(
+                { 'productName': { $regex: re } },
+                { 'productName': 1, '_id': 0 }
+            );
+        }else{
+            data = await inventoryData.find();
+        }
+        if(!data){
+            return res.status(404).json({message:"Data is not present "});
+        }
+
+        return res.status(200).json({message:"data is fetch", data : data});
+    }catch(err){
+        // console.err(err);
+        console.log(err.status);
+        // return res.status(err?.status).json({message: err.message});
+    }
+}
+
+const deleteItem = async (req, res) => {
+    try {
+        // Ensure 'custom' header is present
+        const _id = req.headers['custom'];
+        if (!_id) {
+            return res.status(400).json({ message: 'Missing or invalid "custom" header' });
+        }
+    
+    //     // Attempt to create an ObjectId from the 'custom' header value
+        const objectId = new mongoose.Types.ObjectId(_id);
+    
+    //     // Delete the document by its _id
+        const result = await inventoryData.deleteOne({ _id: objectId });
+    
+        // Check if the document was found and deleted
+        if (result.deletedCount === 0) {
+            return res.status(404).json({ message: 'Item not found or not deleted' });
+        }
+    
+        // Return success response
+        return res.status(200).json({ message: 'Item deleted successfully', data: result });
+    } catch (err) {
+        // Handle errors
+        console.error(err);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
+    
+}
+
+const getLatestItems = async (req, res) => {
+    try{
+        const recentItems = await inventoryData.find().sort({ createdAt: -1 }).limit(4);
+        console.log()
+        if(recentItems){
+            res.status(200).json({message: "Data fetched successfully", data:recentItems})
+        }else{
+            res.status(402).json({message: "Data not found"})
+        }
+    }catch(err){
+        console.log(err)
+        res.status(500).json({message: "Internal Server Error"})
+    }
+} 
+
 module.exports = {
     addItemsToInventary,
     uploadImageForInventory,
-    getItems
+    getAllItemData,
+    getData,
+    deleteItem,
+    getLatestItems,
+    getDataById,
+    getItems,
 }

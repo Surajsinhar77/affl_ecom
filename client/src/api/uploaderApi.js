@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiForUpload = axios.create({
-    baseURL: 'https://affl-ecom-server.vercel.app/',
+    baseURL: 'http://localhost:8000',
     timeout: 1000,
     headers: {
         'Authorization': `Bearer ${localStorage.getItem('adminAccessToken')}?`, 

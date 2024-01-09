@@ -1,41 +1,23 @@
 import { Button, Card, Typography } from "@material-tailwind/react";
+import { useEffect, useState } from "react";
+import apiForAdmin from "../../../api/apiForAdmin";
 
-const TABLE_HEAD = ["S.No", "Name", "Catogary", "Publish Date", "Action"];
-
-const TABLE_ROWS = [
-    {
-        sno : 1,
-        name: "John Michael",
-        job: "Manager",
-        date: "23/04/18",
-    },
-    {
-        sno : 2,
-        name: "Alexa Liras",
-        job: "Developer",
-        date: "23/04/18",
-    },
-    {
-        sno : 3,
-        name: "Laurent Perrier",
-        job: "Executive",
-        date: "19/09/17",
-    },
-    {
-        sno : 4,
-        name: "Michael Levi",
-        job: "Developer",
-        date: "24/12/08",
-    },
-    {
-        sno : 5,
-        name: "Richard Gran",
-        job: "Manager",
-        date: "04/10/21",
-    },
-];
+const TABLE_HEAD = ["S.No", "Product Name", "Category", "Product Tag"];
 
 function ProductTable() {
+    const [userData, setUserData] = useState([])
+
+    useEffect(()=>{
+        apiForAdmin.get('/items/getItems')
+        .then((response)=>{
+            console.log(response.data.data)
+            setUserData(response.data.data)
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+    }, [])
+
     return (
         <Card className="h-full w-full overflow-scroll">
             <table className="w-full min-w-max table-auto text-left">
@@ -58,12 +40,12 @@ function ProductTable() {
                     </tr>
                 </thead>
                 <tbody>
-                    {TABLE_ROWS.map(({ name, job, date }, index) => {
-                        const isLast = index === TABLE_ROWS.length - 1;
+                    {userData.map((item, index) => {
+                        const isLast = index === userData.length - 1;
                         const classes = isLast ? "p-4" : "p-4 border-b border-blue-gray-50";
 
                         return (
-                            <tr key={name}>
+                            <tr key={index}>
                                 <td className={classes}>
                                     <Typography
                                         variant="small"
@@ -79,7 +61,7 @@ function ProductTable() {
                                         color="blue-gray"
                                         className="font-normal"
                                     >
-                                        {name}
+                                        {item.productName}
                                     </Typography>
                                 </td>
                                 <td className={classes}>
@@ -88,7 +70,7 @@ function ProductTable() {
                                         color="blue-gray"
                                         className="font-normal"
                                     >
-                                        {job}
+                                        {item.category}
                                     </Typography>
                                 </td>
                                 <td className={classes}>
@@ -97,18 +79,7 @@ function ProductTable() {
                                         color="blue-gray"
                                         className="font-normal"
                                     >
-                                        {date}
-                                    </Typography>
-                                </td>
-                                <td className={classes}>
-                                    <Typography
-                                        as="a"
-                                        href="#"
-                                        variant="small"
-                                        color="blue-gray"
-                                        className="font-medium"
-                                    >
-                                        <Button className="text-red-400 border border-red-700 hover:text-gray-500">Delete</Button>
+                                        {item.productTags}
                                     </Typography>
                                 </td>
                             </tr>

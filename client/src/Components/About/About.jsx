@@ -3,6 +3,11 @@ import Teamcard from './Teamcard';
 // Icons From here
 
 function About() {
+
+  const devData = [
+    {name:"Suraj Kumar"},
+    {name:"Divanshu Gupta"}
+  ]
   return (
     <div className='AboutContainer mb-[150px]'>
       <div className="innerAboutContainer  w-3/4 m-auto">
@@ -20,10 +25,11 @@ function About() {
 
             {/* Team Card Start Here */}
             <div className="teamRow w-4/5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 m-auto">
-              <Teamcard/>
-              <Teamcard/>
-              <Teamcard/> 
-              <Teamcard/>
+              {
+                devData.map((item, index)=>
+                  <Teamcard key={index} data={item}/>
+                )
+              }
             </div>
             {/* Team Card End here */}
 

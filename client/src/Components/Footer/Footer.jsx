@@ -17,7 +17,7 @@ function Footer() {
                     </div>
                 </div>
 
-                <div className="container mx-auto flex justify-center mt-4">
+                <div className="container mx-auto justify-center mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 place-items-center">
                     <Link className="mx-4">About Us</Link>
                     <Link className="mx-4">Contact Us</Link>
                     <Link className="mx-4">FAQs</Link>
