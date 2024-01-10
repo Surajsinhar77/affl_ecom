@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import Productcard from './Productcard'
 import Productdisp from '../Product/Productdisp';
 import api from '../../api/api';
