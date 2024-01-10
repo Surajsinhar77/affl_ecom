@@ -22,7 +22,7 @@ import PageNotFound from './Components/Home/PageNotFound';
 
 function App() {
   const {
-    userData, 
+    userData,
     AdminLoginFunction,
     adminLogIn,
   } = useAuth();
@@ -32,27 +32,27 @@ function App() {
       <div className=' h-[100vh] w-full overflow-x-hidden'>
         <BrowserRouter>
           <Routes>
-          
-          {/* This is the admin login system Start */}
-            {(adminLogIn)?
-                <>
-                  <Route path='/admin/dashboard/' element={<Dashboard/>} >
-                    <Route index element={<AdminHome/>}/>
-                    <Route path='additems' element={<AddProductForm/>} />
-                    <Route path='manageInventory' element={<ManageInventory/>} />
-                  </Route>
-                </>
-                :
-                <>
-                  <Route  path='/admin/login' element={<Login/>} />
-                  <Route path="*" element={<PageNotFound/>} />
-                </>
+
+            {/* This is the admin login system Start */}
+            {(adminLogIn) ?
+              <>
+                <Route path='/admin/dashboard/' element={<Dashboard />} >
+                  <Route index element={<AdminHome />} />
+                  <Route path='additems' element={<AddProductForm />} />
+                  <Route path='manageInventory' element={<ManageInventory />} />
+                </Route>
+              </>
+              :
+              <>
+                <Route path='/admin/login' element={<Login />} />
+                <Route path="*" element={<PageNotFound />} />
+              </>
             }
-          {/* This is the admin login system End */}
+            {/* This is the admin login system End */}
 
 
-            <Route  path='/signup' element={<SignUp/>} />
-            {/* <Route path="*" element={<PageNotFound/>} /> */}
+            <Route path='/signup' element={<SignUp />} />
+            <Route path="*" element={<PageNotFound />} />
             <Route path={`/Profile/${userData?.fullName}`} element={<Profile userData={userData?.fullName} />} />
 
             <Route  path='/signin' element={<SignIn/>} />
@@ -67,9 +67,9 @@ function App() {
                 <Route path='favourite' element={<Favourites/>} />
               </Route>
             </Route>
-          </Routes>
-        </BrowserRouter>
-      </div>
+        </Routes>
+      </BrowserRouter>
+    </div >
     </>
   )
 }

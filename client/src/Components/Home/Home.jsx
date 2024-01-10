@@ -19,7 +19,7 @@ function Home() {
 
   return (
     <div>
-      <Crousal/>
+      {/* <Crousal/> */}
       {
         mainproductSection.map((item, index)=>
           <LatestProduct key={index} item={item}/>
