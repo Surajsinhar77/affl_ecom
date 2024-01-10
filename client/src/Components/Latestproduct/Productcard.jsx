@@ -22,7 +22,7 @@ function Productcard(details) {
     const imageUrl = `data:${contentType};base64,${uint8ArrayToBase64(details.project.ProductPicture.image.data.data).toString('base64')}`;
 
     return (
-        <div className="cardBody  border text-xs bg-white shadow-md rounded-lg overflow-hidden mb-5 hover:bg-white m-[2px] transition-all duration-500 hover:m-0">
+        <div className="cardBody  border text-xs bg-white shadow-md rounded-lg overflow-hidden mb-5 hover:bg-white lg:m-[2px] transition-all duration-500 hover:m-0">
             <div className="productImage w-fit h-80 hover:liner flex justify-center hover:bg-white">
                 <img src={imageUrl} className="object-contain" alt="project image" />
             </div>
