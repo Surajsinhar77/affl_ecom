@@ -16,6 +16,6 @@ router.get('/getItems', getItems);
 router.get('/getData', getData);
 router.delete('/deleteItem', deleteItem);
 router.get('/getLatestItems', getLatestItems)
-// router.post('/uploadImage', uploadImageForInventory);
+router.post('/uploadImage', uploadImageForInventory);
 
 module.exports = router;

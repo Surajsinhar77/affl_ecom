@@ -1,9 +1,6 @@
 const {
-    addItemsToInventary, 
-    uploadImageForInventory, 
     getItems,
     getData,
-    deleteItem,
     getLatestItems
 } = require('../controller/dashboard.controller');
 
@@ -14,6 +11,5 @@ const upload = require('../middleware/multer.Uploader');
 router.get('/getItems', getItems);
 router.get('/getData', getData);
 router.get('/getLatestItems', getLatestItems)
-// router.post('/uploadImage', uploadImageForInventory);
 
 module.exports = router;
