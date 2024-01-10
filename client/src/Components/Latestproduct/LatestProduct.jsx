@@ -11,7 +11,7 @@ function LatestProduct({item}) {
         api.get('/items/getLatestItems')
         .then((response)=>{
             setData(response.data.data)
-            alert(response.data.message)
+            // alert(response.data.message)
         })
         .catch((err)=>{
             console.log(err)
@@ -19,11 +19,12 @@ function LatestProduct({item}) {
     },[])
 
     return (
-        <div className='flex flex-col justify-center items-center my-40 bg-white mx-40 pb-10'>
-            <div className="MainHeaderTopic mt-5 mb-5 w-4/5 bg-white">
-                <h1 className='text-4xl p-20 text-center  text-gray-500'>{item.sectionName}</h1>
+        <div className='flex flex-col justify-center lg:m-10 md:m-6 sm:m-2 bg-white lg:pb-9 md:pb-6 sm:pb-3 rounded-lg'>
+            <div className="MainHeaderTopic lg:py-8 md:py-4 sm:py-2 bg-white">
+                <h1 className='lg:text-4xl md:text-2xl sm:text-lg text-center text-gray-500'>{item.sectionName}</h1>
             </div>
-            <div className="latestProducts w-4/5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 m-auto object-cover">
+            {/* <hr className='w-full border p'/> */}
+            <div className="latestProducts lg:px-9 md:px-6 sm:px-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 {
                     data.map((item,index)=>
                         <Link to={`/product/${item.name}`} key={index}><Productcard project={item}/></Link>
