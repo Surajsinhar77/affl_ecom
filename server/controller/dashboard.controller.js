@@ -132,7 +132,6 @@ const uploadImageForInventory = async (req, res) => {
 }
 
 const getItems = async (req, res) => {
-    console.log("dsf");
     try{
         const data = await inventoryData.find({});
         if(data){
@@ -146,7 +145,6 @@ const getItems = async (req, res) => {
 }
 
 const getDataById = async (req, res)=>{
-    console("hfhf");
     const _id = req.params;
 
     try{
@@ -224,7 +222,6 @@ const deleteItem = async (req, res) => {
 const getLatestItems = async (req, res) => {
     try{
         const recentItems = await inventoryData.find().sort({ createdAt: -1 }).limit(4);
-        console.log()
         if(recentItems){
             res.status(200).json({message: "Data fetched successfully", data:recentItems})
         }else{

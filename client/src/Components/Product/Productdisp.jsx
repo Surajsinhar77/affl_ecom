@@ -100,14 +100,14 @@ function Productdisp() {
     return (
         <>
             <div className='mt-7 '>
-                <div className="productDetail w-4/5 bg-white m-auto p-5 flex flex-row">
+                <div className="productDetail mx-10 bg-white m-auto p-5 flex flex-col lg:flex-row">
 
                     {/* Left Side Bar  with product picture and prizing Start */}
-                    <div id="left" className='flex w-2/5 flex-col h-fit'>
+                    <div id="left" className='flex lg:w-2/5 w-full flex-col h-fit'>
                         <div className="productImageSection flex">
                             {/* image Section section */}
                             <div className="imageSelection flex flex-col w-fit">
-                                <div className="images p-2 border mb-2">
+                                <div className="images p-2 border mb-2"> 
                                     <img className='w-15 h-20' src={imageUrl} alt="image of product 1" />
                                 </div>
                                 <div className="images p-2 border mb-2">
@@ -146,7 +146,7 @@ function Productdisp() {
 
 
                     {/* FROM HERE RIGHT SIDE CONTENT START */}
-                    <div id="right" className="productInformation ml-10 w-3/5 overflow-hidden">
+                    <div id="right" className="productInformation ml-10 w-fit lg:w-3/5 overflow-hidden">
                         <div className="headingPart">
                             <h1 className='text-gray-700 m-3 text-xl'>Key Specs</h1>
                             <div className='px-2 pt-2  border bg-gray-200 rounded-3xl'>

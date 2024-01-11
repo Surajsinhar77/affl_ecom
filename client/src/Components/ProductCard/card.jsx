@@ -18,10 +18,10 @@ function ProductCard({ detail }) {
 
     return (
         <>
-            <div className='flex bg-white flex-row justify-between max-sm:flex-col mb-5 rounded'>
+            <div className='flex bg-white md:flex-row justify-between flex-col mb-5 rounded'>
                 <div className='flex px-5 pb-10 py-2 items-center max-lg:m-auto'>
                     <img src={imageUrl} loading="lazy" alt={`Product: ${filename}`} className='w-[240px] h-[240px] object-contain' />
-                    {/* <div className='text-gray-400 text-2xl'>♥</div> */}
+                    <div className='text-gray-400 text-2xl'>♥</div>
                 </div>
                 <div className="flex max-lg:flex-col">
                     <div className='p-5 w-fit'>
@@ -56,7 +56,6 @@ function ProductCard({ detail }) {
                     </div>
                 </div>
             </div>
-            <hr className=" w-full" />
         </>
     )
 }

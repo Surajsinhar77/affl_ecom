@@ -15,13 +15,13 @@ function Profile({userData}){
                     <div>{userData?.fullName}</div>
                     <div className=" text-blue-600 font-semibold">Edit</div>
                 </div>
-                <input type="text" value={userData?.fullName} className="w-80 p-2 border rounded-lg"/>
+                <input type="text" value={userData?.fullName} className="lg:w-80 md:w-70 sm:w-60 lg:p-[9px] md:p-[6px] sm:p-[3px] border rounded-lg"/>
             </div>
             <div className=" flex flex-col gap-2">
                 <div className=" flex gap-2">
                     <div>Gender</div>
                 </div>
-                <div className=" flex gap-3">
+                <div className=" flex flex-col md:flex-row gap-3">
                     <div className=" flex gap-1">
                         <input type="radio" />
                         <label htmlFor="">Male</label>
@@ -39,16 +39,16 @@ function Profile({userData}){
             <div className=" flex flex-col gap-2">
                 <div className=" flex gap-2">
                     <div>Email</div>
-                    <div className=" text-blue-600 font-semibold">Edit</div>
+                    <div className=" text-blue-600 font-semibold ">Edit</div>
                 </div>
-                <input type="text" value={userData?.email} className="w-80 p-2 border rounded-lg" />
+                <input type="text" value={userData?.email} className="lg:w-80 md:w-70 sm:w-60 lg:p-[9px] md:p-[6px] sm:p-[3px] border rounded-lg" />
             </div>
             <div className=" flex flex-col gap-2">
                 <div className=" flex gap-2">
                     <div>Mobile Number</div>
                     <div className=" text-blue-600 font-semibold">Edit</div>
                 </div>
-                <input type="text" value={"+91 6378137419"}  className="w-80 p-2 border rounded-lg"/>
+                <input type="text" value={"+91 6378137419"}  className="lg:w-80 md:w-70 sm:w-60 lg:p-[9px] md:p-[6px] sm:p-[3px] border rounded-lg"/>
             </div>
         </div>
     )
