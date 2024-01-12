@@ -69,7 +69,7 @@ function Contact() {
                             </div>
                             <div className="col flex w-full mt-8">
                                 <div className="row1 flex flex-col w-full h-48">
-                                    <label htmlFor="">Message <span className="text-red-500 mb-2">*</span> </label>
+                                    <label htmlFor="">MESSAGE <span className="text-red-500 mb-2">*</span> </label>
                                     <textarea 
                                       className="focus:outline-none focus:outline-slate-500 focus:border-none rounded-md border pl-2 h-[100%]" 
                                       rows='100%'
