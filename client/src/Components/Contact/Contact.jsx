@@ -29,7 +29,7 @@ function Contact() {
                 <div className="subContainer w-9/12 m-auto max-sm:w-full">
                     <div className="contactHeader">
                         <h2 className="text-4xl">Contact Me</h2>
-                        <p className="text-lg mt-4">Thank you for visiting my portfolio, I&rsquo;m excited to connect with you Whether you have a question, a potential project, or just want to say hello, feel free to reach out using the contact form below or through the provided contact details </p>
+                        <p className="text-lg mt-4">Thank you for our Store, I&rsquo;m excited to connect with you Whether you have a question, a potential project, or just want to say hello, feel free to reach out using the contact form below or through the provided contact details </p>
                     </div>
                     <div className="formContainer mt-4 text-gray-500">
                         <form action="">
