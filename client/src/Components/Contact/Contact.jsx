@@ -2,26 +2,26 @@ import React, {useEffect, useState} from 'react'
 import api from '../../api/api';
 
 function Contact() {
-  const [userFormData, setUserFormData] = useState();
+  const [userFormData, setUserFormData] = useState([]);
 
   function handelFormData(e){
     e.preventDefault();
-    setUserFormData(
-      {...userFormData,[ e.targer.name] : e.target.value}
-    )
+    setUserFormData({
+      ...userFormData,
+      [e.target.name]: e.target.value,
+    })
   }
 
-  function handelFormSubmit(){
+  function handelFormSubmit(e){
+    e.preventDefault();
     console.log("Does we came here to something");
-    useEffect(()=>{
-      api.post('/user/contactus',{...userFormData})
+      api.post('/user/contactus',{userFormData})
       .then((response)=>{
         console.log(response);
         alert(response.data.message);
       }).catch((err)=>{
         console.log(err);
       })
-    },[])
   }
 
   return (
@@ -34,7 +34,7 @@ function Contact() {
                         <p className="text-lg mt-4">Thank you for our Store, I&rsquo;m excited to connect with you Whether you have a question, a potential project, or just want to say hello, feel free to reach out using the contact form below or through the provided contact details </p>
                     </div>
                     <div className="formContainer mt-4 text-gray-500">
-                        <form>
+                        <div>
                             <div className="col flex justify-between mt-8 max-lg:flex-col">
                                 <div className="row1 flex flex-col w-full mr-2">
                                     <label htmlFor="">NAME <span className="text-red-500 ">*</span> </label>
@@ -86,7 +86,7 @@ function Contact() {
                                   onClick={handelFormSubmit} 
                                   className="px-5 py-2 rounded-3xl text-white bg-blue-500 hover:bg-blue-300 hover:text-gray-600">Sent</button>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
