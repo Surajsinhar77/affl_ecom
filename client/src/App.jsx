@@ -35,7 +35,7 @@ function App() {
 
             {/* This is the admin login system Start */}
             {
-              console.log(adminLogIn)
+              // console.log(adminLogIn)
             (adminLogIn) ?
               
               <>
