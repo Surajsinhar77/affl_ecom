@@ -17,6 +17,7 @@ import api from '../../api/api';
 
 function Productdisp() {
     const data = JSON.parse(localStorage.getItem('Product Details'))
+    console.log(data);
 
     const base64String = data.ProductPicture.image.data.toString('base64');
 

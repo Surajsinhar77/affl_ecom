@@ -7,7 +7,12 @@ import { Link, Route, Routes  } from 'react-router-dom';
 function LatestProduct({item}) {
     const [data, setData] = useState([]);
 
-    useEffect(()=>{
+    function fun(item){
+        localStorage.setItem('Product Details', JSON.stringify(item))
+        console.log(localStorage.getItem('Product Details'))
+    }
+
+      useEffect(()=>{
         api.get('/items/getLatestItems')
         .then((response)=>{
             setData(response.data.data)
@@ -25,8 +30,11 @@ function LatestProduct({item}) {
             {/* <hr className='w-full border p'/> */}
             <div className="latestProducts lg:px-9 md:px-6 sm:px-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 {
-                    data.map((item,index)=>
-                        <Link to={`/product/${item.name}`} key={index}><Productcard project={item}/></Link>
+                    data.map((item,index)=>{
+                        console.log(item.name)
+                        return(
+                            <Link onClick={()=>fun(item)} to={`/product/${item.productName}`} key={index}><Productcard project={item}/></Link>
+                        )}
                     )
                 }
                 <Routes>
