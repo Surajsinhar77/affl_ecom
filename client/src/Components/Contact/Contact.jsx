@@ -20,7 +20,7 @@ function Contact() {
       }).catch((err)=>{
         console.log(err);
       })
-    })
+    },[])
   }
 
   return (
@@ -41,7 +41,7 @@ function Contact() {
                                       className="focus:outline-none focus:outline-slate-500 focus:border-none rounded-md h-10 border pl-2" 
                                       type="text"
                                       name='name'
-                                      onClick={handelFormData}
+                                      onChange={handelFormData}
                                       required
                                     />
                                 </div>
@@ -51,7 +51,7 @@ function Contact() {
                                       className="focus:outline-none focus:outline-slate-500 focus:border-none rounded-md h-10 border pl-2" 
                                       type="email"
                                       name='email'
-                                      onClick={handelFormData}
+                                      onChange={handelFormData}
                                       required
                                     />
                                 </div>
@@ -63,7 +63,7 @@ function Contact() {
                                       className="focus:outline-none focus:outline-slate-500 focus:border-none rounded-md h-10 border pl-2" 
                                       type="text" 
                                       name='subject'
-                                      onClick={handelFormData}
+                                      onChange={handelFormData}
                                       required
                                     />
                                 </div>
