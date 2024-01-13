@@ -75,7 +75,7 @@ function Contact() {
                                       className="focus:outline-none focus:outline-slate-500 focus:border-none rounded-md border pl-2 h-[100%]" 
                                       rows='100%'
                                       name='message'
-                                      onClick={handelFormData}
+                                      onChange={handelFormData}
                                       required
                                     ></textarea>
                                 </div>
