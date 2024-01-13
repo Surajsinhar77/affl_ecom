@@ -27,7 +27,7 @@ function AddProductForm() {
             },
         )
         .then((response)=>{
-            console.log(response);
+            console.log("This is in add Productform",response);
             alert(response.data.message);
         })
         .catch((err)=>{

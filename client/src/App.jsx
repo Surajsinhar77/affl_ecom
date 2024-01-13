@@ -35,9 +35,7 @@ function App() {
 
             {/* This is the admin login system Start */}
             {
-              // console.log(adminLogIn)
             (adminLogIn) ?
-              
               <>
                 <Route path='/admin/dashboard/' element={<Dashboard />} >
                   <Route index element={<AdminHome />} />
