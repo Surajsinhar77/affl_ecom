@@ -1,53 +1,39 @@
-import { Button } from '@material-tailwind/react';
+import { Link } from 'react-router-dom';
 // import AddProductForm from '../Forms/AddProductForm';
-import {useAuth} from '../../../common/AuthContext'
-import {useNavigate} from 'react-router-dom';
+import {useAuth} from './../../../common/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 function DBar() {
-    // const NavBarListig ={
-    //     1 : <AddProductForm/>
-    // }
-    const {AdminLogoutFunction} = useAuth();
+    
     const navigate = useNavigate();
-    const logoutFunction = () =>{
+    const { AdminLogoutFunction } = useAuth();
+    function onClickLogOut(){
         AdminLogoutFunction();
         navigate('/admin/login');
     }
 
     return (
-        <div className='navBar bg-slate-50 py-3 rounded-lg flex justify-between px-5'>
-            <ul className='flex w-3/5 justify-evenly'>
+        <div className='navBar bg-slate-50 p-3 rounded-lg'>
+            <ul className='flex justify-evenly p-3 items-center'>
                 <li>
-                    <Button className='border border-gray-500 text-purple-700
-                    hover:border-purple-700 hover:text-gray-600'>Home</Button>
+                    <Link to='/admin/dashboard' className=' rounded-md border-purple-600 border-[1px] text-purple-700 text-sm font-semibold p-2 px-4 shadow-md'>Home</Link>
                 </li>
                 <li>
-                    <Button className='border border-gray-500 text-purple-700
-                    hover:border-purple-700 hover:text-gray-600'>Setting</Button>
+                    <Link className=' rounded-md border-purple-600 border-[1px] text-purple-700 text-sm font-semibold p-2 px-4 shadow-md'>Setting</Link>
                 </li>
                 <li>
-                    <Button className='border border-gray-500 text-purple-700
-                    hover:border-purple-700 hover:text-gray-600'>Profile</Button>
+                    <Link className=' rounded-md border-purple-600 border-[1px] text-purple-700 text-sm font-semibold p-2 px-4 shadow-md'>Profile</Link>
                 </li>
                 <li>
-                    <Button className='border border-gray-500 text-purple-700
-                    hover:border-purple-700 hover:text-gray-600'>Manage inventory</Button>
+                    <Link to='/admin/dashboard/manageInventory' className=' rounded-md border-purple-600 border-[1px] text-purple-700 text-sm font-semibold p-2 px-4 shadow-md'>Manage Inventory</Link>
                 </li>
                 <li>
-                    <Button className='border border-gray-500 text-purple-700
-                    hover:border-purple-700 hover:text-gray-600'
-
-                    >Add Items</Button>
+                    <Link to='/admin/dashboard/additems' className=' rounded-md border-purple-600 border-[1px] text-purple-700 text-sm font-semibold p-2 px-4 shadow-md'>Add Items</Link>
+                </li>
+                <li>
+                    <button onClick={onClickLogOut} className=' rounded-md border-purple-600 border-[1px] text-purple-700 text-sm font-semibold p-2 px-4 shadow-md'>Logout</button>
                 </li>
             </ul>
-
-            <div className=''>
-                <Button 
-                    className='border border-gray-500 text-purple-700
-                    hover:border-purple-700 hover:text-gray-600'
-                    onClick={logoutFunction}
-                    >Logout</Button>
-            </div>
         </div>
     )
 }

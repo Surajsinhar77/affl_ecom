@@ -33,8 +33,6 @@ export const signUp = (userdata) => {
                     return dataa;
                 }
             }
-            console.log("this is if status code is not ok :",response);
-            alert(response.data?.message);
             throw new Error({message: response.data.error});
         }).catch((err)=>{
             let message

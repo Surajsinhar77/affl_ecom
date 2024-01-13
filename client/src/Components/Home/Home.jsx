@@ -8,18 +8,18 @@ function Home() {
     {
       sectionName : "Latest launch Product",
     },
-    {
-      sectionName : "Most Selling Product",
-    },
-    {
-      sectionName : "Most Discount Product",
-    },
+    // {
+    //   sectionName : "Most Selling Product",
+    // },
+    // {
+    //   sectionName : "Most Discount Product",
+    // },
     
   ]
 
   return (
     <div>
-      <Crousal/>
+      {/* <Crousal/> */}
       {
         mainproductSection.map((item, index)=>
           <LatestProduct key={index} item={item}/>

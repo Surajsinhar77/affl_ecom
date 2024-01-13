@@ -1,7 +1,5 @@
-const { error } = require('console');
 const inventoryData = require('../model/addInventory.model');
 const fs = require('fs');
-
 
 const addItemsToInventary = async (req, res) => {
     const productImageData = req.file;
@@ -31,7 +29,7 @@ const addItemsToInventary = async (req, res) => {
         av2Link,
         discription,
         termAndAgree,
-    } = req.body.textData;
+    } = req.body.textData; 
 
     try{
         const productExist =  await inventoryData.findOne({productName:productName});
@@ -128,21 +126,14 @@ const uploadImageForInventory = async (req, res) => {
     // try{
     const fieldData = req.body;
     const fileData = req.file;
-
-    console.log(fieldData); body
-    console.log(fileData);
-    // }catch(err){
-
-    // }
     const formData = req.files
     const formDataArray = req.body;
-    console.log(formData, formDataArray);
     return res.json({ message: "Data is reviced" });
 }
 
 const getItems = async (req, res) => {
+    console.log("dsf");
     try{
-
         const data = await inventoryData.find({});
         if(data){
             return res.json({message : "Data fetched Successfully", data : data});
@@ -174,12 +165,21 @@ const getDataById = async (req, res)=>{
 }
 
 const getData = async (req, res)=>{
-    const re = new RegExp(req.query.data);
+    const q = req.query?.data;
+    var re;
+    if(q){
+        re = new RegExp(q);
+    }
     try{
-        const data = await inventoryData.find(
-            { 'productName': { $regex: re } },
-            { 'productName': 1, '_id': 0 }
-        );
+        var data;
+        if(q){
+            data = await inventoryData.find(
+                { 'productName': { $regex: re } },
+                { 'productName': 1, '_id': 0 }
+            );
+        }else{
+            data = await inventoryData.find();
+        }
         if(!data){
             return res.status(404).json({message:"Data is not present "});
         }
@@ -192,9 +192,57 @@ const getData = async (req, res)=>{
     }
 }
 
+const deleteItem = async (req, res) => {
+    try {
+        // Ensure 'custom' header is present
+        const _id = req.headers['custom'];
+        if (!_id) {
+            return res.status(400).json({ message: 'Missing or invalid "custom" header' });
+        }
+    
+    //     // Attempt to create an ObjectId from the 'custom' header value
+        const objectId = new mongoose.Types.ObjectId(_id);
+    
+    //     // Delete the document by its _id
+        const result = await inventoryData.deleteOne({ _id: objectId });
+    
+        // Check if the document was found and deleted
+        if (result.deletedCount === 0) {
+            return res.status(404).json({ message: 'Item not found or not deleted' });
+        }
+    
+        // Return success response
+        return res.status(200).json({ message: 'Item deleted successfully', data: result });
+    } catch (err) {
+        // Handle errors
+        console.error(err);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
+    
+}
+
+const getLatestItems = async (req, res) => {
+    try{
+        const recentItems = await inventoryData.find().sort({ createdAt: -1 }).limit(4);
+        console.log()
+        if(recentItems){
+            res.status(200).json({message: "Data fetched successfully", data:recentItems})
+        }else{
+            res.status(402).json({message: "Data not found"})
+        }
+    }catch(err){
+        console.log(err)
+        res.status(500).json({message: "Internal Server Error"})
+    }
+} 
+
 module.exports = {
     addItemsToInventary,
     uploadImageForInventory,
+    getAllItemData,
+    getData,
+    deleteItem,
+    getLatestItems,
+    getDataById,
     getItems,
-    getData
 }

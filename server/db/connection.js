@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+<<<<<<< HEAD
 const prod= true;
 
 function main(url) {
@@ -9,6 +10,10 @@ function main(url) {
     }
     return mongoose.connect(url);
 
+=======
+function main(url) {
+    return mongoose.connect(url);
+>>>>>>> 518898d19968b22717f24d3365a9ea6739f44340
 }
 
 module.exports = {

@@ -10,9 +10,12 @@ const verifyToken = (req, res, next) => {
         if(token != undefined && token != null){
             if(token) {
                 jwt.verify(token, secretkey, (err, decoded) => {
+                    console.log("error hai: ",err)
+                    console.log("error nhi hai: ",decoded)
                     if (err) {
                         return res.status(401).json({ message: 'Invalid token' });
                     }
+                    console.log("decoded data: ", decoded)
                     next();
                 });
             }else{
