@@ -12,6 +12,7 @@ function Contact() {
   }
 
   function handelFormSubmit(){
+    console.log("Does we came here to something");
     useEffect(()=>{
       api.post('/user/contactus',{...userFormData})
       .then((response)=>{
