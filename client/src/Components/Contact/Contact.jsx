@@ -83,7 +83,7 @@ function Contact() {
                             <div className="col flex w-full mt-8">
                                 <button
                                   onClick={handelFormSubmit} 
-                                  className="px-5 py-2 rounded-3xl text-white bg-blue-500 hover:bg-blue-300 hover:text-gray-600">Submit</button>
+                                  className="px-5 py-2 rounded-3xl text-white bg-blue-500 hover:bg-blue-300 hover:text-gray-600">Sent</button>
                             </div>
                         </form>
                     </div>
