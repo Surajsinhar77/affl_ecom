@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 // const params = require('../params.json');
-const secretkey = params.secretkey;
+const secretkey = process.env.secretkey;
 
 const setUserToken = (userData)=>{
     return jwt.sign(

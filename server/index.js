@@ -2,12 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const {main} = require('./db/connection');
-<<<<<<< HEAD
-const fs = require('fs');
-const path = require('path');
-=======
 require('dotenv').config();
->>>>>>> 518898d19968b22717f24d3365a9ea6739f44340
 
 const app = express();
 
@@ -43,17 +38,6 @@ main(process.env.DATABASE_URL).then((resp)=>{
   console.log(err);
 })
 
-<<<<<<< HEAD
-app.get('/',(req,res)=>{
-  res.sendFile(path.join(__dirname, '../client/dist/index.html'), 
-    (err)=>{
-      res.status(500).send(err);
-    })
-})
-
-const PORT = process.env.PORT || 8000
-=======
 const PORT = process.env.PORT || 8000;
->>>>>>> 518898d19968b22717f24d3365a9ea6739f44340
 
 app.listen(PORT, ()=> console.log("The Server is lisenting on : http://localhost:"+PORT));
