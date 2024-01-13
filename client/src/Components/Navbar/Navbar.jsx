@@ -76,7 +76,12 @@ function Navbar() {
                             <Link className='max-lg:px-1 max-lg:text-lg mx-1 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500' to="service"> Smartphone </Link>
                             <Link className='max-lg:px-1 max-lg:text-lg mx-1 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500' to="contact"> Contact </Link>
                             <Link className='max-lg:px-1 max-lg:text-lg mx-1 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500' to="about"> About </Link>
-                            <Link className='max-lg:px-1 max-lg:text-lg mx-1 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500' to="profile"> Profile </Link>
+                            {
+                                isLoggedIn ?
+                                <Link className='max-lg:px-1 max-lg:text-lg mx-1 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500' to="profile"> Profile </Link>
+                                :
+                                ""
+                            }
                         </div>
                     </div>
 

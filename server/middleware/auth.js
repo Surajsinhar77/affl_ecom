@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
-const params = require('../params.json');
-const secretkey = params.secretkey;
+// const params = require('../params.json');
+const secretkey = process.env.secretkey;
 
 const verifyToken = (req, res, next) => {
     const Authorization = req.headers['authorization'];

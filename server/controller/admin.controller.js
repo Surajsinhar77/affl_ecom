@@ -25,8 +25,6 @@ const adminLogin = async(req, res)=>{
 }
 
 const addAdmin = async(req, res)=>{
-    // console.log("jhbdsf");
-    // console.log(req.body)
     const {username,email,password, role} = req.body.data;
     try {
         const isAdminExist = await adminModel.findOne({ email: email });

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiForAdmin = axios.create({
-    baseURL: 'http://localhost:8000',
+    baseURL: 'https://backend-nid8.onrender.com',
     timeout: 100000,
     headers: {
         'Authorization': `Bearer ${localStorage.getItem('adminAccessToken')}`, 
