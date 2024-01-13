@@ -16,6 +16,7 @@ function Contact() {
       api.post('/user/contactus',{...userFormData})
       .then((response)=>{
         console.log(response);
+        alert(response.data.message);
       }).catch((err)=>{
         console.log(err);
       })
