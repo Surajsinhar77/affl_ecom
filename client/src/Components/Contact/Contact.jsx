@@ -33,7 +33,7 @@ function Contact() {
                         <p className="text-lg mt-4">Thank you for our Store, I&rsquo;m excited to connect with you Whether you have a question, a potential project, or just want to say hello, feel free to reach out using the contact form below or through the provided contact details </p>
                     </div>
                     <div className="formContainer mt-4 text-gray-500">
-                        <form action="">
+                        <form>
                             <div className="col flex justify-between mt-8 max-lg:flex-col">
                                 <div className="row1 flex flex-col w-full mr-2">
                                     <label htmlFor="">NAME <span className="text-red-500 ">*</span> </label>
