@@ -168,31 +168,3 @@ function Navbar() {
 }
 
 export default Navbar
-
-
-// block 1 code from here 
-{/* <div className="serchBar w-3/5 max-lg:w-full flex">
-                        <div className='w-3/5 max-lg:w-full h-10'>
-                            <input type="text" placeholder='Search' className='focus:border border rounded p-2 w-full' onChange={(e) => setValue(e.target.value)}
-                            value={searchValue} onFocus={()=>setVis(true)} onBlur={()=>setVis(false)}/>
-                            <div className={` relative bg-slate-300 border border-black z-20 ${vis?"visible":"hidden"}`}>
-                                <ul className='px-1'>
-                                    {
-                                        sugg.map((item, index) => 
-                                            <Fragment key={index}>
-                                                <li  
-                                                className='py-2 border'
-                                                onClick={()=>setValue(item.productName)}>{item.productName}</li>
-                                            </Fragment>
-                                        )
-                                    }
-                                </ul>
-                            </div>
-                        </div>
-                            <Link to={`/product/${searchValue}`}>
-                                <button className='border rounded py-2 px-3 ml-3 border-gray-600 hover:border-green-700 hover:text-gray-600'>Search</button>
-                            </Link>
-                    </div> */}
-
-
-// Block 2 code from here 
