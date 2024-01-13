@@ -10,7 +10,6 @@ export default function ManageInventory(){
     useEffect(() => {
         apiForAdmin.get('/dashboard/getData?'+new URLSearchParams({}).toString())
         .then((response) => {
-            console.log(response.data.data)
             setData(response.data.data)
             // alert(response.data.message)
         })
@@ -20,14 +19,13 @@ export default function ManageInventory(){
     }, [deleteFdunctionCall]);
 
     function deleteItem(id){
-        console.log("id of item: ", id)
         apiForAdmin.delete(`/dashboard/deleteItem`, {
             headers:{
                 'Custom' : `${id}`
             }
         })
         .then((response)=>{
-            console.log(response.data)
+            console.log("from  ManageInventory :",response);
             setDeleteFdunctionCall(!deleteFdunctionCall)
         })
         .catch((err)=>{

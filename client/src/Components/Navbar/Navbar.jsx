@@ -33,7 +33,7 @@ function Navbar() {
     useEffect(() => {
         api.get('/items/getData?' + new URLSearchParams({ data: searchValue }).toString())
             .then((response) => {
-                console.log(response.data.data)
+                console.log("From Navbar :",response.data.data)
                 setSugg(response.data.data)
             })
             .catch((err) => {

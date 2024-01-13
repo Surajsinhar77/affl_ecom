@@ -9,7 +9,7 @@ function LatestProduct({item}) {
 
     function fun(item){
         localStorage.setItem('Product Details', JSON.stringify(item))
-        console.log(localStorage.getItem('Product Details'))
+        console.log("from LatestProduct :",localStorage.getItem('Product Details'))
     }
 
       useEffect(()=>{
@@ -31,7 +31,6 @@ function LatestProduct({item}) {
             <div className="latestProducts lg:px-9 md:px-6 sm:px-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 {
                     data.map((item,index)=>{
-                        console.log(item.name)
                         return(
                             <Link onClick={()=>fun(item)} to={`/product/${item.productName}`} key={index}><Productcard project={item}/></Link>
                         )}

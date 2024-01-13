@@ -10,7 +10,6 @@ function ProductTable() {
     useEffect(()=>{
         apiForAdmin.get('/items/getItems')
         .then((response)=>{
-            console.log(response.data.data)
             setUserData(response.data.data)
         })
         .catch((err)=>{

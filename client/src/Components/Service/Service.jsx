@@ -11,7 +11,7 @@ function Service() {
 
   function fun(item){
     localStorage.setItem('Product Details', JSON.stringify(item))
-    console.log(localStorage.getItem('Product Details'))
+    console.log("This Service Page : ",localStorage.getItem('Product Details'))
   }
 
   useEffect(() => {

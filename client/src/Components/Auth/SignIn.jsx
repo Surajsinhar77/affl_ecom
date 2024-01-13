@@ -19,7 +19,6 @@ export default function LoginCard() {
       e.preventDefault();
       const {email, password} = form;
       const data = await loginUser({email, password});
-      console.log("Data from the login user Function : ", data);
       if(data.user){
         login({accessToken : data.accessToken, userData : data.userData});
       }
