@@ -3,8 +3,8 @@ import api  from './api';
 export const loginUser =(userData)=>{
     const result = api.post('/auth/signin', userData )
     .then((response) => {
+
         if(response?.data?.result){
-            console.log("This is the resp data :",response.data)
             const data = { user: response.data.userExistInfo , accessToken :response.data.result.token, userData : response.data.result};
             return data;
         }
@@ -24,9 +24,6 @@ export const loginUser =(userData)=>{
 export const signUp = (userdata) => {
     const result = api.post('/auth/signup', userdata)
         .then((response)=>{
-            // const authorizationHeader = response.headers.get('Authorization');
-            // console.log("In the signUp Function :",response.headers, authorizationHeader);
-            console.log("Response : ",response);
             if(response.status === 201){
                 if(response?.data?.result){
                     const  dataa = { user: true , accessToken :response.data.result.token, userData : response.data.result}

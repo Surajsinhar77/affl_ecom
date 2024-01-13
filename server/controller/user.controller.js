@@ -1,7 +1,6 @@
-const userModel = require("../model/user.model");
+const {userModel, userContactUsModel} = require("../model/user.model");
 const bcrypt = require('bcrypt');
 const serviceAuth = require("../service/auth");
-
 
 const userRegister = async (req, res) => {
     const { name, email, password } = req.body;
@@ -12,7 +11,7 @@ const userRegister = async (req, res) => {
         if (isUserExist) {
             return res.status(409).json({
                 error: 'User already registered',
-                message: 'The username or email is already taken.', 
+                message: 'The username or email is already taken', 
                 userExist: false 
             });
         }
@@ -66,7 +65,17 @@ const userLogin = async(req, res)=>{
     }
 }
 
+const contactUsMail = (req, res) =>{
+    const {name, email, subject , message} = req.body;
+    try{
+        
+    }catch(err){
+
+    }
+}
+
 module.exports = {
     userRegister,
     userLogin,
+    contactUsMail
 };

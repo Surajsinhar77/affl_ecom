@@ -30,9 +30,10 @@ const dashboardApiCall = require('./routes/dashboard.routes');
 
 // Saprate Routes
 app.use('/auth', authUserRouter);
-app.use('/items',productItemRoutes);
+app.use('/items', productItemRoutes);
 app.use('/admin', adminRoutes);
-app.use('/dashboard', userVerfication,dashboardApiCall)
+app.use('/dashboard', userVerfication, dashboardApiCall)
+app.use('/user', authUserRouter);
 
 
 // Database Connection

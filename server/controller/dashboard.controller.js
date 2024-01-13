@@ -132,7 +132,6 @@ const uploadImageForInventory = async (req, res) => {
 }
 
 const getItems = async (req, res) => {
-    console.log("dsf");
     try{
         const data = await inventoryData.find({});
         if(data){

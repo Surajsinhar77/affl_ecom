@@ -11,6 +11,7 @@ function LatestProduct({item}) {
         api.get('/items/getLatestItems')
         .then((response)=>{
             setData(response.data.data)
+            console.log(response);
             alert(response.data.message)
         })
         .catch((err)=>{
