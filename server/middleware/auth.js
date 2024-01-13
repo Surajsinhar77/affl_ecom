@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const params = require('../params.json');
+// const params = require('../params.json');
 const secretkey = params.secretkey;
 
 const verifyToken = (req, res, next) => {
