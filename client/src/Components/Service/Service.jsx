@@ -18,6 +18,26 @@ function Service() {
   })
   const [value, setValue] = useState();
 
+  function f(e){
+    console.log(e.target.name, e.target.value)
+    let check=true
+    const arr=filters[e.target.name].map((item)=>{
+      if(item!=e.target.value){
+        return item
+      }else{
+        check=false
+        return null
+      }
+    })
+    console.log("check: ", check)
+    if(check){
+      arr.unshift(e.target.value)
+    }
+    setFilters({...filters, [e.target.name]:arr})
+    console.log(e.target.name, arr)
+    console.log(filters);
+  }
+
   function fun(item){
     localStorage.setItem('Product Details', JSON.stringify(item))
     // console.log("This Service Page : ",localStorage.getItem('Product Details'))
@@ -108,23 +128,23 @@ function Service() {
             </div>
             <div className=' border px-2 py-1 flex flex-col justify-between'>
                 <div className='flex gap-1 p-1'>
-                  <input type="checkbox" name="Gaming"/>
+                  <input type="checkbox" name="brands"/>
                   <label>Samsung</label>
                 </div>
                 <div className='flex gap-1 p-1'>
-                  <input type="checkbox" name="Gaming"/>
+                  <input type="checkbox" name="brands"/>
                   <label>Realme</label>
                 </div>
                 <div className='flex gap-1 p-1'>
-                  <input type="checkbox" name="Gaming"/>
+                  <input type="checkbox" name="brands"/>
                   <label>iQoo</label>
                 </div>
                 <div className='flex gap-1 p-1'>
-                  <input type="checkbox" name="Gaming"/>
+                  <input type="checkbox" name="brands"/>
                   <label>Mi</label>
                 </div>
                 <div className='flex gap-1 p-1'>
-                  <input type="checkbox" name="Gaming"/>
+                  <input type="checkbox" name="brands"/>
                   <label>Motorola</label>
                 </div>
             </div>
@@ -136,23 +156,23 @@ function Service() {
             </div>
             <div className=' border px-2 py-1 flex flex-col justify-between'>
                 <div className='flex gap-1 p-1'>
-                  <input type="checkbox" name="Gaming"/>
+                  <input type="checkbox" name="tags" value="Gaming" onChange={(e)=>f(e)}/>
                   <label>Gaming</label>
                 </div>
                 <div className='flex gap-1 p-1'>
-                  <input type="checkbox" name="Gaming"/>
+                  <input type="checkbox" name="tags" value="Battery" onChange={(e)=>f(e)}/>
                   <label>Battery</label>
                 </div>
                 <div className='flex gap-1 p-1'>
-                  <input type="checkbox" name="Gaming"/>
+                  <input type="checkbox" name="tags" value="Camera" onChange={(e)=>f(e)}/>
                   <label>Camera</label>
                 </div>
                 <div className='flex gap-1 p-1'>
-                  <input type="checkbox" name="Gaming"/>
+                  <input type="checkbox" name="tags" value="Display" onChange={(e)=>f(e)}/>
                   <label>Display</label>
                 </div>
                 <div className='flex gap-1 p-1'>
-                  <input type="checkbox" name="Gaming"/>
+                  <input type="checkbox" name="tags" value="Over All" onChange={(e)=>f(e)}/>
                   <label>Over All</label>
                 </div>
             </div>
@@ -166,9 +186,9 @@ function Service() {
               <Link onClick={()=>fun(item)} to={`/product/${item.productName}`} key={index}><ProductCard detail={item}/></Link>
           )
         }
-          <Routes>
-            <Route path="product/:productId" element={<Productdisp detail={details}/>} />
-          </Routes>
+        <Routes>
+          <Route path="product/:productId" element={<Productdisp detail={details}/>} />
+        </Routes>
       </div>
     </div>
   )
