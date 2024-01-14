@@ -7,11 +7,20 @@ import api from '../../api/api';
 function Service() {
 
   const [data, setData] = useState([])
-  const [details, setDetails] = useState(null);
+  const [details, setDetails] = useState(null)
+  const [filters, setFilters] = useState({
+    'min-price' : 5000,
+    'max-price' : 30000,
+    'rating' : 0,
+    'discount' : 0,
+    'brands' : [],
+    'tags' : []
+  })
+  const [value, setValue] = useState();
 
   function fun(item){
     localStorage.setItem('Product Details', JSON.stringify(item))
-    console.log(localStorage.getItem('Product Details'))
+    // console.log("This Service Page : ",localStorage.getItem('Product Details'))
   }
 
   useEffect(() => {
@@ -20,7 +29,7 @@ function Service() {
       setData(response.data.data);
     })
     .catch((err)=>{
-        console.log(err.message);
+      console.log(err.message);
     });
   }, [setData]); 
 
@@ -43,18 +52,20 @@ function Service() {
             <div></div>
             <div className=' flex text-lg justify-between'>
               <div className=' border px-2 py-1 w-2/5 flex justify-between items-center'>
-                <select className=' w-full'>
-                  <option value="">Min</option>
-                  <option value="">10,000</option>
+                <select className=' w-full' name='min-price' onChange={(e)=>{setFilters({...filters, [e.target.name] : e.target.value}); console.log(filters)}}>
+                  <option value="5000">5,000</option>
+                  <option value="10000">10,000</option>
+                  <option value="15000">15,000</option>
+                  <option value="20000">20,000</option>
                 </select>
               </div>
               <div className=' text-gray-400 p-1'>to</div>
               <div className=' border px-2 py-1 w-2/5 flex justify-between'>
-                <select className=' w-full'>
-                  <option value="">30,000+</option>
-                  <option value="">20,000</option>
-                  <option value="">15,000</option>
-                  <option value="">10,000</option>
+                <select className=' w-full' name='max-price' onChange={(e)=>{setFilters({...filters, [e.target.name] : e.target.value}); console.log(filters)}}>
+                  <option value='30000' >30,000</option>
+                  <option value="20000">20,000</option>
+                  <option value="15000">15,000</option>
+                  <option value="10000">10,000</option>
                 </select>
               </div>
             </div>
@@ -65,11 +76,12 @@ function Service() {
               <div>CUSTOMER RATING</div>
             </div>
             <div className=' border px-2 py-1 flex justify-between'>
-              <select className=' w-full p-1'>
-                <option value="">★4 +</option>
-                <option value="">★3 +</option>
-                <option value="">★2 +</option>
-                <option value="">★1 +</option>
+              <select className=' w-full p-1' name='rating' onChange={(e)=>{setFilters({...filters, [e.target.name] : e.target.value}); console.log(filters)}}>
+                <option value="4">★4 +</option>
+                <option value="3">★3 +</option>
+                <option value="2">★2 +</option>
+                <option value="1">★1 +</option>
+                <option value="0">All</option>
               </select>
             </div>
           </div>
@@ -79,12 +91,13 @@ function Service() {
               <div>DISCOUNT</div>
             </div>
             <div className=' border px-2 py-1 flex justify-between'>
-              <select className=' w-full p-1'>
-                <option value="">50% +</option>
-                <option value="">40% +</option>
-                <option value="">30% +</option>
-                <option value="">20% +</option>
-                <option value="">10% +</option>
+              <select className=' w-full p-1' name='discount' onChange={(e)=>{setFilters({...filters, [e.target.name] : e.target.value}); console.log(filters)}}>
+                <option value="50">50% +</option>
+                <option value="40">40% +</option>
+                <option value="30">30% +</option>
+                <option value="20">20% +</option>
+                <option value="10">10% +</option>
+                <option value="0">All</option>
               </select>
             </div>
           </div>
@@ -92,6 +105,28 @@ function Service() {
           <div className=' m-6'>
             <div className=' text-lg font-semibold'>
               <div>BRANDS</div>
+            </div>
+            <div className=' border px-2 py-1 flex flex-col justify-between'>
+                <div className='flex gap-1 p-1'>
+                  <input type="checkbox" name="Gaming"/>
+                  <label>Samsung</label>
+                </div>
+                <div className='flex gap-1 p-1'>
+                  <input type="checkbox" name="Gaming"/>
+                  <label>Realme</label>
+                </div>
+                <div className='flex gap-1 p-1'>
+                  <input type="checkbox" name="Gaming"/>
+                  <label>iQoo</label>
+                </div>
+                <div className='flex gap-1 p-1'>
+                  <input type="checkbox" name="Gaming"/>
+                  <label>Mi</label>
+                </div>
+                <div className='flex gap-1 p-1'>
+                  <input type="checkbox" name="Gaming"/>
+                  <label>Motorola</label>
+                </div>
             </div>
           </div>
           <hr className='w-full' />
